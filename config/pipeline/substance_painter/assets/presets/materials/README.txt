@@ -1,1 +1,1 @@
-Placer ici les fichiers de préréglages (*.sppr ou *.abr) à utiliser comme matériaux prédéfinis
+Put here presets files (*.sppr or *.abr) to be used as material presets

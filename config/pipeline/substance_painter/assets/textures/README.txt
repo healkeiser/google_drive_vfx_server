@@ -1,1 +1,1 @@
-Placer ici les fichiers image à utiliser en tant que textures des arrière-plans de calque
+Put here image files to be used as textures for layer backgrounds

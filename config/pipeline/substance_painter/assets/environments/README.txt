@@ -1,1 +1,1 @@
-Placer ici les fichiers image à utiliser en tant que carte d'environnement
+Put here image files to be used as environments map

@@ -1,1 +1,1 @@
-Placer ici les fichiers de préréglages (*.spmsk) à utiliser comme masques adaptables
+Put here presets files (*.spmsk) to be used as smart masks

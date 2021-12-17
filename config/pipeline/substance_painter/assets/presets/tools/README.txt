@@ -1,1 +1,1 @@
-Placer ici les fichiers de préréglages (*.sppr) à utiliser comme outils prédéfinis
+Put here presets files (*.sppr) to be used as tool presets

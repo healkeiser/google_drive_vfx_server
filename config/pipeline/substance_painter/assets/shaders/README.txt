@@ -1,1 +1,1 @@
-Placer ici les fichiers de shader glsl à utiliser comme shaders
+Put here glsl shader files to be used as shaders

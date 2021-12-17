@@ -1,1 +1,1 @@
-Placer ici les fichiers de préréglages (*.spexp) à utiliser comme préréglages d'export
+Put here presets files (*.spexp) to be used as export presets

@@ -1,1 +1,1 @@
-Placer ici les fichiers sbsar et image à utiliser comme alpha
+Put here sbsar and image files to be used as alphas

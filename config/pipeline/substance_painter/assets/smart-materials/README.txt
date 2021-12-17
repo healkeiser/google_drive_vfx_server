@@ -1,1 +1,1 @@
-Placer ici les fichiers de préréglages (*.spsm) à utiliser comme matériaux adaptables
+Put here presets files (*.spsm) to be used as smart materials

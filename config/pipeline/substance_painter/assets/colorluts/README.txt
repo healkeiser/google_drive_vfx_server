@@ -1,1 +1,1 @@
-Placer ici les fichiers image à utiliser en tant que carte Tables de recherche
+Put here image files to be used as Look-Up Tables map

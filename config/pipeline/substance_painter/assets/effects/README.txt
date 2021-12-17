@@ -1,1 +1,1 @@
-Placer ici les fichiers sbsar à utiliser comme effets
+Put here sbsar files to be used as effects

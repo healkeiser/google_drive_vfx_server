@@ -1,1 +1,1 @@
-Placer ici les fichiers sbsar et image à utiliser comme pochoirs
+Put here sbsar and image files to be used as stencils

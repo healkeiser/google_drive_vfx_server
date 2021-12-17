@@ -1,1 +1,1 @@
-Placer ici les fichiers sbsar à utiliser comme générateurs
+Put here sbsar files to be used as generators

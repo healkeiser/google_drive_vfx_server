@@ -1,1 +1,1 @@
-Placer ici les fichiers de préréglages (*.sppr) à utiliser comme préréglages de pinceau
+Put here presets files (*.sppr) to be used as brush presets

@@ -1,1 +1,1 @@
-Placer ici les scripts d'émetteur de particules
+Put here particles emitter scripts

@@ -1,1 +1,1 @@
-Placer ici les fichiers de matériaux MDL à utiliser pour le rendu Iray
+Put here mdl material files to be used for iray rendering
