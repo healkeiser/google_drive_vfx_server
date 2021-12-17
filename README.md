@@ -63,6 +63,9 @@ Copy the `config` folder to `Z:/My Drive/`, rename it `.config`,  and make it **
 - [ ] Houdini Packages for levels `Studio`, `Project`, `User`
 
 <!-- RESSOURCES -->
-## Useful Resources
+## Useful Resources and tools
+- [Megascans](https://quixel.com/megascans "Megascans") - Used in the `.config`
+- [MOPS](https://github.com/toadstorm/MOPS "MOPS") - Used in the `.config`
+- [Nuke Survivor Toolkit](https://compositingmentor.com/2020/09/25/nuke-survival-toolkit/ "MOPS") - Used in the `.config`
 - [HSITE](https://www.sidefx.com/docs/houdini/basics/config.html "SideFX: $HSITE")
 - [Packages](https://www.sidefx.com/docs/houdini/ref/plugins.html "SideFX: Packages")
