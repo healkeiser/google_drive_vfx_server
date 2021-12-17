@@ -57,7 +57,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 <!-- TIPS -->
 ## Tips
 - With that method, you can either place your `PROJECTS` folder on the Google Drive Server freshly created, or leave it anywhere locally
-- Google Drive will allow you to limit the bandwidth for upload/download directly in the app, which coule be useful if the `PROJECTS` folder is saved on the server
+- Google Drive will allow you to limit the bandwidth for upload/download directly in the app, which could be useful if the `PROJECTS` folder is saved on the server
 
 <!-- ROADMAP -->
 ## Roadmap
