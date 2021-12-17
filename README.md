@@ -45,7 +45,7 @@ Copy the `config` folder to `Z:/My Drive/`, rename it `.config`,  and make it **
 - Define a new environment variable for User called *HSITE*. Give this new variable the value of the parent folder containing the *houdini.major.minor* folder, which contains itself the usual *otls*, *packages* folders and so on. This variable needs to be assigned before Houdini is started, so writing it in the houdini.env won't work
 > Variable should be `HSITE` `Z:/My Drive/.config/pipeline/houdini`
 
-- Packages contains a `04_drive_server` part that's specifically dedicated to optimizing the space used on the Google Drive Server: 10 maximum backup files for each file, and buffered save is activated *at the expense of memory when saving*
+- Packages contains a `drive_server` part that's specifically dedicated to optimizing the space used on the Google Drive Server if your `PROJECT` folder is there: 10 maximum backup files for each file, and buffered save is activated *at the expense of memory when saving*
 > Packages used by Houdini should be there `Z:/My Drive/.config/pipeline/houdini/houdini$HOUDINI_VERSION/packages`
 
 ### ![#FFFF00](https://via.placeholder.com/15/FFFF00/000000?text=+) Nuke
