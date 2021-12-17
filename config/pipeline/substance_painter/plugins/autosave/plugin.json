@@ -1,0 +1,7 @@
+{
+  "description": "Autosave for Substance 3D Painter",
+  "url": "https://github.com/AllegorithmicSAS/painter-plugin-auto-save",
+  "version": "1.0.6",
+  "license": "<a href=\"https://opensource.org/licenses/MIT\">MIT</a>",
+  "min_api_version": "1.1.15"
+}

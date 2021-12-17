@@ -1,0 +1,23 @@
+// Magic: 3c21d345
+// Automatically generated PSI dialog (PSI version 19.0.383)
+// Fri Dec  3 14:43:33 2021
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val_) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

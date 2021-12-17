@@ -1,0 +1,69 @@
+// Magic: acacc7c8
+// Automatically generated PSI dialog (PSI version 19.0.383)
+// Fri Dec  3 14:43:33 2021
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+
+range.gad = ROW
+{
+   HSTRETCH
+   { WIDTH(0.18) }
+
+   range.label = PARM_LABEL("Range", "range") WIDTH(1.5);
+   PARM(float, 2, "range", none, none, "#1,#2")
+	RANGE(0,1)  LABELREF(range.label)
+	HSTRETCH;
+
+    { WIDTH(0.1) }
+}
+
+locklow.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("locklow", "Lock Low") toggle VALUE(locklow.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+lockhigh.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("lockhigh", "Lock High") toggle VALUE(lockhigh.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH 
+    range.gad; 
+    locklow.gad; 
+    lockhigh.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val_) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

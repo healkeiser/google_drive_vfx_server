@@ -1,0 +1,1367 @@
+// Magic: f0522969
+// Automatically generated PSI dialog (PSI version 19.0.383)
+// Tue Nov 30 17:16:16 2021
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+execute.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+execute.gad = ROW
+{
+    JUSTIFY(left, center)
+    { WIDTH(0.18) }
+
+    PARM_BUTTON("execute", "Render to Disk")
+	push VALUE(execute.val);
+
+    {  }
+}
+
+renderdialog.gad = ROW
+{
+    JUSTIFY(left, center)
+    {  }
+
+    { WIDTH(0) }
+    { WIDTH(0.1) }
+
+    PARM_BUTTON("renderdialog", "Controls...")
+	push VALUE(renderdialog.val);
+
+    { WIDTH(0.1) }
+}
+}	// Template join.bot
+
+
+trange.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Valid Frame Range", "trange") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    trange.menu;
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+f.gad = ROW
+{
+   HSTRETCH
+   { WIDTH(0.18) }
+
+   f.label = PARM_LABEL("Start/End/Inc", "f") WIDTH(1.5);
+   PARM(float, 3, "f", none, none, "#1,#2,#3")
+	RANGE(0,1)  LABELREF(f.label)
+	HSTRETCH;
+
+    { WIDTH(0.1) }
+}
+
+take.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Render with Take", "take") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    take.menu;
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+camera.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left,center)
+ { WIDTH(0.18) }
+
+ camera.label = PARM_LABEL("Camera", "camera") WIDTH(1.5);
+ PARM_FIELD(pathstring, "camera") VALUE(camera.val) 
+	LABELREF(camera.label) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_jump" VALUE(camera.jump)
+    HELP("Jump to operator\nCtrl+LMB: Open parameters popup dialog")
+    UI_FLAT_ICON_BTN_SIZE_SMALL LOOKFLAT;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(camera.plus)
+    HELP("Open floating operator chooser") UI_FLAT_ICON_BTN_SIZE_SMALL 
+    LOOKFLAT;
+
+ { WIDTH(0.1) }
+}
+ar_subdiv_dicing_camera_enable.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+ar_subdiv_dicing_camera_enable.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+ar_subdiv_dicing_camera_enable.gad = PARM_BUTTON("ar_subdiv_dicing_camera_enable", "") toggle VALUE(ar_subdiv_dicing_camera_enable.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+ar_subdiv_dicing_camera.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left,center)
+ {  }
+
+ ar_subdiv_dicing_camera.label = PARM_LABEL("Dicing Camera", "ar_subdiv_dicing_camera") WIDTH(1.32);
+ PARM_FIELD(pathstring, "ar_subdiv_dicing_camera") VALUE(ar_subdiv_dicing_camera.val) 
+	LABELREF(ar_subdiv_dicing_camera.label) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_jump" VALUE(ar_subdiv_dicing_camera.jump)
+    HELP("Jump to operator\nCtrl+LMB: Open parameters popup dialog")
+    UI_FLAT_ICON_BTN_SIZE_SMALL LOOKFLAT;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(ar_subdiv_dicing_camera.plus)
+    HELP("Open floating operator chooser") UI_FLAT_ICON_BTN_SIZE_SMALL 
+    LOOKFLAT;
+
+ { WIDTH(0.1) }
+}
+}	
+}	// Template join.bot
+
+ar_subdiv_frustum_culling.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+ar_subdiv_frustum_culling.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+ar_subdiv_frustum_culling.gad = PARM_BUTTON("ar_subdiv_frustum_culling", "") toggle VALUE(ar_subdiv_frustum_culling.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+ar_subdiv_frustum_padding.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ {  }
+
+ ar_subdiv_frustum_padding.label = PARM_LABEL("Frustum Culling", "ar_subdiv_frustum_padding") WIDTH(1.32);
+ PARM(float, 1, "ar_subdiv_frustum_padding", none, none) RANGE(0,10)
+	 LABELREF(ar_subdiv_frustum_padding.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+}	
+}	// Template join.bot
+
+target.gad = NULL { }
+sepparm.gad = NULL { }
+
+vobject.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ vobject.label = PARM_LABEL("Candidate Objects", "vobject") WIDTH(1.5);
+ PARM_FIELD (pathstring, "vobject") LABELREF(vobject.label) 
+	VALUE(vobject.val) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(vobject.plus) LOOKFLAT
+    HELP("Open floating bundle chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ { WIDTH(0.1) }
+}
+
+forceobject.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ forceobject.label = PARM_LABEL("Force Objects", "forceobject") WIDTH(1.5);
+ PARM_FIELD (pathstring, "forceobject") LABELREF(forceobject.label) 
+	VALUE(forceobject.val) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(forceobject.plus) LOOKFLAT
+    HELP("Open floating bundle chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ { WIDTH(0.1) }
+}
+
+excludeobject.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ excludeobject.label = PARM_LABEL("Exclude Objects", "excludeobject") WIDTH(1.5);
+ PARM_FIELD (pathstring, "excludeobject") LABELREF(excludeobject.label) 
+	VALUE(excludeobject.val) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(excludeobject.plus) LOOKFLAT
+    HELP("Open floating bundle chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ { WIDTH(0.1) }
+}
+
+phantom_objects.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ phantom_objects.label = PARM_LABEL("Forced Phantom", "phantom_objects") WIDTH(1.5);
+ PARM_FIELD (pathstring, "phantom_objects") LABELREF(phantom_objects.label) 
+	VALUE(phantom_objects.val) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(phantom_objects.plus) LOOKFLAT
+    HELP("Open floating bundle chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ { WIDTH(0.1) }
+}
+
+matte_objects.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ matte_objects.label = PARM_LABEL("Forced Matte", "matte_objects") WIDTH(1.5);
+ PARM_FIELD (pathstring, "matte_objects") LABELREF(matte_objects.label) 
+	VALUE(matte_objects.val) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(matte_objects.plus) LOOKFLAT
+    HELP("Open floating bundle chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ { WIDTH(0.1) }
+}
+
+ar_environment.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left,center)
+ { WIDTH(0.18) }
+
+ ar_environment.label = PARM_LABEL("Environment", "ar_environment") WIDTH(1.5);
+ PARM_FIELD(pathstring, "ar_environment") VALUE(ar_environment.val) 
+	LABELREF(ar_environment.label) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_jump" VALUE(ar_environment.jump)
+    HELP("Jump to operator\nCtrl+LMB: Open parameters popup dialog")
+    UI_FLAT_ICON_BTN_SIZE_SMALL LOOKFLAT;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(ar_environment.plus)
+    HELP("Open floating operator chooser") UI_FLAT_ICON_BTN_SIZE_SMALL 
+    LOOKFLAT;
+
+ { WIDTH(0.1) }
+}
+
+ar_forced_materials.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ ar_forced_materials.label = PARM_LABEL("Forced Materials", "ar_forced_materials") WIDTH(1.5);
+ PARM_FIELD (pathstring, "ar_forced_materials") LABELREF(ar_forced_materials.label) 
+	VALUE(ar_forced_materials.val) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(ar_forced_materials.plus) LOOKFLAT
+    HELP("Open floating bundle chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ { WIDTH(0.1) }
+}
+
+ar_shader_override.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left,center)
+ { WIDTH(0.18) }
+
+ ar_shader_override.label = PARM_LABEL("Shader Override", "ar_shader_override") WIDTH(1.5);
+ PARM_FIELD(pathstring, "ar_shader_override") VALUE(ar_shader_override.val) 
+	LABELREF(ar_shader_override.label) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_jump" VALUE(ar_shader_override.jump)
+    HELP("Jump to operator\nCtrl+LMB: Open parameters popup dialog")
+    UI_FLAT_ICON_BTN_SIZE_SMALL LOOKFLAT;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(ar_shader_override.plus)
+    HELP("Open floating operator chooser") UI_FLAT_ICON_BTN_SIZE_SMALL 
+    LOOKFLAT;
+
+ { WIDTH(0.1) }
+}
+
+ar_export_referenced_materials.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_export_referenced_materials", "Export Referenced Materials") toggle VALUE(ar_export_referenced_materials.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+obj_light_sep.gad = NULL { }
+
+sololight.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ sololight.label = PARM_LABEL("Solo Light", "sololight") WIDTH(1.5);
+ PARM_FIELD (pathstring, "sololight") LABELREF(sololight.label) 
+	VALUE(sololight.val) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(sololight.plus) LOOKFLAT
+    HELP("Open floating bundle chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ { WIDTH(0.1) }
+}
+
+alights.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ alights.label = PARM_LABEL("Candidate Lights", "alights") WIDTH(1.5);
+ PARM_FIELD (pathstring, "alights") LABELREF(alights.label) 
+	VALUE(alights.val) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(alights.plus) LOOKFLAT
+    HELP("Open floating bundle chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ { WIDTH(0.1) }
+}
+
+forcelights.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ forcelights.label = PARM_LABEL("Force Lights", "forcelights") WIDTH(1.5);
+ PARM_FIELD (pathstring, "forcelights") LABELREF(forcelights.label) 
+	VALUE(forcelights.val) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(forcelights.plus) LOOKFLAT
+    HELP("Open floating bundle chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ { WIDTH(0.1) }
+}
+
+excludelights.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ excludelights.label = PARM_LABEL("Exclude Lights", "excludelights") WIDTH(1.5);
+ PARM_FIELD (pathstring, "excludelights") LABELREF(excludelights.label) 
+	VALUE(excludelights.val) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(excludelights.plus) LOOKFLAT
+    HELP("Open floating bundle chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ { WIDTH(0.1) }
+}
+soho_autoheadlight.gad = NULL { }
+light_fog_sep.gad = NULL { }
+vfog.gad = NULL { }
+
+soho_viewport_menu.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("soho_viewport_menu", "Show in Viewport Menu") toggle VALUE(soho_viewport_menu.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+soho_initsim.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("soho_initsim", "Initialize Simulation OPs") toggle VALUE(soho_initsim.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_render_selection_only.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_render_selection_only", "Render Selection Only") toggle VALUE(ar_render_selection_only.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_render_selection_others.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Render Others As", "ar_render_selection_others") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    ar_render_selection_others.menu;
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+shop_propertiespath.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left,center)
+ { WIDTH(0.18) }
+
+ shop_propertiespath.label = PARM_LABEL("Default Properties", "shop_propertiespath") WIDTH(1.5);
+ PARM_FIELD(pathstring, "shop_propertiespath") VALUE(shop_propertiespath.val) 
+	LABELREF(shop_propertiespath.label) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_jump" VALUE(shop_propertiespath.jump)
+    HELP("Jump to operator\nCtrl+LMB: Open parameters popup dialog")
+    UI_FLAT_ICON_BTN_SIZE_SMALL LOOKFLAT;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(shop_propertiespath.plus)
+    HELP("Open floating operator chooser") UI_FLAT_ICON_BTN_SIZE_SMALL 
+    LOOKFLAT;
+
+ { WIDTH(0.1) }
+}
+ar_user_options.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+ar_user_options.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    { WIDTH(0.18) }
+
+    ar_user_options.label = PARM_LABEL("User Options", "ar_user_options") WIDTH(1.5);
+    PARM_FIELD(string, "ar_user_options") VALUE(ar_user_options.val) 
+	LABELREF(ar_user_options.label) HSTRETCH;
+
+    {  }
+}
+
+ar_user_options_enable.gad = ROW
+{
+    
+    {  }
+
+    {  }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_user_options_enable", "Enable") toggle VALUE(ar_user_options_enable.val);
+
+    {  }
+
+    { WIDTH(0.1) }
+}
+}	// Template join.bot
+
+ar_ass_export_enable.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+ar_ass_export_enable.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+ar_ass_export_enable.gad = PARM_BUTTON("ar_ass_export_enable", "") toggle VALUE(ar_ass_export_enable.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+ar_ass_file.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+ {  }
+
+ ar_ass_file.label = PARM_LABEL("Export ASS File", "ar_ass_file") WIDTH(1.32);
+
+ PARM_FIELD (pathstring, "ar_ass_file") LABELREF(ar_ass_file.label)
+	VALUE(ar_ass_file.val) HSTRETCH;
+
+    ar_ass_file.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_file" VALUE(ar_ass_file.plus) LOOKFLAT
+    HELP("Open floating file chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ { WIDTH(0.1) }
+}
+}	
+}	// Template join.bot
+
+ar_node_prefix_enable.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+ar_node_prefix_enable.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+ar_node_prefix_enable.gad = PARM_BUTTON("ar_node_prefix_enable", "") toggle VALUE(ar_node_prefix_enable.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+ar_node_prefix.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    {  }
+
+    ar_node_prefix.label = PARM_LABEL("Node Prefix", "ar_node_prefix") WIDTH(1.32);
+    PARM_FIELD(string, "ar_node_prefix") VALUE(ar_node_prefix.val) 
+	LABELREF(ar_node_prefix.label) HSTRETCH;
+
+    { WIDTH(0.1) }
+}
+}	
+}	// Template join.bot
+
+ar_node_suffix_enable.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+ar_node_suffix_enable.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+ar_node_suffix_enable.gad = PARM_BUTTON("ar_node_suffix_enable", "") toggle VALUE(ar_node_suffix_enable.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+ar_node_suffix.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    {  }
+
+    ar_node_suffix.label = PARM_LABEL("Node Suffix", "ar_node_suffix") WIDTH(1.32);
+    PARM_FIELD(string, "ar_node_suffix") VALUE(ar_node_suffix.val) 
+	LABELREF(ar_node_suffix.label) HSTRETCH;
+
+    { WIDTH(0.1) }
+}
+}	
+}	// Template join.bot
+
+ar_ass_export_authorized.gad = NULL { }
+
+ar_binary_ass.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_binary_ass", "Binary Encoding") toggle VALUE(ar_binary_ass.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_export_options.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_export_options", "Export Options") toggle VALUE(ar_ass_export_options.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_export_color_managers.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_export_color_managers", "Export Color Managers") toggle VALUE(ar_ass_export_color_managers.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_export_cameras.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_export_cameras", "Export Cameras") toggle VALUE(ar_ass_export_cameras.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_export_lights.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_export_lights", "Export Lights") toggle VALUE(ar_ass_export_lights.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_export_shapes.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_export_shapes", "Export Shapes") toggle VALUE(ar_ass_export_shapes.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_export_shaders.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_export_shaders", "Export Shaders") toggle VALUE(ar_ass_export_shaders.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_export_shader_assignments.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_export_shader_assignments", "Export Shader Assignments") toggle VALUE(ar_ass_export_shader_assignments.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_export_operators.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_export_operators", "Export Operators") toggle VALUE(ar_ass_export_operators.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_export_overrides.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_export_overrides", "Export Overrides") toggle VALUE(ar_ass_export_overrides.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_export_drivers.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_export_drivers", "Export Output Drivers") toggle VALUE(ar_ass_export_drivers.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_export_filters.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_export_filters", "Export Pixel Filters") toggle VALUE(ar_ass_export_filters.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_export_asstoc.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_export_asstoc", "Export .asstoc File") toggle VALUE(ar_export_asstoc.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_prepend_htoa_paths.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_prepend_htoa_paths", "Prepend Plugin Paths") toggle VALUE(ar_prepend_htoa_paths.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_expand_procedurals.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_expand_procedurals", "Expand Procedurals") toggle VALUE(ar_ass_expand_procedurals.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_absolute_texture_paths.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_absolute_texture_paths", "Absolute Texture Paths") toggle VALUE(ar_ass_absolute_texture_paths.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+ar_ass_absolute_procedural_paths.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("ar_ass_absolute_procedural_paths", "Absolute Procedural Paths") toggle VALUE(ar_ass_absolute_procedural_paths.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+tprerender.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+tprerender.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+tprerender.gad = PARM_BUTTON("tprerender", "") toggle VALUE(tprerender.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+prerender.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+ {  }
+
+ prerender.label = PARM_LABEL("Pre-Render", "prerender") WIDTH(1.32);
+
+ PARM_FIELD (pathstring, "prerender") LABELREF(prerender.label)
+	VALUE(prerender.val) HSTRETCH;
+
+    prerender.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_file" VALUE(prerender.plus) LOOKFLAT
+    HELP("Open floating file chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ {  }
+}
+}	
+
+lprerender.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) 
+    {  }
+
+    lprerender.menu;
+
+    {  }
+
+    { WIDTH(0.1) }
+}
+}	// Template join.bot
+
+tpreframe.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+tpreframe.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+tpreframe.gad = PARM_BUTTON("tpreframe", "") toggle VALUE(tpreframe.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+preframe.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+ {  }
+
+ preframe.label = PARM_LABEL("Pre-Frame", "preframe") WIDTH(1.32);
+
+ PARM_FIELD (pathstring, "preframe") LABELREF(preframe.label)
+	VALUE(preframe.val) HSTRETCH;
+
+    preframe.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_file" VALUE(preframe.plus) LOOKFLAT
+    HELP("Open floating file chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ {  }
+}
+}	
+
+lpreframe.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) 
+    {  }
+
+    lpreframe.menu;
+
+    {  }
+
+    { WIDTH(0.1) }
+}
+}	// Template join.bot
+
+tpostframe.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+tpostframe.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+tpostframe.gad = PARM_BUTTON("tpostframe", "") toggle VALUE(tpostframe.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+postframe.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+ {  }
+
+ postframe.label = PARM_LABEL("Post-Frame", "postframe") WIDTH(1.32);
+
+ PARM_FIELD (pathstring, "postframe") LABELREF(postframe.label)
+	VALUE(postframe.val) HSTRETCH;
+
+    postframe.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_file" VALUE(postframe.plus) LOOKFLAT
+    HELP("Open floating file chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ {  }
+}
+}	
+
+lpostframe.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) 
+    {  }
+
+    lpostframe.menu;
+
+    {  }
+
+    { WIDTH(0.1) }
+}
+}	// Template join.bot
+
+tpostrender.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+tpostrender.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+tpostrender.gad = PARM_BUTTON("tpostrender", "") toggle VALUE(tpostrender.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+postrender.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+ {  }
+
+ postrender.label = PARM_LABEL("Post-Render", "postrender") WIDTH(1.32);
+
+ PARM_FIELD (pathstring, "postrender") LABELREF(postrender.label)
+	VALUE(postrender.val) HSTRETCH;
+
+    postrender.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_file" VALUE(postrender.plus) LOOKFLAT
+    HELP("Open floating file chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ {  }
+}
+}	
+
+lpostrender.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) 
+    {  }
+
+    lpostrender.menu;
+
+    {  }
+
+    { WIDTH(0.1) }
+}
+}	// Template join.bot
+
+
+soho_program.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+ { WIDTH(0.18) }
+
+ soho_program.label = PARM_LABEL("SOHO Program", "soho_program") WIDTH(1.5);
+
+ PARM_FIELD (pathstring, "soho_program") LABELREF(soho_program.label)
+	VALUE(soho_program.val) HSTRETCH;
+
+    soho_program.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_file" VALUE(soho_program.plus) LOOKFLAT
+    HELP("Open floating file chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ { WIDTH(0.1) }
+}
+
+soho_outputmode.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("SOHO Output Mode", "soho_outputmode") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    soho_outputmode.menu;
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+soho_pipecmd.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    { WIDTH(0.18) }
+
+    soho_pipecmd.label = PARM_LABEL("Command", "soho_pipecmd") WIDTH(1.5);
+    PARM_FIELD(string, "soho_pipecmd") VALUE(soho_pipecmd.val) 
+	LABELREF(soho_pipecmd.label) HSTRETCH;
+
+    { WIDTH(0.1) }
+}
+
+soho_diskfile.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+ { WIDTH(0.18) }
+
+ soho_diskfile.label = PARM_LABEL("Script Disk File", "soho_diskfile") WIDTH(1.5);
+
+ PARM_FIELD (pathstring, "soho_diskfile") LABELREF(soho_diskfile.label)
+	VALUE(soho_diskfile.val) HSTRETCH;
+
+    soho_diskfile.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_file" VALUE(soho_diskfile.plus) LOOKFLAT
+    HELP("Open floating file chooser") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+ { WIDTH(0.1) }
+}
+
+soho_errormode.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Error Mode", "soho_errormode") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    soho_errormode.menu;
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+soho_shopstyle.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    { WIDTH(0.18) }
+
+    soho_shopstyle.label = PARM_LABEL("SOHO SHOP Style", "soho_shopstyle") WIDTH(1.5);
+    PARM_FIELD(string, "soho_shopstyle") VALUE(soho_shopstyle.val) 
+	LABELREF(soho_shopstyle.label) HSTRETCH;
+
+    soho_shopstyle.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+    { WIDTH(0.1) }
+}
+
+soho_precision.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ soho_precision.label = PARM_LABEL("Float Precision", "soho_precision") WIDTH(1.5);
+ PARM(integer, 1, "soho_precision", none, none) RANGE(4,15)
+	 LABELREF(soho_precision.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+
+soho_indentstep.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ soho_indentstep.label = PARM_LABEL("Indent Step", "soho_indentstep") WIDTH(1.5);
+ PARM(integer, 1, "soho_indentstep", none, none) RANGE(0,8)
+	 LABELREF(soho_indentstep.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+
+soho_almostzero.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ soho_almostzero.label = PARM_LABEL("Almost Zero", "soho_almostzero") WIDTH(1.5);
+ PARM(float, 1, "soho_almostzero", none, none) RANGE(0,0.0001)
+	 LABELREF(soho_almostzero.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+
+soho_multiframe.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("soho_multiframe", "Multi-frame mode") toggle VALUE(soho_multiframe.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+soho_safename.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("soho_safename", "Safe Object names") toggle VALUE(soho_safename.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+soho_ipr_support.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("soho_ipr_support", "SOHO IPR Support") toggle VALUE(soho_ipr_support.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+soho_foreground.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("soho_foreground", "Block Until Render Completes") toggle VALUE(soho_foreground.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+renderpreview.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+renderpreview.gad = NULL { }
+executebackground.gad = NULL { }
+}	// Template join.bot
+
+
+folder_lights.gad = 
+
+GROUP simple "Lights" flat 
+{ 
+    VALUE(folder_lights.gad.val) LAYOUT(vertical) HSTRETCH 
+	    sololight.gad;		
+	    alights.gad;		
+	    forcelights.gad;		
+	    excludelights.gad;		
+	    soho_autoheadlight.gad;		
+	    light_fog_sep.gad;		
+} 
+
+folder_shaders.gad = 
+
+GROUP simple "Shaders" flat 
+{ 
+    VALUE(folder_shaders.gad.val) LAYOUT(vertical) HSTRETCH 
+	    ar_environment.gad;		
+	    ar_forced_materials.gad;		
+	    ar_shader_override.gad;		
+	    ar_export_referenced_materials.gad;		
+} 
+
+folder_objects.gad = 
+
+GROUP simple "Objects" flat 
+{ 
+    VALUE(folder_objects.gad.val) LAYOUT(vertical) HSTRETCH 
+	    vobject.gad;		
+	    forceobject.gad;		
+	    excludeobject.gad;		
+	    phantom_objects.gad;		
+	    matte_objects.gad;		
+} 
+
+folder_subdivision.gad = 
+
+GROUP simple "Subdivision" flat 
+{ 
+    VALUE(folder_subdivision.gad.val) LAYOUT(vertical) HSTRETCH 
+	    ar_subdiv_dicing_camera_enable.row.join;		
+	    ar_subdiv_frustum_culling.row.join;		
+} 
+
+folder_camera.gad = 
+
+GROUP simple "Camera" flat 
+{ 
+    VALUE(folder_camera.gad.val) LAYOUT(vertical) HSTRETCH 
+	    camera.gad;		
+	    folder_subdivision.gad;		
+} 
+
+main.gad = 
+{
+    LAYOUT(vertical) HSTRETCH
+
+    TABDIALOG2 flat "main.gad"
+    { 
+	VALUE(main.gad.val) STRETCH(1,0)
+
+	TAB " Main "
+	{
+	    LAYOUT(vertical) STRETCH
+
+            HMARGIN(0) VMARGIN(2p) SPACING(0, 2p)
+	    folder_camera.gad;		
+	    target.gad;		
+	    sepparm.gad;		
+	    folder_objects.gad;		
+	    folder_shaders.gad;		
+	    obj_light_sep.gad;		
+	    folder_lights.gad;		
+	    vfog.gad;		
+	    soho_viewport_menu.gad;		
+	    soho_initsim.gad;		
+	    ar_render_selection_only.gad;		
+	    ar_render_selection_others.gad;		
+
+	    { STRETCH(1,1) }
+	}
+
+	TAB "Properties"
+	{
+	    LAYOUT(vertical) STRETCH
+
+            HMARGIN(0) VMARGIN(2p) SPACING(0, 2p)
+	    shop_propertiespath.gad;		
+	    ar_user_options.row.join;		
+
+	    { STRETCH(1,1) }
+	}
+
+	TAB "Archive"
+	{
+	    LAYOUT(vertical) STRETCH
+
+            HMARGIN(0) VMARGIN(2p) SPACING(0, 2p)
+	    ar_ass_export_enable.row.join;		
+	    ar_node_prefix_enable.row.join;		
+	    ar_node_suffix_enable.row.join;		
+	    ar_ass_export_authorized.gad;		
+	    ar_binary_ass.gad;		
+	    ar_ass_export_options.gad;		
+	    ar_ass_export_color_managers.gad;		
+	    ar_ass_export_cameras.gad;		
+	    ar_ass_export_lights.gad;		
+	    ar_ass_export_shapes.gad;		
+	    ar_ass_export_shaders.gad;		
+	    ar_ass_export_shader_assignments.gad;		
+	    ar_ass_export_operators.gad;		
+	    ar_ass_export_overrides.gad;		
+	    ar_ass_export_drivers.gad;		
+	    ar_ass_export_filters.gad;		
+	    ar_export_asstoc.gad;		
+	    ar_prepend_htoa_paths.gad;		
+	    ar_ass_expand_procedurals.gad;		
+	    ar_ass_absolute_texture_paths.gad;		
+	    ar_ass_absolute_procedural_paths.gad;		
+
+	    { STRETCH(1,1) }
+	}
+
+	TAB "Scripts"
+	{
+	    LAYOUT(vertical) STRETCH
+
+            HMARGIN(0) VMARGIN(2p) SPACING(0, 2p)
+	    tprerender.row.join;		
+	    tpreframe.row.join;		
+	    tpostframe.row.join;		
+	    tpostrender.row.join;		
+
+	    { STRETCH(1,1) }
+	}
+    } 
+}
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH 
+    execute.row.join; 
+    trange.gad; 
+    f.gad; 
+    take.gad; 
+    main.gad; 
+    renderpreview.row.join; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val_) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

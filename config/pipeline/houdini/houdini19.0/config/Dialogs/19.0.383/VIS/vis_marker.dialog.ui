@@ -1,0 +1,588 @@
+// Magic: 1a171278
+// Automatically generated PSI dialog (PSI version 19.0.383)
+// Tue Nov 30 17:01:13 2021
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+style.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+style.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) 
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Style", "style") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    style.menu;
+
+    {  }
+
+    { WIDTH(0.1) }
+}
+
+class.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) 
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Class", "class") ;
+    { WIDTH(0.09) }
+
+    class.menu;
+
+    {  }
+
+    { WIDTH(0.1) }
+}
+}	
+
+attrib.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    { WIDTH(0.18) }
+
+    attrib.label = PARM_LABEL("Attribute", "attrib") WIDTH(1.5);
+    PARM_FIELD(string, "attrib") VALUE(attrib.val) 
+	LABELREF(attrib.label) HSTRETCH;
+
+    attrib.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+    { WIDTH(0.1) }
+}
+visibility.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+visibility.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) 
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("    Visibility", "visibility") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    visibility.menu;
+
+    {  }
+
+    { WIDTH(0.1) }
+}
+
+decorradius.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ decorradius.label = PARM_LABEL("    Radius", "decorradius") ;
+ PARM(float, 1, "decorradius", none, none) RANGE(0,1)
+	 LABELREF(decorradius.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+}	
+
+group.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    { WIDTH(0.18) }
+
+    group.label = PARM_LABEL("Group", "group") WIDTH(1.5);
+    PARM_FIELD(string, "group") VALUE(group.val) 
+	LABELREF(group.label) HSTRETCH;
+
+    group.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+    { WIDTH(0.1) }
+}
+
+pointsize.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ pointsize.label = PARM_LABEL("Point Size", "pointsize") WIDTH(1.5);
+ PARM(float, 1, "pointsize", none, none) RANGE(3,6)
+	 LABELREF(pointsize.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+
+lengthscale.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ lengthscale.label = PARM_LABEL("Length Scale", "lengthscale") WIDTH(1.5);
+ PARM(float, 1, "lengthscale", none, none) RANGE(0,1)
+	 LABELREF(lengthscale.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+
+unitlength.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ unitlength.label = PARM_LABEL("Unit Length", "unitlength") WIDTH(1.5);
+ PARM(float, 1, "unitlength", none, none) RANGE(1.0000000000000001e-05,1)
+	LOCK_RANGE_MIN LABELREF(unitlength.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+
+normalize.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("normalize", "Normalize Vectors") toggle VALUE(normalize.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+arrowheads.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("arrowheads", "Show Arrow Tips") toggle VALUE(arrowheads.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+vectorcoloring.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Coloring", "vectorcoloring") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    vectorcoloring.menu;
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+colorattrib.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    { WIDTH(0.18) }
+
+    colorattrib.label = PARM_LABEL("Color Attribute", "colorattrib") WIDTH(1.5);
+    PARM_FIELD(string, "colorattrib") VALUE(colorattrib.val) 
+	LABELREF(colorattrib.label) HSTRETCH;
+
+    colorattrib.menu SIZE(0.26, 0.26) LOOK(menuiconbutton);
+
+    { WIDTH(0.1) }
+}
+
+ramptype.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Color Mapping", "ramptype") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    ramptype.menu;
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+colorramp.si_rampedit = COLOR_RAMP VALUE(colorramp.ramp_val)
+			LAYOUT(horizontal)  HSTRETCH;
+
+colorramp.multiramp = 
+{
+    LAYOUT(vertical) STRETCH
+    HMARGIN(0.18, 0.1) NO_MARGIN_SPACING_SCALE
+
+    ROW
+    {
+	JUSTIFY(left,center) SPACING(0.1) VMARGIN(0.02) HSTRETCH
+
+	COL
+	{
+	    JUSTIFY(right,center) WIDTH(1.5)
+	    LABEL "Point No.";
+	}
+
+	colorramp.pointno.gad
+	    = INT_SLIDER_FIELD VALUE(colorramp.pointno.val) HSTRETCH;
+    }
+}
+
+colorramp.buttons.gad = COL
+{
+    VSTRETCH
+
+    ICON_BUTTON_STRIP
+    {
+	LAYOUT(horizontal) INITSIZE(20p, 20p) 
+
+	ACTION_ICONBUTTON "BUTTONS_delete"
+		HELP("Remove Point") VALUE(colorramp.delpoint.val);
+	ACTION_ICONBUTTON "BUTTONS_add"
+		HELP("Add Point") VALUE(colorramp.addpoint.val);
+    }
+
+    { VSTRETCH }
+
+    colorramp.toggleparms.gad
+      = ACTION_ICONBUTTON "BUTTONS_show_controls"
+	HELP("Hide Controls", "h.pane.parms.toggle_ramp_parms")
+	VALUE(colorramp.toggle.val)
+	LOOKFLAT UI_FLAT_ICON_BTN_SIZE_TINY;
+}
+
+colorramp.parm =
+{
+    LAYOUT(vertical) HSTRETCH JUSTIFY(left, center)
+
+    colorramp.ramp.gad = ROW
+    {
+	MARGIN(0.02) SPACING(0.02) JUSTIFY(left, top) HSTRETCH
+
+	colorramp.buttons.gad VSTRETCH;
+
+	colorramp.si_rampedit HSTRETCH;
+    }
+}
+
+colorramp.gad =
+{
+    LAYOUT(vertical) MARGIN(2p) HSTRETCH
+    HMARGIN(0.18, 0.1) NO_MARGIN_SPACING_SCALE
+    {
+	LAYOUT(horizontal) HSTRETCH
+
+	PARM_LABEL_SIMPLE("Custom Ramp", "colorramp");
+
+	{ HSTRETCH }
+	ACTION_ICONBUTTON "BUTTONS_ramp_flip_x" VALUE(colorramp.reverse.val)
+		LOOKFLAT HELP("Reverse Domain") UI_FLAT_ICON_BTN_SIZE_SMALL;
+	ACTION_ICONBUTTON "BUTTONS_ramp_flip_y" VALUE(colorramp.complement.val)
+		LOOKFLAT HELP("Complement Ramp") UI_FLAT_ICON_BTN_SIZE_SMALL;
+	colorramp.presets
+	    = ACTION_MENU_ICONBUTTON "BUTTONS_gear"
+		LOOKFLAT HELP("Presets") UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    }
+
+    {
+	LAYOUT(vertical) MARGIN(2p) SPACING(0.02) HSTRETCH
+
+	colorramp.parm;
+
+	SWITCHER tight
+	{
+	    LAYOUT(overlap) VALUE(colorramp.hideparms.val) HSTRETCH
+	    colorramp.multiramp;
+	    {}
+	}
+    }
+}
+
+rangespec.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Range", "rangespec") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    rangespec.menu;
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+minscalar.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ minscalar.label = PARM_LABEL("Min", "minscalar") WIDTH(1.5);
+ PARM(float, 1, "minscalar", none, none) RANGE(0,1)
+	 LABELREF(minscalar.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+
+maxscalar.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ maxscalar.label = PARM_LABEL("Max", "maxscalar") WIDTH(1.5);
+ PARM(float, 1, "maxscalar", none, none) RANGE(0,1)
+	 LABELREF(maxscalar.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+
+centerscalar.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ centerscalar.label = PARM_LABEL("Center", "centerscalar") WIDTH(1.5);
+ PARM(float, 1, "centerscalar", none, none) RANGE(0,1)
+	 LABELREF(centerscalar.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+
+widthscalar.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ widthscalar.label = PARM_LABEL("Width", "widthscalar") WIDTH(1.5);
+ PARM(float, 1, "widthscalar", none, none) RANGE(0,1)
+	 LABELREF(widthscalar.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+
+clamptype.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Out Of Range Values", "clamptype") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    clamptype.menu;
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+treatasscalar.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("treatasscalar", "Treat As Scalar") toggle VALUE(treatasscalar.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+using.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+using.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) 
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Using", "using") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    using.menu;
+
+    {  }
+
+    { WIDTH(0.1) }
+}
+
+component.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ component.label = PARM_LABEL("", "component") ;
+ PARM(integer, 1, "component", none, none) RANGE(0,3)
+	LOCK_RANGE_MIN LABELREF(component.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+}	
+
+refvec.gad = ROW
+{
+   HSTRETCH
+   { WIDTH(0.18) }
+
+   refvec.label = PARM_LABEL("Reference Vector", "refvec") WIDTH(1.5);
+   PARM(float, 3, "refvec", none, none, "#1,#2,#3")
+	RANGE(0,1)  LABELREF(refvec.label)
+	HSTRETCH;
+
+    { WIDTH(0.1) }
+}
+
+markercolor.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    markercolor.label = PARM_LABEL("Marker Color", "markercolor") WIDTH(1.5);
+    PARM(float, 4, "markercolor", none, COLOR, "R,G,B,A") 
+	LABELREF(markercolor.label) HSTRETCH;
+
+    { WIDTH(0.1) }
+}
+
+trail.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    trail.label = PARM_LABEL("Trail Color", "trail") WIDTH(1.5);
+    PARM(float, 4, "trail", none, COLOR, "R,G,B,A") 
+	LABELREF(trail.label) HSTRETCH;
+
+    { WIDTH(0.1) }
+}
+
+textcolor.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    textcolor.label = PARM_LABEL("Text Color", "textcolor") WIDTH(1.5);
+    PARM(float, 3, "textcolor", none, COLOR, "R,G,B") 
+	LABELREF(textcolor.label) HSTRETCH;
+
+    { WIDTH(0.1) }
+}
+
+fontsize.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Font Size", "fontsize") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    fontsize.menu;
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+xcolor.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    xcolor.label = PARM_LABEL("X Color", "xcolor") WIDTH(1.5);
+    PARM(float, 4, "xcolor", none, COLOR, "R,G,B,A") 
+	LABELREF(xcolor.label) HSTRETCH;
+
+    { WIDTH(0.1) }
+}
+
+ycolor.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    ycolor.label = PARM_LABEL("Y Color", "ycolor") WIDTH(1.5);
+    PARM(float, 4, "ycolor", none, COLOR, "R,G,B,A") 
+	LABELREF(ycolor.label) HSTRETCH;
+
+    { WIDTH(0.1) }
+}
+
+zcolor.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    zcolor.label = PARM_LABEL("Z Color", "zcolor") WIDTH(1.5);
+    PARM(float, 4, "zcolor", none, COLOR, "R,G,B,A") 
+	LABELREF(zcolor.label) HSTRETCH;
+
+    { WIDTH(0.1) }
+}
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH 
+    style.join; 
+    attrib.gad; 
+    visibility.join; 
+    group.gad; 
+    pointsize.gad; 
+    lengthscale.gad; 
+    unitlength.gad; 
+    normalize.gad; 
+    arrowheads.gad; 
+    vectorcoloring.gad; 
+    colorattrib.gad; 
+    ramptype.gad; 
+    colorramp.gad; 
+    rangespec.gad; 
+    minscalar.gad; 
+    maxscalar.gad; 
+    centerscalar.gad; 
+    widthscalar.gad; 
+    clamptype.gad; 
+    treatasscalar.gad; 
+    using.join; 
+    refvec.gad; 
+    markercolor.gad; 
+    trail.gad; 
+    textcolor.gad; 
+    fontsize.gad; 
+    xcolor.gad; 
+    ycolor.gad; 
+    zcolor.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val_) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

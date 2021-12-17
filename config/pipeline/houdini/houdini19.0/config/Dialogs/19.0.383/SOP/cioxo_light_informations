@@ -1,0 +1,55 @@
+// Magic: d77eae46
+// Automatically generated PSI dialog (PSI version 19.0.383)
+// Mon Dec 13 23:51:51 2021
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+
+renderer.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Renderer", "renderer") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    renderer.menu;
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+vraySpecial.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("V-Ray", "vraySpecial") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    vraySpecial.menu;
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH 
+    renderer.gad; 
+    vraySpecial.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val_) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

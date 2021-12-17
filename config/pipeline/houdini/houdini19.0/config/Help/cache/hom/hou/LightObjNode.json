@@ -1,0 +1,1 @@
+{"type": "root", "attrs": {"type": "homclass", "cppname": "HOM_LightObjNode", "superclass": "hou.ObjNode", "group": "obj", "status": "ni"}, "body": [{"level": 0, "type": "title", "indent": 0, "text": [{"type": "supertitle", "text": "hou."}, "LightObjNode"], "extent": [0, 21]}], "title": [{"type": "supertitle", "text": "hou."}, "LightObjNode"]}

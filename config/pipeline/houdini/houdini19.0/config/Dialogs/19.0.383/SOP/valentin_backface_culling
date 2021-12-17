@@ -1,0 +1,158 @@
+// Magic: 7c34455a
+// Automatically generated PSI dialog (PSI version 19.0.383)
+// Mon Dec 13 19:24:28 2021
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+
+activateCamera.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("activateCamera", "Activate") toggle VALUE(activateCamera.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+camera2.gad = 
+{
+ LAYOUT(horizontal) HSTRETCH JUSTIFY(left,center)
+ { WIDTH(0.18) }
+
+ camera2.label = PARM_LABEL("Camera", "camera2") WIDTH(1.5);
+ PARM_FIELD(pathstring, "camera2") VALUE(camera2.val) 
+	LABELREF(camera2.label) HSTRETCH;
+
+ ACTION_ICONBUTTON "BUTTONS_jump" VALUE(camera2.jump)
+    HELP("Jump to operator\nCtrl+LMB: Open parameters popup dialog")
+    UI_FLAT_ICON_BTN_SIZE_SMALL LOOKFLAT;
+
+ ACTION_ICONBUTTON "BUTTONS_chooser_node" VALUE(camera2.plus)
+    HELP("Open floating operator chooser") UI_FLAT_ICON_BTN_SIZE_SMALL 
+    LOOKFLAT;
+
+ { WIDTH(0.1) }
+}
+
+activateCameraTimeshift.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("activateCameraTimeshift", "Timeshift") toggle VALUE(activateCameraTimeshift.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+cameraTimeshift.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ cameraTimeshift.label = PARM_LABEL("Timeshift", "cameraTimeshift") WIDTH(1.5);
+ PARM(integer, 1, "cameraTimeshift", none, none) RANGE(0,10)
+	 LABELREF(cameraTimeshift.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+
+activateManual.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("activateManual", "Activate") toggle VALUE(activateManual.val);
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+iso2.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ iso2.label = PARM_LABEL("Iso Surface", "iso2") WIDTH(1.5);
+ PARM(float, 1, "iso2", none, none) RANGE(0,10)
+	 LABELREF(iso2.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+
+numsteps2.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ numsteps2.label = PARM_LABEL("Steps", "numsteps2") WIDTH(1.5);
+ PARM(integer, 1, "numsteps2", none, none) RANGE(-10,10)
+	 LABELREF(numsteps2.label) HSTRETCH;
+
+  { WIDTH(0.1) }
+}
+
+expand.gad = 
+
+GROUP simple "Expand" flat 
+{ 
+    VALUE(expand.gad.val) LAYOUT(vertical) HSTRETCH 
+	    iso2.gad;		
+	    numsteps2.gad;		
+} 
+
+manualGroup.gad = 
+
+GROUP simple "Manual" flat 
+{ 
+    VALUE(manualGroup.gad.val) LAYOUT(vertical) HSTRETCH 
+	    activateManual.gad;		
+} 
+
+camera.gad = 
+
+GROUP simple "Camera" flat 
+{ 
+    VALUE(camera.gad.val) LAYOUT(vertical) HSTRETCH 
+	    activateCamera.gad;		
+	    camera2.gad;		
+	    activateCameraTimeshift.gad;		
+	    cameraTimeshift.gad;		
+} 
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH 
+    camera.gad; 
+    manualGroup.gad; 
+    expand.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val_) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

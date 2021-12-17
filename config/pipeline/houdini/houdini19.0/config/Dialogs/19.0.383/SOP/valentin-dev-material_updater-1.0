@@ -1,0 +1,74 @@
+// Magic: c890a2d7
+// Automatically generated PSI dialog (PSI version 19.0.383)
+// Mon Dec 13 22:45:29 2021
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+
+renderer.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Renderer", "renderer") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    renderer.menu;
+
+    { HSTRETCH }
+
+    { WIDTH(0.1) }
+}
+
+sepparm.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH HMARGIN(0.18, 0.1)
+    NO_MARGIN_SPACING_SCALE
+
+    { HEIGHT(0.1) }
+    SEPARATOR;
+    { HEIGHT(0.1) }
+}
+
+create_material_node.gad = ROW
+{
+    JUSTIFY(left, center)
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.1) }
+
+    PARM_BUTTON("create_material_node", "Create Material Node")
+	push VALUE(create_material_node.val);
+
+    { WIDTH(0.1) }
+}
+
+folder0.gad = 
+
+GROUP simple "Settings" flat 
+{ 
+    VALUE(folder0.gad.val) LAYOUT(vertical) HSTRETCH 
+	    renderer.gad;		
+	    sepparm.gad;		
+	    create_material_node.gad;		
+} 
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH 
+    folder0.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val_) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

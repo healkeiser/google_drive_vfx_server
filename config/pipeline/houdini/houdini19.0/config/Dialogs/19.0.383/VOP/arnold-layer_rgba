@@ -1,0 +1,1046 @@
+// Magic: 40cacb1d
+// Automatically generated PSI dialog (PSI version 19.0.383)
+// Tue Nov 30 21:17:17 2021
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+enable1.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+enable1.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+enable1.gad = PARM_BUTTON("enable1", "") toggle VALUE(enable1.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+name1.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    {  }
+
+    name1.label = PARM_LABEL("Layer 1              Name", "name1") WIDTH(1.32);
+    PARM_FIELD(string, "name1") VALUE(name1.val) 
+	LABELREF(name1.label) HSTRETCH;
+
+    name1.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(name1.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+}	
+}	// Template join.bot
+
+
+input1.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    input1.label = PARM_LABEL("Input", "input1") WIDTH(1.5);
+    PARM(float, 4, "input1", none, COLOR, "R,G,B,A") 
+	LABELREF(input1.label) HSTRETCH;
+
+    input1.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(input1.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+mix1.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ mix1.label = PARM_LABEL("Mix", "mix1") WIDTH(1.5);
+ PARM(float, 1, "mix1", none, none) RANGE(0,1)
+	LOCK_RANGE LABELREF(mix1.label) HSTRETCH;
+
+    mix1.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(mix1.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+operation1.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Operation", "operation1") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    operation1.menu;
+
+    { HSTRETCH }
+
+    operation1.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(operation1.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+alpha_operation1.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Alpha", "alpha_operation1") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    alpha_operation1.menu;
+
+    { HSTRETCH }
+
+    alpha_operation1.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(alpha_operation1.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+sep1.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH HMARGIN(0.18, 0.1)
+    NO_MARGIN_SPACING_SCALE
+
+    { HEIGHT(0.1) }
+    SEPARATOR;
+    { HEIGHT(0.1) }
+}
+enable2.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+enable2.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+enable2.gad = PARM_BUTTON("enable2", "") toggle VALUE(enable2.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+name2.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    {  }
+
+    name2.label = PARM_LABEL("Layer 2              Name", "name2") WIDTH(1.32);
+    PARM_FIELD(string, "name2") VALUE(name2.val) 
+	LABELREF(name2.label) HSTRETCH;
+
+    name2.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(name2.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+}	
+}	// Template join.bot
+
+
+input2.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    input2.label = PARM_LABEL("Input", "input2") WIDTH(1.5);
+    PARM(float, 4, "input2", none, COLOR, "R,G,B,A") 
+	LABELREF(input2.label) HSTRETCH;
+
+    input2.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(input2.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+mix2.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ mix2.label = PARM_LABEL("Mix", "mix2") WIDTH(1.5);
+ PARM(float, 1, "mix2", none, none) RANGE(0,1)
+	LOCK_RANGE LABELREF(mix2.label) HSTRETCH;
+
+    mix2.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(mix2.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+operation2.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Operation", "operation2") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    operation2.menu;
+
+    { HSTRETCH }
+
+    operation2.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(operation2.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+alpha_operation2.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Alpha", "alpha_operation2") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    alpha_operation2.menu;
+
+    { HSTRETCH }
+
+    alpha_operation2.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(alpha_operation2.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+sep2.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH HMARGIN(0.18, 0.1)
+    NO_MARGIN_SPACING_SCALE
+
+    { HEIGHT(0.1) }
+    SEPARATOR;
+    { HEIGHT(0.1) }
+}
+enable3.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+enable3.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+enable3.gad = PARM_BUTTON("enable3", "") toggle VALUE(enable3.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+name3.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    {  }
+
+    name3.label = PARM_LABEL("Layer 3              Name", "name3") WIDTH(1.32);
+    PARM_FIELD(string, "name3") VALUE(name3.val) 
+	LABELREF(name3.label) HSTRETCH;
+
+    name3.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(name3.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+}	
+}	// Template join.bot
+
+
+input3.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    input3.label = PARM_LABEL("Input", "input3") WIDTH(1.5);
+    PARM(float, 4, "input3", none, COLOR, "R,G,B,A") 
+	LABELREF(input3.label) HSTRETCH;
+
+    input3.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(input3.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+mix3.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ mix3.label = PARM_LABEL("Mix", "mix3") WIDTH(1.5);
+ PARM(float, 1, "mix3", none, none) RANGE(0,1)
+	LOCK_RANGE LABELREF(mix3.label) HSTRETCH;
+
+    mix3.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(mix3.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+operation3.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Operation", "operation3") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    operation3.menu;
+
+    { HSTRETCH }
+
+    operation3.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(operation3.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+alpha_operation3.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Alpha", "alpha_operation3") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    alpha_operation3.menu;
+
+    { HSTRETCH }
+
+    alpha_operation3.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(alpha_operation3.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+sep3.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH HMARGIN(0.18, 0.1)
+    NO_MARGIN_SPACING_SCALE
+
+    { HEIGHT(0.1) }
+    SEPARATOR;
+    { HEIGHT(0.1) }
+}
+enable4.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+enable4.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+enable4.gad = PARM_BUTTON("enable4", "") toggle VALUE(enable4.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+name4.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    {  }
+
+    name4.label = PARM_LABEL("Layer 4              Name", "name4") WIDTH(1.32);
+    PARM_FIELD(string, "name4") VALUE(name4.val) 
+	LABELREF(name4.label) HSTRETCH;
+
+    name4.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(name4.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+}	
+}	// Template join.bot
+
+
+input4.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    input4.label = PARM_LABEL("Input", "input4") WIDTH(1.5);
+    PARM(float, 4, "input4", none, COLOR, "R,G,B,A") 
+	LABELREF(input4.label) HSTRETCH;
+
+    input4.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(input4.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+mix4.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ mix4.label = PARM_LABEL("Mix", "mix4") WIDTH(1.5);
+ PARM(float, 1, "mix4", none, none) RANGE(0,1)
+	LOCK_RANGE LABELREF(mix4.label) HSTRETCH;
+
+    mix4.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(mix4.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+operation4.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Operation", "operation4") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    operation4.menu;
+
+    { HSTRETCH }
+
+    operation4.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(operation4.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+alpha_operation4.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Alpha", "alpha_operation4") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    alpha_operation4.menu;
+
+    { HSTRETCH }
+
+    alpha_operation4.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(alpha_operation4.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+sep4.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH HMARGIN(0.18, 0.1)
+    NO_MARGIN_SPACING_SCALE
+
+    { HEIGHT(0.1) }
+    SEPARATOR;
+    { HEIGHT(0.1) }
+}
+enable5.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+enable5.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+enable5.gad = PARM_BUTTON("enable5", "") toggle VALUE(enable5.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+name5.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    {  }
+
+    name5.label = PARM_LABEL("Layer 5              Name", "name5") WIDTH(1.32);
+    PARM_FIELD(string, "name5") VALUE(name5.val) 
+	LABELREF(name5.label) HSTRETCH;
+
+    name5.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(name5.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+}	
+}	// Template join.bot
+
+
+input5.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    input5.label = PARM_LABEL("Input", "input5") WIDTH(1.5);
+    PARM(float, 4, "input5", none, COLOR, "R,G,B,A") 
+	LABELREF(input5.label) HSTRETCH;
+
+    input5.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(input5.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+mix5.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ mix5.label = PARM_LABEL("Mix", "mix5") WIDTH(1.5);
+ PARM(float, 1, "mix5", none, none) RANGE(0,1)
+	LOCK_RANGE LABELREF(mix5.label) HSTRETCH;
+
+    mix5.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(mix5.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+operation5.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Operation", "operation5") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    operation5.menu;
+
+    { HSTRETCH }
+
+    operation5.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(operation5.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+alpha_operation5.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Alpha", "alpha_operation5") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    alpha_operation5.menu;
+
+    { HSTRETCH }
+
+    alpha_operation5.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(alpha_operation5.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+sep5.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH HMARGIN(0.18, 0.1)
+    NO_MARGIN_SPACING_SCALE
+
+    { HEIGHT(0.1) }
+    SEPARATOR;
+    { HEIGHT(0.1) }
+}
+enable6.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+enable6.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+enable6.gad = PARM_BUTTON("enable6", "") toggle VALUE(enable6.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+name6.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    {  }
+
+    name6.label = PARM_LABEL("Layer 6              Name", "name6") WIDTH(1.32);
+    PARM_FIELD(string, "name6") VALUE(name6.val) 
+	LABELREF(name6.label) HSTRETCH;
+
+    name6.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(name6.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+}	
+}	// Template join.bot
+
+
+input6.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    input6.label = PARM_LABEL("Input", "input6") WIDTH(1.5);
+    PARM(float, 4, "input6", none, COLOR, "R,G,B,A") 
+	LABELREF(input6.label) HSTRETCH;
+
+    input6.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(input6.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+mix6.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ mix6.label = PARM_LABEL("Mix", "mix6") WIDTH(1.5);
+ PARM(float, 1, "mix6", none, none) RANGE(0,1)
+	LOCK_RANGE LABELREF(mix6.label) HSTRETCH;
+
+    mix6.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(mix6.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+operation6.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Operation", "operation6") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    operation6.menu;
+
+    { HSTRETCH }
+
+    operation6.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(operation6.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+alpha_operation6.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Alpha", "alpha_operation6") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    alpha_operation6.menu;
+
+    { HSTRETCH }
+
+    alpha_operation6.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(alpha_operation6.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+sep6.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH HMARGIN(0.18, 0.1)
+    NO_MARGIN_SPACING_SCALE
+
+    { HEIGHT(0.1) }
+    SEPARATOR;
+    { HEIGHT(0.1) }
+}
+enable7.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+enable7.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+enable7.gad = PARM_BUTTON("enable7", "") toggle VALUE(enable7.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+name7.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    {  }
+
+    name7.label = PARM_LABEL("Layer 7              Name", "name7") WIDTH(1.32);
+    PARM_FIELD(string, "name7") VALUE(name7.val) 
+	LABELREF(name7.label) HSTRETCH;
+
+    name7.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(name7.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+}	
+}	// Template join.bot
+
+
+input7.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    input7.label = PARM_LABEL("Input", "input7") WIDTH(1.5);
+    PARM(float, 4, "input7", none, COLOR, "R,G,B,A") 
+	LABELREF(input7.label) HSTRETCH;
+
+    input7.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(input7.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+mix7.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ mix7.label = PARM_LABEL("Mix", "mix7") WIDTH(1.5);
+ PARM(float, 1, "mix7", none, none) RANGE(0,1)
+	LOCK_RANGE LABELREF(mix7.label) HSTRETCH;
+
+    mix7.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(mix7.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+operation7.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Operation", "operation7") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    operation7.menu;
+
+    { HSTRETCH }
+
+    operation7.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(operation7.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+alpha_operation7.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Alpha", "alpha_operation7") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    alpha_operation7.menu;
+
+    { HSTRETCH }
+
+    alpha_operation7.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(alpha_operation7.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+sep7.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH HMARGIN(0.18, 0.1)
+    NO_MARGIN_SPACING_SCALE
+
+    { HEIGHT(0.1) }
+    SEPARATOR;
+    { HEIGHT(0.1) }
+}
+enable8.row.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+enable8.join =		
+{
+
+  LAYOUT(horizontal) HSTRETCH JUSTIFY(left, center)
+
+{ WIDTH(0.18) }
+enable8.gad = PARM_BUTTON("enable8", "") toggle VALUE(enable8.val) RETAIN_SIZE_WHEN_HIDDEN;
+
+name8.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    {  }
+
+    name8.label = PARM_LABEL("Layer 8              Name", "name8") WIDTH(1.32);
+    PARM_FIELD(string, "name8") VALUE(name8.val) 
+	LABELREF(name8.label) HSTRETCH;
+
+    name8.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(name8.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+}	
+}	// Template join.bot
+
+
+input8.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    input8.label = PARM_LABEL("Input", "input8") WIDTH(1.5);
+    PARM(float, 4, "input8", none, COLOR, "R,G,B,A") 
+	LABELREF(input8.label) HSTRETCH;
+
+    input8.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(input8.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+mix8.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ mix8.label = PARM_LABEL("Mix", "mix8") WIDTH(1.5);
+ PARM(float, 1, "mix8", none, none) RANGE(0,1)
+	LOCK_RANGE LABELREF(mix8.label) HSTRETCH;
+
+    mix8.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(mix8.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+operation8.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Operation", "operation8") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    operation8.menu;
+
+    { HSTRETCH }
+
+    operation8.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(operation8.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+alpha_operation8.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Alpha", "alpha_operation8") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    alpha_operation8.menu;
+
+    { HSTRETCH }
+
+    alpha_operation8.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(alpha_operation8.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+sep8.gad = 
+
+{
+    LAYOUT(vertical) HSTRETCH HMARGIN(0.18, 0.1)
+    NO_MARGIN_SPACING_SCALE
+
+    { HEIGHT(0.1) }
+    SEPARATOR;
+    { HEIGHT(0.1) }
+}
+
+clamp.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("clamp", "Clamp") toggle VALUE(clamp.val);
+
+    { HSTRETCH }
+
+    clamp.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(clamp.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+rgba.gad = NULL { }
+r.gad = NULL { }
+g.gad = NULL { }
+b.gad = NULL { }
+a.gad = NULL { }
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH 
+    enable1.row.join; 
+    input1.gad; 
+    mix1.gad; 
+    operation1.gad; 
+    alpha_operation1.gad; 
+    sep1.gad; 
+    enable2.row.join; 
+    input2.gad; 
+    mix2.gad; 
+    operation2.gad; 
+    alpha_operation2.gad; 
+    sep2.gad; 
+    enable3.row.join; 
+    input3.gad; 
+    mix3.gad; 
+    operation3.gad; 
+    alpha_operation3.gad; 
+    sep3.gad; 
+    enable4.row.join; 
+    input4.gad; 
+    mix4.gad; 
+    operation4.gad; 
+    alpha_operation4.gad; 
+    sep4.gad; 
+    enable5.row.join; 
+    input5.gad; 
+    mix5.gad; 
+    operation5.gad; 
+    alpha_operation5.gad; 
+    sep5.gad; 
+    enable6.row.join; 
+    input6.gad; 
+    mix6.gad; 
+    operation6.gad; 
+    alpha_operation6.gad; 
+    sep6.gad; 
+    enable7.row.join; 
+    input7.gad; 
+    mix7.gad; 
+    operation7.gad; 
+    alpha_operation7.gad; 
+    sep7.gad; 
+    enable8.row.join; 
+    input8.gad; 
+    mix8.gad; 
+    operation8.gad; 
+    alpha_operation8.gad; 
+    sep8.gad; 
+    clamp.gad; 
+    rgba.gad; 
+    r.gad; 
+    g.gad; 
+    b.gad; 
+    a.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val_) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

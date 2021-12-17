@@ -1,0 +1,1 @@
+{"type": "root", "attrs": {"type": "include"}, "body": [{"type": "para", "indent": 0, "text": ["This COP node is a ", {"scheme": null, "value": "_generators", "type": "link", "text": ["generator"], "fullpath": "/nodes/cop2/_generators"}, "."], "extent": [15, 59]}]}

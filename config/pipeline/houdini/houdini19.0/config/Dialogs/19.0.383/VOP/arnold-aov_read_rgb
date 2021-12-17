@@ -1,0 +1,50 @@
+// Magic: 3aa8d4de
+// Automatically generated PSI dialog (PSI version 19.0.383)
+// Tue Nov 30 21:16:40 2021
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+
+aov_name.gad = ROW
+{
+    HSTRETCH JUSTIFY(left, center)
+
+    { WIDTH(0.18) }
+
+    aov_name.label = PARM_LABEL("AOV Name", "aov_name") WIDTH(1.5);
+    PARM_FIELD(string, "aov_name") VALUE(aov_name.val) 
+	LABELREF(aov_name.label) HSTRETCH;
+
+    aov_name.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(aov_name.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+rgb.gad = NULL { }
+r.gad = NULL { }
+g.gad = NULL { }
+b.gad = NULL { }
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH 
+    aov_name.gad; 
+    rgb.gad; 
+    r.gad; 
+    g.gad; 
+    b.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val_) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

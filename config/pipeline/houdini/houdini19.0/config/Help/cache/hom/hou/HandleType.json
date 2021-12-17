@@ -1,0 +1,1 @@
+{"type": "root", "attrs": {"type": "homclass", "cppname": "HOM_HandleType", "group": "view", "status": "ni", "replaces": "/commands/omls"}, "body": [{"level": 0, "type": "title", "indent": 0, "text": [{"type": "supertitle", "text": "hou."}, "HandleType"], "extent": [0, 19]}], "title": [{"type": "supertitle", "text": "hou."}, "HandleType"]}

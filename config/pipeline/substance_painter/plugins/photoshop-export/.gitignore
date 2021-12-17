@@ -1,0 +1,8 @@
+# Remove plugin settings
+settings.ini
+
+# Emacs temp files
+*~
+
+# OSX
+.DS_Store

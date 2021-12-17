@@ -1,0 +1,233 @@
+// Magic: 5287840a
+// Automatically generated PSI dialog (PSI version 19.0.383)
+// Tue Nov 30 17:08:12 2021
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+
+input.gad = ROW
+{
+   HSTRETCH
+   { WIDTH(0.18) }
+
+   input.label = PARM_LABEL("Input", "input") WIDTH(1.5);
+   PARM(float, 3, "input", none, none, "X,Y,Z")
+	RANGE(0,1)  LABELREF(input.label)
+	HSTRETCH;
+
+    input.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(input.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+tangent.gad = ROW
+{
+   HSTRETCH
+   { WIDTH(0.18) }
+
+   tangent.label = PARM_LABEL("Tangent", "tangent") WIDTH(1.5);
+   PARM(float, 3, "tangent", none, none, "X,Y,Z")
+	RANGE(0,1)  LABELREF(tangent.label)
+	HSTRETCH;
+
+    tangent.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(tangent.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+normal.gad = ROW
+{
+   HSTRETCH
+   { WIDTH(0.18) }
+
+   normal.label = PARM_LABEL("Normal", "normal") WIDTH(1.5);
+   PARM(float, 3, "normal", none, none, "X,Y,Z")
+	RANGE(0,1)  LABELREF(normal.label)
+	HSTRETCH;
+
+    normal.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(normal.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+strength.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ strength.label = PARM_LABEL("Strength", "strength") WIDTH(1.5);
+ PARM(float, 1, "strength", none, none) RANGE(0,10)
+	LOCK_RANGE_MIN LABELREF(strength.label) HSTRETCH;
+
+    strength.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(strength.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+order.gad = 
+{
+    LAYOUT(horizontal) JUSTIFY(left, center) HSTRETCH
+    { WIDTH(0.18) }
+
+    PARM_LABEL_SIMPLE("Order", "order") WIDTH(1.5);
+    { WIDTH(0.09) }
+
+    order.menu;
+
+    { HSTRETCH }
+
+    order.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(order.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+invert_x.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("invert_x", "Invert X") toggle VALUE(invert_x.val);
+
+    { HSTRETCH }
+
+    invert_x.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(invert_x.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+invert_y.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("invert_y", "Invert Y") toggle VALUE(invert_y.val);
+
+    { HSTRETCH }
+
+    invert_y.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(invert_y.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+invert_z.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("invert_z", "Invert Z") toggle VALUE(invert_z.val);
+
+    { HSTRETCH }
+
+    invert_z.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(invert_z.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+color_to_signed.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("color_to_signed", "Color To Signed") toggle VALUE(color_to_signed.val);
+
+    { HSTRETCH }
+
+    color_to_signed.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(color_to_signed.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+tangent_space.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("tangent_space", "Tangent Space") toggle VALUE(tangent_space.val);
+
+    { HSTRETCH }
+
+    tangent_space.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(tangent_space.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+vector.gad = NULL { }
+x.gad = NULL { }
+y.gad = NULL { }
+z.gad = NULL { }
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH 
+    input.gad; 
+    tangent.gad; 
+    normal.gad; 
+    strength.gad; 
+    order.gad; 
+    invert_x.gad; 
+    invert_y.gad; 
+    invert_z.gad; 
+    color_to_signed.gad; 
+    tangent_space.gad; 
+    vector.gad; 
+    x.gad; 
+    y.gad; 
+    z.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val_) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}

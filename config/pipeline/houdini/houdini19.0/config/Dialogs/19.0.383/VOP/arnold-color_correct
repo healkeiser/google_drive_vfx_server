@@ -1,0 +1,321 @@
+// Magic: edcd275f
+// Automatically generated PSI dialog (PSI version 19.0.383)
+// Tue Nov 30 21:51:00 2021
+
+
+f_tmp = FLOAT_FIELD;	// dialog.top.ui
+
+input.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    input.label = PARM_LABEL("Input", "input") WIDTH(1.5);
+    PARM(float, 4, "input", none, COLOR, "R,G,B,A") 
+	LABELREF(input.label) HSTRETCH;
+
+    input.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(input.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+alpha_is_luminance.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("alpha_is_luminance", "Alpha Is Luminance") toggle VALUE(alpha_is_luminance.val);
+
+    { HSTRETCH }
+
+    alpha_is_luminance.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(alpha_is_luminance.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+alpha_multiply.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ alpha_multiply.label = PARM_LABEL("Alpha Multiply", "alpha_multiply") WIDTH(1.5);
+ PARM(float, 1, "alpha_multiply", none, none) RANGE(0,1)
+	 LABELREF(alpha_multiply.label) HSTRETCH;
+
+    alpha_multiply.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(alpha_multiply.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+alpha_add.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ alpha_add.label = PARM_LABEL("Alpha Add", "alpha_add") WIDTH(1.5);
+ PARM(float, 1, "alpha_add", none, none) RANGE(0,1)
+	 LABELREF(alpha_add.label) HSTRETCH;
+
+    alpha_add.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(alpha_add.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+invert.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("invert", "Invert") toggle VALUE(invert.val);
+
+    { HSTRETCH }
+
+    invert.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(invert.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+invert_alpha.gad = ROW
+{
+    HSTRETCH
+    { WIDTH(0.18) }
+
+    { WIDTH(1.5) }
+    { WIDTH(0.08) }
+
+    PARM_BUTTON("invert_alpha", "Invert Alpha") toggle VALUE(invert_alpha.val);
+
+    { HSTRETCH }
+
+    invert_alpha.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(invert_alpha.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+gamma.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ gamma.label = PARM_LABEL("Gamma", "gamma") WIDTH(1.5);
+ PARM(float, 1, "gamma", none, none) RANGE(0,3)
+	 LABELREF(gamma.label) HSTRETCH;
+
+    gamma.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(gamma.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+hue_shift.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ hue_shift.label = PARM_LABEL("Hue Shift", "hue_shift") WIDTH(1.5);
+ PARM(float, 1, "hue_shift", none, none) RANGE(-1,1)
+	 LABELREF(hue_shift.label) HSTRETCH;
+
+    hue_shift.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(hue_shift.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+saturation.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ saturation.label = PARM_LABEL("Saturation", "saturation") WIDTH(1.5);
+ PARM(float, 1, "saturation", none, none) RANGE(0,2)
+	 LABELREF(saturation.label) HSTRETCH;
+
+    saturation.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(saturation.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+contrast.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ contrast.label = PARM_LABEL("Contrast", "contrast") WIDTH(1.5);
+ PARM(float, 1, "contrast", none, none) RANGE(0,2)
+	 LABELREF(contrast.label) HSTRETCH;
+
+    contrast.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(contrast.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+contrast_pivot.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ contrast_pivot.label = PARM_LABEL("Contrast Pivot", "contrast_pivot") WIDTH(1.5);
+ PARM(float, 1, "contrast_pivot", none, none) RANGE(0,1)
+	 LABELREF(contrast_pivot.label) HSTRETCH;
+
+    contrast_pivot.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(contrast_pivot.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+exposure.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ exposure.label = PARM_LABEL("Exposure", "exposure") WIDTH(1.5);
+ PARM(float, 1, "exposure", none, none) RANGE(-10,10)
+	 LABELREF(exposure.label) HSTRETCH;
+
+    exposure.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(exposure.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+
+multiply.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    multiply.label = PARM_LABEL("Multiply", "multiply") WIDTH(1.5);
+    PARM(float, 3, "multiply", none, COLOR, "R,G,B") 
+	LABELREF(multiply.label) HSTRETCH;
+
+    multiply.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(multiply.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+add.gad = 
+{
+    LAYOUT (horizontal) HSTRETCH
+    { WIDTH(0.18) }
+
+    add.label = PARM_LABEL("Add", "add") WIDTH(1.5);
+    PARM(float, 3, "add", none, COLOR, "R,G,B") 
+	LABELREF(add.label) HSTRETCH;
+
+    add.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(add.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+    { WIDTH(0.1) }
+}
+
+mask.gad = 
+{
+
+ LAYOUT(horizontal) HSTRETCH
+ { WIDTH(0.18) }
+
+ mask.label = PARM_LABEL("Mask", "mask") WIDTH(1.5);
+ PARM(float, 1, "mask", none, none) RANGE(0,1)
+	 LABELREF(mask.label) HSTRETCH;
+
+    mask.exportbtn = PARM_EXPORTBUTTON "SOP_sphere"
+	VALUE(mask.export) LOOKFLAT
+	HELP("Open Shader Effects menu (Ctrl+LMB to promote this parameter)")
+	UI_FLAT_ICON_BTN_SIZE_SMALL;
+
+  { WIDTH(0.1) }
+}
+rgba.gad = NULL { }
+r.gad = NULL { }
+g.gad = NULL { }
+b.gad = NULL { }
+a.gad = NULL { }
+
+dialog_norm.gad = 
+{
+    LAYOUT(vertical) SPACING(0.02) HSTRETCH 
+    input.gad; 
+    alpha_is_luminance.gad; 
+    alpha_multiply.gad; 
+    alpha_add.gad; 
+    invert.gad; 
+    invert_alpha.gad; 
+    gamma.gad; 
+    hue_shift.gad; 
+    saturation.gad; 
+    contrast.gad; 
+    contrast_pivot.gad; 
+    exposure.gad; 
+    multiply.gad; 
+    add.gad; 
+    mask.gad; 
+    rgba.gad; 
+    r.gad; 
+    g.gad; 
+    b.gad; 
+    a.gad; 
+} 
+// dialog.bot.ui
+
+extrastuffstowbar_minimize.val := 1;
+
+dialog = OPENNOTIFIER
+{
+    LAYOUT(vertical) SPACING(0.02) LOOK(bg) VALUE(open.val_) HSTRETCH
+
+    { HEIGHT(1p) LOOK(bg) HSTRETCH }
+
+    dialog_norm.gad;
+}
