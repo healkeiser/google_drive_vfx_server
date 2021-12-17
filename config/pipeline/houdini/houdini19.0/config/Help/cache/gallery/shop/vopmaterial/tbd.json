@@ -1,1 +1,0 @@
-{"type": "root", "attrs": {"type": "include"}, "body": [{"type": "para", "indent": 0, "text": ["Help for this gallery material is missing.\nSee the ", {"scheme": "Node", "value": "/nodes/shop/vopmaterial", "type": "link", "text": ["Material Shader Builder node"], "fullpath": "/nodes/shop/vopmaterial"}, " for help on the basic parameters."], "extent": [16, 154]}]}

@@ -1,1 +1,0 @@
-{"type": "root", "attrs": {"type": "include"}, "body": [{"type": "para", "indent": 0, "text": ["See ", {"scheme": "Vex", "value": "/vex/functions/bouncemask", "type": "link", "text": "", "fallback_text": "bouncemask()", "fullpath": "/vex/functions/bouncemask"}, " for information on component label bitmasks."], "extent": [16, 82]}]}
