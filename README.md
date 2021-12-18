@@ -27,7 +27,7 @@
         * [After Effects](#after-effects)
    * [Tips](#tips)
    * [Roadmap](#roadmap)
-   * [Useful Rsources and Tools](#resources)
+   * [Useful Resources and Tools](#resources)
    * [Contact](#contact)
 <!--te-->
 
