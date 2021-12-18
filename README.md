@@ -32,16 +32,17 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 > For example, if you decided to use the letter `F:` (**Not recommended**) for your Google Drive virtual disk, you'll need to edit the first line from `setx PIPELINE_ROOT "Z:/My Drive"` to `setx PIPELINE_ROOT "F:/My Drive"` before executing the file
 
 ### Manual
-### ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) Maya
+
+### <img src="https://cdn.worldvectorlogo.com/logos/maya-2017.svg" alt="Maya" width="15"/> Maya
 
 - Define a new environment variable for User called *MAYA_APP_DIR*. Give this new variable the value of the folder containing the usual *scripts*, *prefs* folders and so on. This variable needs to be assigned before Maya is started, so writing it in the Maya.env won't work
 > Variable should be `MAYA_APP_DIR` `Z:/My Drive/.config/pipeline/maya`
 
-### ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Substance Painter
+### <img src="https://cdn.worldvectorlogo.com/logos/substance-painter.svg" alt="Substance" width="15"/> Substance Painter
 - Define a new environment variable for User called *SUBSTANCE_PAINTER_PLUGINS_PATH*. Give this new variable the value of the folder containing the *python* folder. This variable needs to be assigned before Substance Painter is started
 > Variable should be `SUBSTANCE_PAINTER_PLUGINS_PATH` `Z:/My Drive/.config/pipeline/substance_painter/python`
 
-### ![#FD7F20](https://via.placeholder.com/15/FD7F20/000000?text=+) Houdini
+### <img src="https://secure.meetupstatic.com/photos/event/f/a/4/600_466504004.jpeg" alt="Houdini" width="15"/> Houdini
 
 - Define a new environment variable for User called *HSITE*. Give this new variable the value of the parent folder containing the *houdini.major.minor* folder, which contains itself the usual *otls*, *packages* folders and so on. This variable needs to be assigned before Houdini is started, so writing it in the houdini.env won't work
 > Variable should be `HSITE` `Z:/My Drive/.config/pipeline/houdini`
@@ -49,7 +50,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 - Packages contains a `drive_server` part that's specifically dedicated to optimizing the space used on the Google Drive Server if your `PROJECT` folder is there: 10 maximum backup files for each file, and buffered save is activated *at the expense of memory when saving*
 > Packages used by Houdini should be there `Z:/My Drive/.config/pipeline/houdini/houdini$HOUDINI_VERSION/packages`
 
-### ![#FFFF00](https://via.placeholder.com/15/FFFF00/000000?text=+) Nuke
+### <img src="https://www.foundry.com/sites/default/files/2021-03/ICON_NUKE-rgb-yellow-01.png" alt="Nuke" width="15"/> Nuke
 
 - Define a new environment variable for User called *NUKE_PATH*. Give this new variable the value of the folder containing the usual *gizmos*, *python* folders and so on. This variable needs to be assigned before Nuke is started
 > Variable should be `NUKE_PATH` `Z:/My Drive/.config/pipeline/nuke`
