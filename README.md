@@ -69,7 +69,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 - [ ] Houdini Packages for levels `Studio`, `Project`, `User`
 
 <!-- RESSOURCES -->
-## Useful Resources and tools
+## Useful Resources and Tools
 - [MOPS](https://github.com/toadstorm/MOPS "MOPS") - Used in the `.config`
 - [JZTREE](https://github.com/joshuazt/JZTREES "JZTREES") - Used in the `.config`
 - [AeLib](https://github.com/Aeoll/Aelib "MOPS") - Used in the `.config`
