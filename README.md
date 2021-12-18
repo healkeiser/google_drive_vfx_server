@@ -94,7 +94,6 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 ## Roadmap
 - [ ] Houdini Packages for levels `Studio`, `Project`, `User`
 - [x] Automatic copy of After Effects plug-ins
-- [ ] Add DaVinci Resolve
 
 <!-- RESSOURCES -->
 ## Useful Resources and Tools
