@@ -2,7 +2,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h1 align="center">Google Drive Server</h3>
+  <h1 align="center">Google Drive VFX Server</h3>
   <p align="center">
     VFX Pipeline
     <br />
