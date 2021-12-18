@@ -55,10 +55,6 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 - Define a new environment variable for User called *NUKE_PATH*. Give this new variable the value of the folder containing the usual *gizmos*, *python* folders and so on. This variable needs to be assigned before Nuke is started
 > Variable should be `NUKE_PATH` `Z:/My Drive/.config/pipeline/nuke`
 
-### <img src="https://upload.wikimedia.org/wikipedia/en/d/dc/DaVinci_Resolve_Logo.png" alt="DaVinci Resolve" width="15"/> DaVinci Resolve
-
-- In construction
-
 ### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Adobe_After_Effects_CC_icon.svg/512px-Adobe_After_Effects_CC_icon.svg.png" alt="After Effects" width="15"/> After Effects
 
 - You'll need to either manually move the files for After Effects, maybe create a symbolic link (You can use [Link Sell Extension](https://schinagl.priv.at/nt/hardlinkshellext/linkshellextension.html) to do so) between the `$PIPELINE_ROOT/.config/pipeline/after_effects/Support Files` content and your  `C:/Program Files/Adobe/Adobe After Effects $AFTER_EFFECTS_VERSION/Support Files` folder, or use this Python [script](https://github.com/healkeiser/googleDriveVFXServer-pipeline/blob/main/.config/pipeline/after_effects/move_plugins.py) to do it automatically
