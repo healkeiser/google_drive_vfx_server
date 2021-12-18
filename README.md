@@ -56,6 +56,12 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 > Variable should be `NUKE_PATH` `Z:/My Drive/.config/pipeline/nuke`
 
 
+### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Adobe_After_Effects_CC_icon.svg/512px-Adobe_After_Effects_CC_icon.svg.png" alt="After Effects" width="15"/> After Effects
+
+- You'll need to manually move the files for After Effects or maybe create a symbolic link (You can use [Link Sell Extension](https://schinagl.priv.at/nt/hardlinkshellext/linkshellextension.html) to do so) between the `$PIPELINE_ROOT/.config/pipeline/after_effects/Support Files` content and your  `C:/Program Files/Adobe/Adobe After Effects $AFTER_EFFECTS_VERSUIN/Support Files` folder
+- There's a python [script](https://github.com/healkeiser/googleDriveVFXServer-pipeline/blob/main/.config/pipeline/after_effects/move_plugins.py) aiming to do that automatically, but it needs to be executed with Admin privileges
+
+
 <!-- TIPS -->
 ## Tips
 - With that method, you can either place your `PROJECTS` folder on the Google Drive Server freshly created, or leave it anywhere locally
@@ -67,6 +73,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 <!-- ROADMAP -->
 ## Roadmap
 - [ ] Houdini Packages for levels `Studio`, `Project`, `User`
+- [ ] Automatic copy of After Effects plug-ins
 
 <!-- RESSOURCES -->
 ## Useful Resources and Tools
