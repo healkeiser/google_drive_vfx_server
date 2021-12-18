@@ -11,8 +11,28 @@
 
 </div>
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+<!--ts-->
+   * [About](#about)
+   * [Setup Server](#setup)
+   * [Software](#software)
+      * [Automatic](#automatic)
+      * [Manual](#manual)
+        * [Maya](#maya)
+        * [Substance Painter](#substance-painter)
+        * [Houdini](#houdini)
+        * [Nuke](#nuke)
+        * [After Effects](#after-effects)
+   * [Tips](#tips)
+   * [Roadmap](#roadmap)
+   * [Useful Rsources and Tools](#resources)
+   * [Contact](#contact)
+<!--te-->
+
+<!-- ABOUT -->
+## About
 Quick tutorial to setup a Google Drive Server for multiple machines access, and VFX Pipeline on Windows
 
 <!-- SETUP SERVER -->
