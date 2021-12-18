@@ -49,7 +49,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 
 ### Automatic
 
-- Run `Z:/My Drive/.config/environment/environment_source_windows.bat` to setup all the environment variables, or follow instructions under. You can edit the content of the `environment_source_windows.bat` file to adapt it to your need. Note that you'll still need to run an independant script for After Effects (Detailed in [Manual](#manual) section)
+- Run `Z:/My Drive/.config/environment/environment_source_windows.bat` to setup all the environment variables, or follow instructions under. You can edit the content of the `environment_source_windows.bat` file to adapt it to your needs. Note that you'll still have to run an independant script for After Effects (Detailed in [Manual](#manual) section)
 > For example, if you decided to use the letter `F:` (**Not recommended**) for your Google Drive virtual disk, you'll need to edit the first line from `setx PIPELINE_ROOT "Z:/My Drive"` to `setx PIPELINE_ROOT "F:/My Drive"` before executing the file
 
 ### Manual
