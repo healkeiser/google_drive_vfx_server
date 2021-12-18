@@ -54,6 +54,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 - Define a new environment variable for User called *NUKE_PATH*. Give this new variable the value of the folder containing the usual *gizmos*, *python* folders and so on. This variable needs to be assigned before Nuke is started
 > Variable should be `NUKE_PATH` `Z:/My Drive/.config/pipeline/nuke`
 
+
 <!-- TIPS -->
 ## Tips
 - With that method, you can either place your `PROJECTS` folder on the Google Drive Server freshly created, or leave it anywhere locally
