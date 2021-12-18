@@ -2,14 +2,20 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h1 align="center">Google Drive VFX Server</h1>
+  <a href="https://github.com/healkeiser/Cioxo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Google_Drive_logo.png/669px-Google_Drive_logo.png" alt="Logo" width="80" >
+  </a>
+
+  <h3 align="center">Google Drive VFX Server</h3>
+
   <p align="center">
     VFX Pipeline
     <br />
     <br />
     <br />
-
+  </p>
 </div>
+
 
 
 <!-- TABLE OF CONTENTS -->
