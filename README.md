@@ -28,7 +28,7 @@
       * [Manual](#manual)
    * [Tips](#tips)
    * [Roadmap](#roadmap)
-   * [Useful Resources and Tools](#resources)
+   * [Useful Resources and Tools](#useful-resources-and-tools)
    * [Contact](#contact)
 <!--te-->
 
