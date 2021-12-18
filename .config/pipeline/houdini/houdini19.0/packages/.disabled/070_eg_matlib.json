@@ -1,0 +1,13 @@
+{
+	"env": [
+        {
+            "EGMATLIB": "$PIPELINE_ROOT/.config/houdini/plugins/eg_matlib"
+        },
+        {
+            "HOUDINI_OTLSCAN_PATH": "$EGMATLIB/otls"
+        }
+	],
+	"path": [
+        "$EGMATLIB"
+    ]
+}

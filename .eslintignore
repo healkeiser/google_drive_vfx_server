@@ -1,1 +1,2 @@
 !.config/**/*.js
+!.config/pipeline/houdini/houdini19.0/packages/.disable/**/*.js

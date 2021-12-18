@@ -1,0 +1,10 @@
+{
+	"env": [
+        {
+			"AELIB": "$PIPELINE_ROOT/.config/pipeline/houdini/plugins/ae_lib"
+        }
+	],
+	"path": [
+        "$AELIB"
+    ]
+}

@@ -1,0 +1,12 @@
+ {
+    "recommends": "houdini_version >= '18.5'",
+
+    "env": [
+        {
+            "JZTREES": "$PIPELINE_ROOT/.config/pipeline/houdini/plugins/jztrees",
+        },
+        {
+            "HOUDINI_OTLSCAN_PATH": "$JZTREES/otls",
+        },
+    ],
+}
