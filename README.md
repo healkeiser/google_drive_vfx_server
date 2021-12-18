@@ -21,7 +21,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 > It's important to assign a **similar letter** on every machine at every Google Drive File Stream fresh install, otherwise directories will be broken
 
 - Tick `Stream Files` *(Default Option)*
-- Copy the `config` folder to `Z:/My Drive/`, rename it `.config`,  and make it **Available offline** by Right Cliking, `Offline access` > `Available offline` to ensure an access to the files even if the machine is not connected to internet
+- Copy the `.config` folder to `Z:/My Drive/` and make it **Available offline** by Right Cliking, `Offline access` > `Available offline` to ensure an access to the files even if the machine is not connected to internet
 
 <!-- SOFTWARE -->
 ## Software
@@ -47,7 +47,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 - Define a new environment variable for User called *HSITE*. Give this new variable the value of the parent folder containing the *houdini.major.minor* folder, which contains itself the usual *otls*, *packages* folders and so on. This variable needs to be assigned before Houdini is started, so writing it in the houdini.env won't work
 > Variable should be `HSITE` `Z:/My Drive/.config/pipeline/houdini`
 
-- Packages contains a `drive_server` part that's specifically dedicated to optimizing the space used on the Google Drive Server if your `PROJECT` folder is there: 10 maximum backup files for each file, and buffered save is activated *at the expense of memory when saving*
+- Packages contains a `drive_server.json` file that's specifically dedicated to optimizing the space used on the Google Drive Server if your `PROJECT` folder is there: 10 maximum backup files for each file, and buffered save is activated *at the expense of memory when saving*
 > Packages used by Houdini should be there `Z:/My Drive/.config/pipeline/houdini/houdini$HOUDINI_VERSION/packages`
 
 ### <img src="https://www.foundry.com/sites/default/files/2021-03/ICON_NUKE-rgb-yellow-01.png" alt="Nuke" width="15"/> Nuke
