@@ -3,7 +3,7 @@
 
     "env": [
         {
-            "JZTREES": "$PIPELINE_ROOT/.config/pipeline/houdini/plugins/jztrees",
+            "JZTREES": "$PIPELINE_ROOT/.config/pipeline/houdini/plugins/GitHub/JZTREES",
         },
         {
             "HOUDINI_OTLSCAN_PATH": "$JZTREES/otls",
