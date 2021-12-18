@@ -70,9 +70,14 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 
 <!-- RESSOURCES -->
 ## Useful Resources and tools
-- [Megascans](https://quixel.com/megascans "Megascans") - Used in the `.config`
 - [MOPS](https://github.com/toadstorm/MOPS "MOPS") - Used in the `.config`
+- [JZTREE](https://github.com/joshuazt/JZTREES "JZTREES") - Used in the `.config`
+- [AeLib](https://github.com/Aeoll/Aelib "MOPS") - Used in the `.config`
+- [qLib](https://github.com/qLab/qLib "qLibS") - Used in the `.config`
+- [egMatLib](https://github.com/eglaubauf/egMatLib "egMatLib") - Used in the `.config`
+- [Houdini Expression Editor](http://cgtoolbox.com/houdini-expression-editor/ "Houdini Expression Editor") - Used in the `.config`
 - [Nuke Survivor Toolkit](https://compositingmentor.com/2020/09/25/nuke-survival-toolkit/ "MOPS") - Used in the `.config`
+- [Megascans](https://quixel.com/megascans "Megascans") - Used in the `.config`
 - [HSITE](https://www.sidefx.com/docs/houdini/basics/config.html "SideFX: $HSITE")
 - [Packages](https://www.sidefx.com/docs/houdini/ref/plugins.html "SideFX: Packages")
 
