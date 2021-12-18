@@ -21,7 +21,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 > It's important to assign a **similar letter** on every machine at every Google Drive File Stream fresh install, otherwise directories will be broken
 
 - Tick `Stream Files` *(Default Option)*
-- Copy the `config` folder to `Z:/My Drive/`, rename it `.config`,  and make it **Available offline** by Right Cliking, `Offline access` > `Available offline` to ensure an access to the files even if the machine is not connected to internet
+- Copy the `.config` folder to `Z:/My Drive/` and make it **Available offline** by Right Cliking, `Offline access` > `Available offline` to ensure an access to the files even if the machine is not connected to internet
 
 <!-- SOFTWARE -->
 ## Software
