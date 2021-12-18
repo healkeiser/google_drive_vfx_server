@@ -70,3 +70,10 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 - [Nuke Survivor Toolkit](https://compositingmentor.com/2020/09/25/nuke-survival-toolkit/ "MOPS") - Used in the `.config`
 - [HSITE](https://www.sidefx.com/docs/houdini/basics/config.html "SideFX: $HSITE")
 - [Packages](https://www.sidefx.com/docs/houdini/ref/plugins.html "SideFX: Packages")
+
+<!-- CONTACT -->
+## Contact
+
+Valentin Beaumont - [LinkedIn](https://uk.linkedin.com/in/valentin-beaumont) - [Behance](https://www.behance.net/el1ven) - valentin.onze@gmail.com
+
+Project Link: [GoogleDriveServer](https://github.com/healkeiser/googleDriveServer-pipeline)
