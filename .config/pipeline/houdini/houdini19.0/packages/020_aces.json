@@ -1,7 +1,7 @@
 {
     "env": [
         {
-            "OCIO": "$PIPELINE_ROOT/.config/pipeline/aces/aces-1.2/config.ocio"
+            "OCIO": "$PIPELINE_ROOT/.config/pipeline/aces/aces-caveAcademy/config.ocio"
         }
     ]
 }
