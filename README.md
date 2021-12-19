@@ -57,7 +57,9 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 ### <img src="https://seeklogo.com/images/P/python-logo-A32636CAA3-seeklogo.com.png" alt="Python" width="15"/> Python
 
 - Install Python on `Z:\My Drive\.config\pipeline\python\Python$PYTHON_VERSION` and click "Add to Path" while doing so. Your Python libraries will now stay up to date on all machines
-> Example of the Path environment variable after install: `Z:\My Drive\.config\pipeline\python\Python310\Scripts\` `Z:\My Drive\.config\pipeline\python\Python310\`
+> Example of the Path environment variable after install: 
+> - `Z:\My Drive\.config\pipeline\python\Python310\Scripts\` 
+> - `Z:\My Drive\.config\pipeline\python\Python310\`
 
 ### <img src="https://cdn.worldvectorlogo.com/logos/maya-2017.svg" alt="Maya" width="15"/> Maya
 
