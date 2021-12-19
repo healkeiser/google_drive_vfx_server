@@ -1,3 +1,9 @@
+"""
+Move AE Plugins - v0.0.1
+------
+Copy After Effects plugins from pipeline to default installation folder
+"""
+
 import ctypes
 import os
 import sys
@@ -26,12 +32,20 @@ if is_admin():
                 list_afterEffects.append(software)
                 list_afterEffects = sorted(list_afterEffects)
         recent_afterEffects = list_afterEffects[-1]
+        print("Copying to " + recent_afterEffects + " installation folder...")
         # ------ Copy folders from .config to After Effects installation
-        copy_tree(path_plugins, os.path.join(path_adobe, recent_afterEffects, 'Plug-ins'))
-        copy_tree(paths_scripts, os.path.join(path_adobe, recent_afterEffects, 'Scripts'))
+        path_plugins_afterEffects = os.path.join(path_adobe, recent_afterEffects, 'Support Files', 'Plug-ins').replace('\\', '/')
+        path_scripts_afterEffects = os.path.join(path_adobe, recent_afterEffects, 'Support Files', 'Scripts').replace('\\', '/')
+        copy_tree(path_plugins.replace('\\', '/'), path_plugins_afterEffects)
+        copy_tree(paths_scripts.replace('\\', '/'), path_scripts_afterEffects)
+        # ------ Open the Plug-ins and Scripts folders to check files freshly copied
+        os.startfile(path_plugins_afterEffects)
+        os.startfile(path_scripts_afterEffects)
         print('Success')
+        input('\nPress key to exit')
     else:
         print('No After Effects installation detected')
+        input('\nPress key to exit')
 else:
     # ------ Re-run the program with admin rights
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
