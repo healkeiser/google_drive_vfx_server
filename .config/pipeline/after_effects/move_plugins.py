@@ -1,5 +1,5 @@
 """
-Move AE Plugins - v0.0.1
+Move AE Plugins
 ------
 Copy After Effects plugins from pipeline to default installation folder
 """
