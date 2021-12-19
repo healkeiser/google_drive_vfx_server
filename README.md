@@ -54,6 +54,10 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 
 ### Manual
 
+### <img src="https://seeklogo.com/images/P/python-logo-A32636CAA3-seeklogo.com.png" alt="Python" width="15"/> Python
+
+- In construction
+
 ### <img src="https://cdn.worldvectorlogo.com/logos/maya-2017.svg" alt="Maya" width="15"/> Maya
 
 - Define a new environment variable for User called *MAYA_APP_DIR*. Give this new variable the value of the folder containing the usual *scripts*, *prefs* folders and so on. This variable needs to be assigned before Maya is started, so writing it in the Maya.env won't work
