@@ -74,7 +74,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 
 [![google-Drive-VFXServer-substance-01.jpg](https://i.postimg.cc/SRW36Xjt/google-Drive-VFXServer-substance-01.jpg)](https://postimg.cc/5Q2s12Bw)
 
-### <img src="https://secure.meetupstatic.com/photos/event/f/a/4/600_466504004.jpeg" alt="Houdini" width="15"/> Houdini
+### <img src="https://secure.meetupstatic.com/photos/event/b/9/f/6/600_494327606.jpeg" alt="Houdini" width="15"/> Houdini
 
 - Define a new environment variable for User called *HSITE*. Give this new variable the value of the parent folder containing the *houdini.major.minor* folder, which contains itself the usual *otls*, *packages* folders and so on. This variable needs to be assigned before Houdini is started, so writing it in the houdini.env won't work
 > Variable should be `HSITE` `Z:/My Drive/.config/pipeline/houdini`
