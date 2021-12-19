@@ -49,7 +49,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 
 ### Automatic
 
-- Run `Z:/My Drive/.config/environment/environment_source_windows.bat` to setup all the environment variables, or follow instructions under. You can edit the content of the `environment_source_windows.bat` file to adapt it to your needs. Note that you'll still have to run an independant script for After Effects (Detailed in [Manual](#manual) section)
+- Run `Z:/My Drive/.config/environment/environment_source_windows.bat` to setup all the environment variables, or follow instructions under. You can edit the content of the `environment_source_windows.bat` file to adapt it to your needs. Note that you'll still have to configure Substance to use a shared materials library, and run an independant script for After Effects (Detailed in [Manual](#manual) section)
 > For example, if you decided to use the letter `F:` (**Not recommended**) for your Google Drive virtual disk, you'll need to edit the first line from `setx PIPELINE_ROOT "Z:/My Drive"` to `setx PIPELINE_ROOT "F:/My Drive"` before executing the file
 
 ### Manual
@@ -62,6 +62,10 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 ### <img src="https://cdn.worldvectorlogo.com/logos/substance-painter.svg" alt="Substance" width="15"/> Substance Painter
 - Define a new environment variable for User called *SUBSTANCE_PAINTER_PLUGINS_PATH*. Give this new variable the value of the folder containing the *python* folder. This variable needs to be assigned before Substance Painter is started
 > Variable should be `SUBSTANCE_PAINTER_PLUGINS_PATH` `Z:/My Drive/.config/pipeline/substance_painter/python`
+
+- Open Substance Painter, then open `Modify` > `Settings`. In the new window, go to the `Library` section. In name, type `pipeline_assets` and add the following path: `Z:/My Drive/.config/pipeline/substance_painter/assets`. Click the `+` and restart Substance Painter. Return in `Modify` > `Settings` > `Library` and select the freshly created Library as the default one
+
+[![google-Drive-VFXServer-substance-01.jpg](https://i.postimg.cc/SRW36Xjt/google-Drive-VFXServer-substance-01.jpg)](https://postimg.cc/5Q2s12Bw)
 
 ### <img src="https://secure.meetupstatic.com/photos/event/f/a/4/600_466504004.jpeg" alt="Houdini" width="15"/> Houdini
 
