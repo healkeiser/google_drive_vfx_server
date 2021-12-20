@@ -32,9 +32,15 @@
    * [Contact](#contact)
 <!--te-->
 
+
+
+
 <!-- ABOUT -->
 ## About
 Quick tutorial to setup a Google Drive Server for multiple machines access, and VFX Pipeline on Windows
+
+
+
 
 <!-- SETUP SERVER -->
 ## Setup Server
@@ -43,6 +49,9 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 
 - Tick `Stream Files` *(Default Option)*
 - Copy the `.config` folder to `Z:/My Drive/` and make it **Available offline** by Right Cliking, `Offline access` > `Available offline` to ensure an access to the files even if the machine is not connected to internet
+
+
+
 
 <!-- SOFTWARE -->
 ## Software
@@ -58,8 +67,8 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 
 - Install Python on `Z:\My Drive\.config\pipeline\python\Python$PYTHON_VERSION` and click "Add to Path" while doing so. Your Python libraries will now stay up to date on all machines
 > Example of the Path environment variable after install: 
-> - `Z:\My Drive\.config\pipeline\python\Python310\Scripts\` 
-> - `Z:\My Drive\.config\pipeline\python\Python310\`
+> - `Z:/My Drive/.config/pipeline/python/Python310/Scripts/` 
+> - `Z:/My Drive/.config/pipeline/python/Python310/`
 
 ### <img src="https://cdn.worldvectorlogo.com/logos/maya-2017.svg" alt="Maya" width="15"/> Maya
 
@@ -93,6 +102,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 > Using the Python script, the `Plug-ins` and `Scripts` will only copy in the most recent Adobe After Effects installation folder
 
 
+
 <!-- TIPS -->
 ## Tips
 - With that method, you can either place your `PROJECTS` folder on the Google Drive Server freshly created, or leave it anywhere locally
@@ -101,10 +111,14 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 [![google-Drive-VFXServer-01.jpg](https://i.postimg.cc/NMQPzhFY/google-Drive-VFXServer-01.jpg)](https://postimg.cc/sB0cMN50)
 - Google Drive will allow you to limit the bandwidth for upload/download directly in the app, which could be useful if the `PROJECTS` folder is saved on the server
 
+
+
 <!-- ROADMAP -->
 ## Roadmap
 - [ ] Houdini Packages for levels `Studio`, `Project`, `User`
 - [x] Automatic copy of After Effects plug-ins
+
+
 
 <!-- RESSOURCES -->
 ## Useful Resources and Tools
@@ -118,6 +132,8 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 - [Megascans](https://quixel.com/megascans "Megascans") - Used in the `.config`
 - [HSITE](https://www.sidefx.com/docs/houdini/basics/config.html "SideFX: $HSITE")
 - [Packages](https://www.sidefx.com/docs/houdini/ref/plugins.html "SideFX: Packages")
+
+
 
 <!-- CONTACT -->
 ## Contact
