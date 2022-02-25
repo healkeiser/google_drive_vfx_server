@@ -1,0 +1,13 @@
+{
+  "env": [
+    {
+      "HOUDINI_MAX_BACKUP_FILES": 10
+    },
+    {
+      "HOUDINI_BUFFEREDSAVE": 1
+    },
+    {
+      "HOUDINI_EXTERNAL_HELP_BROWSER": 1
+    }
+  ]
+}
