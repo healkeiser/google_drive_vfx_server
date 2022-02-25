@@ -1,9 +1,0 @@
-{
-	"env": [
-		{
-			"MOPS": "$PIPELINE_ROOT/.config/pipeline/houdini/plugins/GitHub/MOPS"
-		}
-	],
-	"path": "$MOPS"
-
-}
