@@ -1,18 +1,9 @@
 {
     "env": [
         {
-<<<<<<< HEAD
             "PATH": "$PATH;C:/Users/$USERNAME/htoa/htoa-6.0.2.1_r3f54c04_houdini-${HOUDINI_VERSION}.py3/htoa-6.0.2.1_r3f54c04_houdini-${HOUDINI_VERSION}.py3/scripts/bin",
             "method": "append"
         }
     ],
     "path": "C:/Users/$USERNAME/htoa/htoa-6.0.2.1_r3f54c04_houdini-${HOUDINI_VERSION}.py3/htoa-6.0.2.1_r3f54c04_houdini-${HOUDINI_VERSION}.py3"
 }
-=======
-            "PATH": "C:/Users/$USERNAME/htoa/htoa-6.0.2.0_r0ad447a_houdini-${HOUDINI_VERSION}.py3/htoa-6.0.2.0_r0ad447a_houdini-${HOUDINI_VERSION}.py3/scripts/bin",
-            "method": "append"
-        }
-    ],
-    "path": "C:/Users/$USERNAME/htoa/htoa-6.0.2.0_r0ad447a_houdini-${HOUDINI_VERSION}.py3/htoa-6.0.2.0_r0ad447a_houdini-${HOUDINI_VERSION}.py3"
-}
->>>>>>> 3f59ac45d3dffbf058a821ef53263dd02d1c5f8b

@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "env": [
     {
       "HOUDINI_MAX_BACKUP_FILES": 10
@@ -12,14 +11,3 @@
     }
   ]
 }
-=======
-    "env": [
-        {
-          "HOUDINI_MAX_BACKUP_FILES":10
-        },
-        {
-          "HOUDINI_BUFFEREDSAVE":1
-        }
-    ]
-}
->>>>>>> 3f59ac45d3dffbf058a821ef53263dd02d1c5f8b
