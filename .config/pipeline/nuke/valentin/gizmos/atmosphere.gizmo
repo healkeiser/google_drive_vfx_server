@@ -1,0 +1,84 @@
+#! C:/Program Files/Nuke8.0v5/nuke-8.0.v5.dll -nx
+version 8.0 v5
+Gizmo {
+ tile_color 0xffff
+ gl_color 0xffff
+ label Atmosphere
+ addUserKnob {20 User}
+ addUserKnob {41 Channel T Shuffle1.in}
+ addUserKnob {41 color T Constant1.color}
+ addUserKnob {41 blackpoint T Grade1.blackpoint}
+ addUserKnob {41 whitepoint T Grade1.whitepoint}
+ addUserKnob {41 gamma T ColorCorrect1.gamma}
+ addUserKnob {41 gain T ColorCorrect1.gain}
+ addUserKnob {26 "" l mask}
+ addUserKnob {41 maskChannelMask l "" -STARTLINE T Merge1.maskChannelMask}
+ addUserKnob {41 maskChannelInput l "" -STARTLINE T Merge1.maskChannelInput}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {41 mix T Merge1.mix}
+}
+ Input {
+  inputs 0
+  name Image
+  label Image
+  xpos 145
+  ypos -178
+ }
+set N257d8f60 [stack 0]
+ Shuffle {
+  in none
+  name Shuffle1
+  xpos 17
+  ypos -178
+ }
+ Grade {
+  blackpoint 0.004
+  whitepoint 1.12
+  name Grade1
+  xpos 17
+  ypos -132
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0.236061 0.470599 0.833334 0}
+  color_panelDropped true
+  name Constant1
+  xpos -130
+  ypos -99
+ }
+ Copy {
+  inputs 2
+  from0 rgba.red
+  to0 rgba.alpha
+  name Copy1
+  xpos 17
+  ypos -81
+ }
+ ColorCorrect {
+  channels alpha
+  gamma 1.22
+  gain 1.36
+  name ColorCorrect1
+  xpos 17
+  ypos -16
+ }
+ Premult {
+  name Premult1
+  xpos 17
+  ypos 56
+ }
+push $N257d8f60
+ Merge2 {
+  inputs 2
+  maskChannelMask none
+  name Merge1
+  xpos 145
+  ypos 56
+ }
+ Output {
+  name Output1
+  xpos 145
+  ypos 150
+ }
+end_group

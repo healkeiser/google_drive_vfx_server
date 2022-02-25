@@ -1,0 +1,18 @@
+{
+    "env": [
+        {
+            "NAGAMOCHI": "$PIPELINE_ROOT/.config/pipeline/houdini/plugins/nagamochi"
+        },
+        {
+            "HOUDINI_PATH": {
+                "value": [
+                    "$NAGAMOCHI/common",
+                    "$NAGAMOCHI/houdini"
+                ]
+            }
+        },
+        {
+            "NM_CACHE_HOU": "HIP_VAR/../caches"
+        }
+    ]
+}

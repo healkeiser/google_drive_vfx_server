@@ -1,0 +1,393 @@
+#! C:/Program Files/Nuke8.0v3/nuke-8.0.v3.dll -nx
+version 8.0 v3
+Group {
+ValentinSlate
+ name Slate
+ help "Simple Slate\n\n�Copyright:\nJonas Almeida.\n jgadpp.com \n2014"
+ addUserKnob {20 User l Slate}
+ addUserKnob {20 fonts_G l Fonts n 1}
+ addUserKnob {6 TextOn l Text t "Enable texts" +STARTLINE}
+ TextOn true
+ addUserKnob {1 vendor l Vendor t "Your Company Name"}
+ vendor "Your Company"
+ addUserKnob {7 FontSize l Size t "Font Size" R 10 100}
+ FontSize 40
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {20 mask l Mask n 1}
+ addUserKnob {6 MaskOn l "Aspect Ratio" t "aspect ratio mask on/off" +STARTLINE}
+ MaskOn true
+ addUserKnob {7 MaskAspectRatio l "Aspec Ratio" t "Aspect ratio of the final picture frame" R 1.33 3}
+ MaskAspectRatio 2.35
+ addUserKnob {7 MaskOpacity l Opacity}
+ MaskOpacity 0.75
+ addUserKnob {26 line l Line}
+ addUserKnob {7 LineWeight l Weight}
+ LineWeight 5
+ addUserKnob {7 LineOpacity l Opacity}
+ LineOpacity 1
+ addUserKnob {20 endGroup_1 l endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {4 CameraView l Eye M {Left Right Mono}}
+}
+ BackdropNode {
+  inputs 0
+  name Testers
+  tile_color 0x7f761fff
+  label "Project size"
+  note_font_size 42
+  xpos -647
+  ypos -280
+  bdwidth 437
+  bdheight 211
+ }
+ BackdropNode {
+  inputs 0
+  name Overlays
+  tile_color 0x457f49ff
+  label Overlays
+  note_font_size 42
+  xpos -333
+  ypos -230
+  bdwidth 1408
+  bdheight 611
+ }
+ Constant {
+  inputs 0
+  name Format
+  xpos -469
+  ypos -209
+ }
+ Reformat {
+  type "to box"
+  box_width {{"\[exists input]==1?input.format.w:root.format.w"}}
+  box_height {{"\[exists input]==1?input.format.h:root.format.h"}}
+  box_fixed true
+  box_pixel_aspect {{"\[exists input]==1?input.format.pixel_aspect:root.format.pixel_aspect"}}
+  resize distort
+  center false
+  filter Impulse
+  name CurrentFormat
+  xpos -469
+  ypos -135
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos -68
+  ypos -261
+ }
+ Dot {
+  name Dot2
+  xpos -35
+  ypos -180
+ }
+set N25cb5100 [stack 0]
+ Dot {
+  name Dot1
+  xpos -235
+  ypos -180
+ }
+ Dot {
+  name Dot3
+  xpos -235
+  ypos 320
+ }
+set N25ef0350 [stack 0]
+ Dot {
+  name Dot42
+  xpos -235
+  ypos 1020
+ }
+ Rectangle {
+  inputs 0
+  area {0 0 {CurrentFormat.box_width} {LineWeight}}
+  color {1 1 1 1}
+  name MaskLine
+  xpos 132
+  ypos -82
+  hide_input true
+ }
+ Dot {
+  name Dot6
+  xpos 165
+  ypos -30
+ }
+set N25ef0da0 [stack 0]
+ Dot {
+  name Dot56
+  xpos -35
+  ypos -30
+ }
+ Transform {
+  translate {0 {(Crop5.box.y)-LineWeight}}
+  black_outside false
+  name Transform3
+  xpos -69
+  ypos 15
+ }
+ BlackOutside {
+  name BlackOutside8
+  xpos -69
+  ypos 65
+ }
+ Dot {
+  name Dot57
+  xpos -35
+  ypos 120
+ }
+push $N25ef0da0
+ Dot {
+  name Dot55
+  xpos 365
+  ypos -30
+ }
+ Transform {
+  translate {0 {Crop5.box.t}}
+  black_outside false
+  name Transform6
+  xpos 331
+  ypos 13
+ }
+ BlackOutside {
+  name BlackOutside7
+  xpos 331
+  ypos 65
+ }
+ Merge2 {
+  inputs 2
+  metainput A
+  name Merge2
+  xpos 331
+  ypos 115
+ }
+ Multiply {
+  channels rgba
+  value {{LineOpacity}}
+  name Multiply1
+  xpos 331
+  ypos 159
+ }
+ Dot {
+  name Dot5
+  xpos 365
+  ypos 220
+ }
+push $N25cb5100
+ Dot {
+  name Dot38
+  xpos 565
+  ypos -180
+ }
+set N25ef3370 [stack 0]
+ Crop {
+  box {{"int(clamp((((\[exists input]==1?input.format.w:root.format.w)-(((\[exists input]==1?input.format.h:root.format.h)/(\[exists input]==1?input.format.pixel_aspect:root.format.pixel_aspect))*MaskAspectRatio))/2),0,(\[exists input]==1?input.format.w:root.format.w)))"} {"int(clamp((((\[exists input]==1?input.format.h:root.format.h)-(((\[exists input]==1?input.format.w:root.format.w)*(\[exists input]==1?input.format.pixel_aspect:root.format.pixel_aspect))/MaskAspectRatio))/2),0,(\[exists input]==1?input.format.h:root.format.h)))"} {"int(clamp((\[exists input]==1?input.format.w:root.format.w)-(((\[exists input]==1?input.format.w:root.format.w)-(((\[exists input]==1?input.format.h:root.format.h)/(\[exists input]==1?input.format.pixel_aspect:root.format.pixel_aspect))*MaskAspectRatio))/2),0,(\[exists input]==1?input.format.w:root.format.w)))"} {"int(clamp((\[exists input]==1?input.format.h:root.format.h)-(((\[exists input]==1?input.format.h:root.format.h)-(((\[exists input]==1?input.format.w:root.format.w)*(\[exists input]==1?input.format.pixel_aspect:root.format.pixel_aspect))/MaskAspectRatio))/2),0,\[exists input]==1?input.format.h:root.format.h))"}}
+  name Crop5
+  xpos 531
+  ypos -137
+ }
+ Crop {
+  box {0 0 {CurrentFormat.box_width} {CurrentFormat.box_height}}
+  crop false
+  name Crop2
+  xpos 531
+  ypos 14
+ }
+ Dot {
+  name Dot4
+  xpos 565
+  ypos 120
+ }
+push $N25ef3370
+ Dot {
+  name Dot21
+  xpos 765
+  ypos -180
+ }
+ Dissolve {
+  inputs 2
+  which {{MaskOpacity}}
+  name Dissolve1
+  xpos 731
+  ypos 110
+  disable {{!parent.MaskOn.main x39 1 x42 1 x43 1}}
+ }
+ Merge2 {
+  inputs 2
+  bbox B
+  name lineopac
+  xpos 731
+  ypos 215
+ }
+push $N25ef0350
+ Switch {
+  inputs 2
+  which {{MaskOn}}
+  name MaskSwitch
+  xpos 731
+  ypos 310
+ }
+ Dot {
+  name Dot8
+  xpos 765
+  ypos 420
+ }
+set N25ef4b80 [stack 0]
+ Text {
+  message "\[value vendor]"
+  font "\[python nuke.defaultFontPathname()]"
+  size {{NoOp1.font_size_1}}
+  yjustify top
+  Transform 1
+  box {{root.format.w/40} {(root.format.h)-(root.format.h/10)} {(root.format.w)-(root.format.w/20)} {(root.format.h)-(root.format.h/20)}}
+  center {914 778}
+  name Text_U_L
+  xpos 731
+  ypos 465
+ }
+ Text {
+  message "\[file tail \[value root.name]]"
+  font "\[python nuke.defaultFontPathname()]"
+  size {{NoOp1.font_size_1}}
+  xjustify center
+  yjustify top
+  Transform 1
+  box {{root.format.w/40} {(root.format.h)-(root.format.h/10)} {(root.format.w)-(root.format.w/20)} {(root.format.h)-(root.format.h/20)}}
+  center {914 778}
+  name Text_U_C
+  xpos 731
+  ypos 515
+ }
+ Text {
+  message "\[date %d%b%y]"
+  font "\[python nuke.defaultFontPathname()]"
+  size {{NoOp1.font_size_1}}
+  xjustify right
+  yjustify top
+  Transform 1
+  box {{root.format.w/40} {(root.format.h)-(root.format.h/10)} {(root.format.w)-(root.format.w/20)} {(root.format.h)-(root.format.h/20)}}
+  center {914 778}
+  name Text_U_R
+  xpos 731
+  ypos 565
+ }
+set N25ef55d0 [stack 0]
+ Text {
+  message "              mono"
+  font "\[python nuke.defaultFontPathname()]"
+  size {{NoOp1.font_size_1}}
+  yjustify bottom
+  Transform 1
+  box {{root.format.w/40} {int((root.format.h/2)/15)} {(root.format.w)-(root.format.w/20)} {int((root.format.h)-(root.format.h/1.1))}}
+  center {914 778}
+  name Text_L_L_mono
+  xpos 931
+  ypos 615
+ }
+push $N25ef55d0
+ Text {
+  message "      right"
+  font "\[python nuke.defaultFontPathname()]"
+  size {{NoOp1.font_size_1}}
+  yjustify bottom
+  Transform 1
+  box {{root.format.w/40} {int((root.format.h/2)/15)} {(root.format.w)-(root.format.w/20)} {int((root.format.h)-(root.format.h/1.1))}}
+  center {914 778}
+  name Text_L_L_right
+  xpos 531
+  ypos 615
+ }
+push $N25ef55d0
+ Text {
+  message left
+  font "\[python nuke.defaultFontPathname()]"
+  size {{NoOp1.font_size_1}}
+  yjustify bottom
+  Transform 1
+  box {{root.format.w/40} {int((root.format.h/2)/15)} {(root.format.w)-(root.format.w/20)} {int((root.format.h)-(root.format.h/1.1))}}
+  center {914 778}
+  name Text_L_L_left
+  xpos 731
+  ypos 617
+ }
+ Switch {
+  inputs 3
+  which {{CameraView}}
+  name Switch1
+  xpos 731
+  ypos 709
+ }
+ Text {
+  opacity 0.25
+  message "left right mono"
+  font "\[python nuke.defaultFontPathname()]"
+  size {{NoOp1.font_size_1}}
+  yjustify bottom
+  Transform 1
+  box {{root.format.w/40} {int((root.format.h/2)/15)} {(root.format.w)-(root.format.w/20)} {int((root.format.h)-(root.format.h/1.1))}}
+  center {914 778}
+  name Text_L_L
+  xpos 731
+  ypos 765
+ }
+ Text {
+  message "\[frame] of \[frames last]"
+  font "\[python nuke.defaultFontPathname()]"
+  size {{NoOp1.font_size_1}}
+  xjustify right
+  yjustify bottom
+  Transform 1
+  box {{root.format.w/40} {int((root.format.h/2)/15)} {(root.format.w)-(root.format.w/20)} {int((root.format.h)-(root.format.h/1.1))}}
+  center {914 778}
+  name Text_L_R
+  xpos 731
+  ypos 815
+ }
+ NoOp {
+  name NoOp1
+  xpos 731
+  ypos 865
+  addUserKnob {20 User}
+  addUserKnob {7 font_size_1 l "Font Size" R 1 1000}
+  font_size_1 {{FontSize}}
+ }
+push $N25ef4b80
+ Dot {
+  name Dot9
+  xpos 365
+  ypos 420
+ }
+ Dot {
+  name Dot7
+  xpos 365
+  ypos 970
+ }
+ Switch {
+  inputs 2
+  which {{TextOn}}
+  name TextSwitch
+  xpos 731
+  ypos 959
+ }
+ Switch {
+  inputs 2
+  which {{burnins}}
+  name BurnIns_Switch
+  xpos 731
+  ypos 1010
+  disable true
+ }
+ Crop {
+  box {0 0 {CurrentFormat.box_width.main} {CurrentFormat.box_height.main}}
+  crop false
+  name Crop1
+  xpos 731
+  ypos 1089
+  disable true
+ }
+ Output {
+  name Output1
+  xpos 731
+  ypos 1164
+ }
+end_group

@@ -1,0 +1,7 @@
+{
+	"description": "This plugin lists the resources used in a project in a dedicated window and allows to update and/or replace them.",
+	"url": "https://github.com/AllegorithmicSAS/painter-plugin-resources-updater",
+	"version": "1.0.5",
+	"license": "<a href=\"https://opensource.org/licenses/MIT\">MIT</a>",
+	"min_api_version": "1.1.2"
+}

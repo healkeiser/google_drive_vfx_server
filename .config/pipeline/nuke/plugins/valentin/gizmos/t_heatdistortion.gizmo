@@ -1,0 +1,321 @@
+#! C:/Program Files/Nuke11.3v1/nuke-11.3.1.dll -nx
+version 10.5 v1
+Gizmo {
+ inputs 2
+ tile_color 0xff5555ff
+ label v2.0
+ addUserKnob {20 controls l Controls}
+ addUserKnob {26 text_big l "Big Noise"}
+ addUserKnob {6 big_show l show +STARTLINE}
+ addUserKnob {14 size_big l size R 0 100}
+ size_big 400
+ addUserKnob {26 text_small l "Small Noise"}
+ addUserKnob {6 small_show l show +STARTLINE}
+ addUserKnob {14 size_small l size R 0 100}
+ size_small 150
+ addUserKnob {26 ""}
+ addUserKnob {7 noise_blur l "Noise Blur" R 0 100}
+ noise_blur 50
+ addUserKnob {7 speed l Speed}
+ speed 0.2
+ addUserKnob {26 ""}
+ addUserKnob {26 text l "Heat Distortion"}
+ addUserKnob {7 dist_amt l Amount R 0 100}
+ dist_amt 8
+ addUserKnob {7 offset l Offset}
+ addUserKnob {7 blur l Blur}
+ blur 10
+ addUserKnob {7 brightness l Brightness}
+ addUserKnob {26 ""}
+ addUserKnob {26 copyright1 l "" +STARTLINE T "<b>T_HeatDistortion v2.0</b> - Petar Tsonev (c)"}
+}
+ Reformat {
+  inputs 0
+  type "to box"
+  box_width {{source.width}}
+  box_height {{source.height}}
+  box_fixed true
+  name Reformat1
+  selected true
+  xpos 180
+  ypos 278
+ }
+set N7742fc00 [stack 0]
+ Dot {
+  name Dot9
+  xpos 324
+  ypos 282
+ }
+set N7742f000 [stack 0]
+ Dot {
+  name Dot11
+  xpos 434
+  ypos 282
+ }
+set N7742ec00 [stack 0]
+ Dot {
+  name Dot13
+  xpos 544
+  ypos 282
+ }
+ Noise {
+  output {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+  size {{parent.size_small}}
+  zoffset {{"frame * parent.speed + 100"}}
+  lacunarity {{parent.Noise1.lacunarity}}
+  gain {{parent.Noise1.gain}}
+  gamma {{parent.Noise1.gamma}}
+  translate {{parent.Noise1.translate.x} {parent.Noise1.translate.y}}
+  center {960 540}
+  name Noise3
+  xpos 510
+  ypos 419
+ }
+push $N7742ec00
+ Noise {
+  output {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+  size {{parent.Noise3.size}}
+  zoffset {{"frame * parent.speed + 50"}}
+  lacunarity {{parent.Noise1.lacunarity}}
+  gain {{parent.Noise1.gain}}
+  gamma {{parent.Noise1.gamma}}
+  translate {{parent.Noise1.translate.x} {parent.Noise1.translate.y}}
+  center {960 540}
+  name Noise2
+  xpos 400
+  ypos 369
+ }
+ Merge2 {
+  inputs 2
+  operation minus
+  name Merge2
+  xpos 400
+  ypos 419
+ }
+set N3510c00 [stack 0]
+ Dot {
+  name Dot1
+  xpos 434
+  ypos 469
+ }
+push $N7742f000
+ Noise {
+  output {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+  size {{parent.Noise1.size}}
+  zoffset {{"frame * parent.speed + 200"}}
+  lacunarity {{parent.Noise1.lacunarity}}
+  gain {{parent.Noise1.gain}}
+  gamma {{parent.Noise1.gamma}}
+  translate {2000 2000}
+  center {960 540}
+  name Noise4
+  xpos 290
+  ypos 417
+ }
+push $N7742fc00
+ Noise {
+  output {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+  size {{parent.size_big}}
+  zoffset {{"frame * parent.speed"}}
+  translate {2000 2000}
+  center {960 540}
+  name Noise1
+  xpos 180
+  ypos 374
+ }
+ Merge2 {
+  inputs 2
+  operation minus
+  name Merge3
+  xpos 180
+  ypos 417
+ }
+set N3570c00 [stack 0]
+ Merge2 {
+  inputs 2
+  name Merge1
+  xpos 180
+  ypos 465
+ }
+set N3570800 [stack 0]
+ Dot {
+  name Dot7
+  xpos 104
+  ypos 469
+ }
+ Dot {
+  name Dot8
+  xpos 104
+  ypos 1338
+ }
+push $N3510c00
+ Dot {
+  name Dot6
+  xpos 434
+  ypos 1338
+ }
+push $N3570c00
+ Dot {
+  name Dot5
+  xpos 214
+  ypos 1338
+ }
+ Input {
+  inputs 0
+  name mask
+  xpos -40
+  ypos 470
+  number 1
+ }
+ Invert {
+  name Invert1
+  xpos -40
+  ypos 512
+ }
+push $N3570800
+ Blur {
+  size {{parent.noise_blur}}
+  name Blur1
+  xpos 180
+  ypos 555
+ }
+ Merge2 {
+  inputs 2
+  operation stencil
+  name Merge5
+  xpos -40
+  ypos 561
+ }
+ Input {
+  inputs 0
+  name source
+  xpos -480
+  ypos 470
+ }
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  out forward
+  name ShuffleCopy1
+  xpos -480
+  ypos 561
+ }
+set N35a2800 [stack 0]
+ Dot {
+  name Dot3
+  xpos -446
+  ypos 657
+ }
+set N35a2400 [stack 0]
+ Dot {
+  name Dot12
+  xpos -446
+  ypos 714
+ }
+set N35a2000 [stack 0]
+ IDistort {
+  uv forward
+  uv_scale {{parent.dist_amt}}
+  name IDistort2
+  xpos -315
+  ypos 704
+ }
+push $N35a2400
+ Dot {
+  name Dot4
+  xpos -116
+  ypos 657
+ }
+ Merge2 {
+  inputs 2
+  operation minus
+  name Merge4
+  xpos -150
+  ypos 710
+ }
+ ColorCorrect {
+  saturation 0
+  name ColorCorrect1
+  xpos -150
+  ypos 760
+ }
+ Grade {
+  white 50
+  name Grade2
+  xpos -150
+  ypos 806
+ }
+ Clamp {
+  name Clamp1
+  xpos -150
+  ypos 848
+ }
+ Shuffle {
+  alpha red
+  name Shuffle1
+  xpos -150
+  ypos 902
+ }
+ Blur {
+  size 7.8
+  name Blur3
+  xpos -150
+  ypos 944
+ }
+ Dot {
+  name Dot10
+  xpos -116
+  ypos 1098
+ }
+set N270d0000 [stack 0]
+ Dot {
+  name Dot2
+  xpos -116
+  ypos 1146
+ }
+push $N270d0000
+push $N35a2000
+ IDistort {
+  uv forward
+  uv_offset {{parent.offset}}
+  uv_scale {{parent.dist_amt}}
+  name IDistort1
+  xpos -480
+  ypos 848
+ }
+ Blur {
+  inputs 1+1
+  size {{parent.blur}}
+  name Blur2
+  xpos -480
+  ypos 1088
+ }
+ Grade {
+  inputs 1+1
+  white {{"1 + parent.brightness"}}
+  name Grade1
+  xpos -480
+  ypos 1142
+ }
+ Switch {
+  inputs 4
+  which {{"big_show & small_show == 1 ? 3 : big_show == 1 ? 1 : small_show == 1 ? 2 : 0"}}
+  name Switch1
+  xpos -480
+  ypos 1334
+ }
+ Output {
+  name Output1
+  xpos -480
+  ypos 1478
+ }
+push $N35a2800
+ Viewer {
+  frame_range 1-100
+  channels forward
+  name Viewer1
+  xpos -40
+  ypos 608
+ }
+end_group

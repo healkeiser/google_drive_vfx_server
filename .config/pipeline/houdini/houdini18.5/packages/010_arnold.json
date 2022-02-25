@@ -1,0 +1,9 @@
+{
+    "env": [
+        {
+            "PATH": "$PATH;C:/Users/$USERNAME/htoa/htoa-6.0.2.1_r3f54c04_houdini-${HOUDINI_VERSION}.py3/htoa-6.0.2.1_r3f54c04_houdini-${HOUDINI_VERSION}.py3/scripts/bin",
+            "method": "append"
+        }
+    ],
+    "path": "C:/Users/$USERNAME/htoa/htoa-6.0.2.1_r3f54c04_houdini-${HOUDINI_VERSION}.py3/htoa-6.0.2.1_r3f54c04_houdini-${HOUDINI_VERSION}.py3"
+}

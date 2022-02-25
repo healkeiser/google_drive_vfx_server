@@ -1,0 +1,10 @@
+{
+	"env": [
+        {
+			"AELIB": "$PIPELINE_ROOT/.config/pipeline/houdini/plugins/GitHub/Aelib"
+        }
+	],
+	"path": [
+        "$AELIB"
+    ]
+}

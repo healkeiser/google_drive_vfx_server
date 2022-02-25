@@ -1,0 +1,2867 @@
+Group {
+ name ColorPickerID
+ knobChanged "\nn = nuke.thisNode()\nk = nuke.thisKnob()\n\nname_pick= n.knob('name_pick')\nindex = int(name_pick.getValue())\n\n#attiva tutta la seguente funzione di aggiornamento solo se sto modificando name_pick (cioe' il menu di selezione del pick) oppure active_pick, cioe' le checkbox per attivare i singoli pick.\nif ('name_pick' in k.name()) or ('active_pick' in k.name()):\n    import nuke\n    #------------------------------------------------------------\n    def update(stringa, attribute, attribute_group, type):\n    \n        node = nuke.toNode(stringa + str(index))\n        value = node\[attribute].value()\n        knob_group = nuke.toNode(groupName).knob(attribute_group)\n    \n         #per la scala del reformat uso un algoritmo. In base a quello che sceglie l'utente dal pulldown choice, restituisco I valori 5,10,20,30\n        if 'exp' in attribute_group:\n            if int(value) == 0:\n                value = int(5)\n            else:\n                value = int(value * 2 * 5)\n    \n        knob_group.setValue(value)\n        \n        \n        knob = nuke.toNode(stringa + str(index))\[attribute]\n        \n        if (type == \"4col\"):\n            color_picker = nuke.toNode(groupName).knob(\"color_pick\")\n        elif(type == \"int\"):\n            knob.setExpression('parent.' + knob_group.name(), 0)\n    #quando devo settare exp ho bisogno di una Expression particolare. Fanno parte sempre del gruppo int, ma l'expression e' differente dal semplice parent.nomeKnob\n            if 'exp' in attribute_group:\n                knob.setExpression('parent.' + knob_group.name() + '>0 ? ' + 'parent.' + knob_group.name() + ' * 2 * 5 : 5', 0)\n        elif(type == \"boolean\"):\n            knob.setExpression('parent.' + knob_group.name(), 0)\n        \n        \n        \n        if (attribute_group == \"mini_erode\" and value == 0):\n            knobMerge = nuke.toNode(groupName + \".Merge_pick0\" + str(index))\[\"disable\"]\n            knobMerge.setExpression('!parent.' + attribute_group, 0)\n    \n    #---------------------------------------------------------\n    \n    def delete_expression(stringa, attribute):\n        for num in range(0, 10):\n            nuke.toNode(stringa + str(num))\[attribute].clearAnimated()\n    \n    #----------------------------------------------\n    group = nuke.thisNode()\n    groupName = group.name()\n    \n    name_pick= nuke.toNode(groupName).knob('name_pick')\n    \n    \n    matrix = \[ \[\"Constant_pick0\", \"color\"], \[\"Difference_pick0\", \"gain\"], \[\"FilterErode2_pick0\", \"size\"], \[\"FilterErode2_pick0\", \"filter\"], \[\"FilterErodeMini_pick0\", \"size\"], \[\"ScaleUp_pick0\", \"scale\"], \[\"Merge_pick0\", \"disable\"], \[\"Blur_pick0\", \"size\"], \[\"sharpen_control_pick0\", \"sharpen\"], \[\"aliasing_control_pick0\", \"aliasing\"], \[\"Erode_Pos_pick0\", \"size\"], \[\"Mix_pick0\", \"mix\"], \[\"Premult_pick0\", \"disable\"], \[\"ShuffleAlpha_pick0\", \"disable\"]]\n    \n    for i in range(len(matrix)):\n        delete_expression(groupName + \".\" + matrix\[i]\[0], matrix\[i]\[1])\n    \n    \n    \n    #delete_expression(groupName + \".Constant_pick0\",\"color\")\n    \n    \n    index = int(name_pick.getValue())\n    \n    #------------------------------------------\n    #UPDATE (gruppo.nodo, attributo dentro al nodo, attributo corrispondente del gruppo, tipo di attributo\n    \n    \n    update(groupName + \".Constant_pick0\", \"color\", \"color_pick\", \"4col\")\n    \n    update(groupName + \".Difference_pick0\", \"gain\", \"range_picker\", \"int\")\n    \n    update(groupName + \".FilterErode2_pick0\", \"size\", \"erode_size2\", \"int\")\n    update(groupName + \".FilterErode2_pick0\", \"filter\", \"filter_type\", \"int\")\n    \n    update(groupName + \".ScaleUp_pick0\", \"scale\", \"exp\", \"int\")\n    \n    update(groupName + \".FilterErodeMini_pick0\", \"size\", \"mini_erode\", \"int\")\n    \n    update(groupName + \".Blur_pick0\", \"size\", \"blur_size\", \"int\")\n    \n    update(groupName + \".sharpen_control_pick0\", \"sharpen\", \"sharpen\", \"int\")\n    \n    update(groupName + \".aliasing_control_pick0\", \"aliasing\", \"aliasing\", \"int\")\n    \n    update(groupName + \".Erode_Pos_pick0\", \"size\", \"clean_edge\", \"int\")\n    \n    update(groupName + \".Mix_pick0\", \"mix\", \"mix_1\", \"int\")\n    \n    update(groupName + \".Premult_pick0\", \"disable\", \"unpremult_out\", \"boolean\")\n    \n    update(groupName + \".ShuffleAlpha_pick0\", \"disable\", \"rgba\", \"boolean\")\n    \n    \n    #------------------------------------------------------\n    #TESTO ACTIVE:\n    \n    node = nuke.toNode(groupName + \".Switch_active_pick0\" + str(index))\n    value = node\[\"which\"].value()\n    \n    knob_group = nuke.toNode(groupName).knob(\"out_active\")\n    \n    if(value == 1):\n        knob_group.setValue(\"<font color='green'><b>active\")\n    else:\n        knob_group.setValue(\"<font color='red'><b>NO active\")\n"
+ autolabel nuke.thisNode().name()
+ tile_color 0x595959ff
+ note_font "Bitstream Vera Sans Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold"
+ note_font_size 12
+ note_font_color 0xffffffff
+ selected true
+ addUserKnob {20 ColorPicker}
+ addUserKnob {26 instruction_1 l "" +STARTLINE T "<i>Connect at least ID input. <br>\nPick colors and active relative check-box:"}
+ addUserKnob {26 ""}
+ addUserKnob {41 color_picker00 l "color picker00" T Constant_pick00.color}
+ addUserKnob {6 active_pick00 l active -STARTLINE}
+ active_pick00 true
+ addUserKnob {26 ""}
+ addUserKnob {41 color_picker01 l "color picker01" T Constant_pick01.color}
+ addUserKnob {6 active_pick01 l active -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {41 color_picker02 l "color picker02" T Constant_pick02.color}
+ addUserKnob {6 active_pick02 l active -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {41 color_picker03 l "color picker03" T Constant_pick03.color}
+ addUserKnob {6 active_pick03 l active -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {41 color_picker04 l "color picker04" T Constant_pick04.color}
+ addUserKnob {6 active_pick04 l active -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {41 color_picker05 l "color picker05" T Constant_pick05.color}
+ addUserKnob {6 active_pick05 l active -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {41 color_picker06 l "color picker06" T Constant_pick06.color}
+ addUserKnob {6 active_pick06 l active -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {41 color_picker07 l "color picker07" T Constant_pick07.color}
+ addUserKnob {6 active_pick07 l active -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {41 color_picker08 l "color picker08" T Constant_pick08.color}
+ addUserKnob {6 active_pick08 l active -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {41 color_picker09 l "color picker09" T Constant_pick09.color}
+ addUserKnob {6 active_pick09 l active -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {22 btn_message01 l ? T "nuke.message('- Pick colors from the ID pass\\n- Active pickers with checkbox \"active\"\\n- Improve pickers with next tab \"Controls\"\\n- If Coverage Pass (rgba.alpha) is connected, use tab \"Coverage\" ')" +STARTLINE}
+ addUserKnob {20 controls l Controls}
+ addUserKnob {26 instruction l "" +STARTLINE T "<i>Select pick from the list and change setup only for that ID. \n<br>Controls are automatically updated "}
+ addUserKnob {26 ""}
+ addUserKnob {4 name_pick l "select pick" M {pick00 pick01 pick02 pick03 pick04 pick05 pick06 pick07 pick08 pick09}}
+ addUserKnob {22 button l INVISIBLE -STARTLINE +INVISIBLE T "#------------------------------------------------------------\ndef update(stringa, attribute, attribute_group, type):\n\n    node = nuke.toNode(stringa + str(index))\n    value = node\[attribute].value()\n    knob_group = nuke.toNode(groupName).knob(attribute_group)\n\n     #per la scala del reformat uso un algoritmo. In base a quello che sceglie l'utente dal pulldown choice, restituisco I valori 5,10,20,30\n    if 'exp' in attribute_group:\n        if int(value) == 0:\n            value = int(5)\n        else:\n            value = int(value * 2 * 5)\n\n\n    print value\n    knob_group.setValue(value)\n    \n    \n    knob = nuke.toNode(stringa + str(index))\[attribute]\n    \n    if (type == \"4col\"):\n        color_picker = nuke.toNode(groupName).knob(\"color_pick\")\n    elif(type == \"int\"):\n        knob.setExpression('parent.' + knob_group.name(), 0)\n        if 'exp' in attribute_group:\n            knob.setExpression('parent.' + knob_group.name() + '>0 ? ' + 'parent.' + knob_group.name() + ' * 2 * 5 : 5', 0)\n    elif(type == \"boolean\"):\n        knob.setExpression('parent.' + knob_group.name(), 0)\n\n#---------------------------------------------------------\n\ndef delete_expression(stringa, attribute):\n    for num in range(0, 10):\n        nuke.toNode(stringa + str(num))\[attribute].clearAnimated()\n\n#----------------------------------------------\ngroup = nuke.thisNode()\ngroupName = group.name()\n\nname_pick= nuke.toNode(groupName).knob('name_pick')\n\n\nmatrix = \[ \[\"Constant_pick0\", \"color\"], \[\"Difference_pick0\", \"gain\"], \[\"FilterErode2_pick0\", \"size\"], \[\"FilterErode2_pick0\", \"filter\"], \[\"FilterErodeMini_pick0\", \"size\"], \[\"ScaleUp_pick0\", \"scale\"], \[\"Blur_pick0\", \"size\"], \[\"Sharpen_pick0\", \"gamma\"], \[\"Aliasing_pick0\", \"blackpoint\"], \[\"Erode_Pos_pick0\", \"size\"], \[\"Mix_pick0\", \"mix\"], \[\"Premult_pick0\", \"disable\"], \[\"ShuffleAlpha_pick0\", \"disable\"]]\n\nfor i in range(len(matrix)):\n    delete_expression(groupName + \".\" + matrix\[i]\[0], matrix\[i]\[1])\n\n\n\n#delete_expression(groupName + \".Constant_pick0\",\"color\")\n\n\nindex = int(name_pick.getValue())\n\n#------------------------------------------\n#UPDATE (gruppo.nodo, attributo dentro al nodo, attributo corrispondente del gruppo, tipo di attributo\n\n\nupdate(groupName + \".Constant_pick0\", \"color\", \"color_pick\", \"4col\")\n\nupdate(groupName + \".Difference_pick0\", \"gain\", \"range_picker\", \"int\")\n\nupdate(groupName + \".FilterErode2_pick0\", \"size\", \"erode_size2\", \"int\")\nupdate(groupName + \".FilterErode2_pick0\", \"filter\", \"filter_type\", \"int\")\n\nupdate(groupName + \".ScaleUp_pick0\", \"scale\", \"exp\", \"int\")\n\nupdate(groupName + \".FilterErodeMini_pick0\", \"size\", \"mini_erode\", \"int\")\n\nupdate(groupName + \".Blur_pick0\", \"size\", \"blur_size\", \"int\")\n\nupdate(groupName + \".Sharpen_pick0\", \"gamma\", \"sharpen\", \"int\")\n\nupdate(groupName + \".Aliasing_pick0\", \"blackpoint\", \"aliasing\", \"int\")\n\nupdate(groupName + \".Erode_Pos_pick0\", \"size\", \"clean_edge\", \"int\")\n\nupdate(groupName + \".Mix_pick0\", \"mix\", \"mix_1\", \"int\")\n\nupdate(groupName + \".Premult_pick0\", \"disable\", \"unpremult_out\", \"boolean\")\n\nupdate(groupName + \".ShuffleAlpha_pick0\", \"disable\", \"rgba\", \"boolean\")\n\n\n#------------------------------------------------------\n#TESTO ACTIVE:\n\nnode = nuke.toNode(groupName + \".Switch_active_pick0\" + str(index))\nvalue = node\[\"which\"].value()\n\nknob_group = nuke.toNode(groupName).knob(\"out_active\")\n\nif(value == 1):\n    knob_group.setValue(\"active\")\nelse:\n    knob_group.setValue(\"NO active\")"}
+ addUserKnob {6 active l INVISIBLE +INVISIBLE +STARTLINE}
+ active true
+ addUserKnob {26 out_active l "<b>This pick is:" T "<font color='green'><b>active"}
+ addUserKnob {26 ""}
+ addUserKnob {19 color_pick +DISABLED}
+ color_pick {1 0 0 0}
+ addUserKnob {6 color_pick_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {26 ""}
+ addUserKnob {7 range_picker l tolerance R 0 10}
+ range_picker 1
+ addUserKnob {26 ""}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {20 TUNING l "ADVANCED TUNING" n 1}
+ TUNING 0
+ addUserKnob {7 erode_size2 l erode R -10 10}
+ addUserKnob {4 filter_type l filter -STARTLINE M {box triangle quadratic gaussian "" ""}}
+ filter_type gaussian
+ addUserKnob {7 mini_erode l "mini erode" R 0 10}
+ addUserKnob {4 exp -STARTLINE M {5 10 20 30}}
+ exp 10
+ addUserKnob {7 blur_size l blur R 0 100}
+ addUserKnob {26 ""}
+ addUserKnob {7 sharpen}
+ addUserKnob {7 aliasing}
+ addUserKnob {7 clean_edge l "clean edge" R -0.1 0.1}
+ addUserKnob {26 ""}
+ addUserKnob {7 mix_1 l mix}
+ mix_1 1
+ addUserKnob {26 ""}
+ addUserKnob {20 endGroup_1 l endGroup n -1}
+ addUserKnob {6 rgba l RGBA +STARTLINE}
+ addUserKnob {6 unpremult_out l INVISIBLE +INVISIBLE +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {22 reset l "Reset Values" T "if nuke.ask('Are you sure you want to reset the values for this Pick?'):\n    n = nuke.thisNode()\n    #n = nuke.selectedNode()\n    \n    n\['range_picker'].setValue(1)\n    n\['erode_size2'].setValue(0)\n    n\['filter_type'].setValue(3)\n    n\['mini_erode'].setValue(0)\n    n\['exp'].setValue(1)\n    n\['blur_size'].setValue(0)\n    n\['sharpen'].setValue(0)\n    n\['aliasing'].setValue(0)\n    n\['clean_edge'].setValue(0)\n    n\['mix_1'].setValue(1)\n    n\['rgba'].setValue(0)" +STARTLINE}
+ addUserKnob {22 btn_message02 l ? -STARTLINE T "nuke.message('- Select picker from the list. Its values will be updated automatically \\n- To change color use tab \"ColorPicker\" \\n- Use controls to improve your single pick')"}
+ addUserKnob {20 Coverage}
+ addUserKnob {26 instruction_2 l "" +STARTLINE T "<i>The Coverage Pass stores each pixels' final value taken\n<br>from the object that makes the largest contribution to that pixel"}
+ addUserKnob {26 ""}
+ addUserKnob {6 display l "display coverage" +STARTLINE}
+ addUserKnob {41 enable_coverage l "enable coverage" T Merge13.disable}
+ addUserKnob {26 ""}
+ addUserKnob {41 from0 l channel T Copy10.from0}
+ addUserKnob {6 invert l "invert coverage" -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {20 tuning_coverage l "TUNING COVERAGE" n 1}
+ addUserKnob {41 gamma T Grade11.gamma}
+ addUserKnob {41 multiply T Grade11.multiply}
+ addUserKnob {20 endGroup_3 l endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {22 btn_message03 l ? T "nuke.message('- In this Tab you can control Coverage Pass\\n- With \"display\", you can visualize Coverage Pass\\n Tutorial about Coverage Pass: http://vimeo.com/226937474')" +STARTLINE}
+ addUserKnob {20 final_matte_1 l "Final Matte / Mask"}
+ addUserKnob {26 text l "" +STARTLINE T "<i>Use these knobs to modify the final matte, with all IDs\n"}
+ addUserKnob {26 ""}
+ addUserKnob {6 disable_final l "disable final tuning" +STARTLINE}
+ addUserKnob {20 FINAL_TUNING l "FINAL TUNING" n 1}
+ addUserKnob {41 blur l "blur size" T Blur1.size}
+ addUserKnob {41 size l "erode size" T FilterErode1.size}
+ addUserKnob {41 filter -STARTLINE T FilterErode1.filter}
+ addUserKnob {41 gamma_1 l gamma T Grade12.gamma}
+ addUserKnob {6 unpremult +STARTLINE}
+ addUserKnob {20 endGroup_4 l endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {20 MASK n 1}
+ addUserKnob {6 enable_mask l "<b>enable mask" +STARTLINE}
+ addUserKnob {41 from0_1 l channel T Copy9.from0}
+ addUserKnob {41 mix T Merge12.mix}
+ addUserKnob {6 invert_mask l invert -STARTLINE}
+ addUserKnob {20 endGroup_2 l endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {22 btn_message04 l ? T "nuke.message('- In this Tab you can modify all ID together ')" +STARTLINE}
+ addUserKnob {20 email l @}
+ addUserKnob {22 tutorial l Tutorial T "nuke.tcl('start', 'https://vimeo.com/227128119')" +STARTLINE}
+ addUserKnob {26 email_1 l "" -STARTLINE T "Tool created by Andrea Geremia\n\n----------------------------------------------\nandrea.geremia89@gmail.com\nwww.andreageremia.it"}
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0xe8322dff
+  label PICK01
+  note_font_size 42
+  xpos 1931
+  ypos -359
+  bdwidth 667
+  bdheight 1343
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode10
+  tile_color 0x8e388e00
+  label "<center> coverage pass"
+  note_font_size 42
+  xpos 3973
+  ypos 1637
+  bdwidth 406
+  bdheight 464
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode11
+  tile_color 0x8e8e3800
+  label "<center> unpremult"
+  note_font_size 42
+  xpos 4270
+  ypos 3091
+  bdwidth 468
+  bdheight 257
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode12
+  tile_color 0x388e8e00
+  label "<center> final matte"
+  note_font_size 42
+  xpos 4089
+  ypos 2329
+  bdwidth 494
+  bdheight 385
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode13
+  tile_color 0x8e388e00
+  label <center>mask
+  note_font_size 42
+  xpos 4222
+  ypos 2743
+  bdwidth 640
+  bdheight 330
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode14
+  tile_color 0xe85790ff
+  label PICK00
+  note_font_size 42
+  xpos 1096
+  ypos -360
+  bdwidth 616
+  bdheight 1335
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode2
+  tile_color 0xff7136ff
+  label PICK02
+  note_font_size 42
+  xpos 2778
+  ypos -355
+  bdwidth 671
+  bdheight 1352
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode3
+  tile_color 0xffbd0dff
+  label PICK03
+  note_font_size 42
+  xpos 3559
+  ypos -357
+  bdwidth 669
+  bdheight 1370
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode4
+  tile_color 0x8dd600ff
+  label PICK04
+  note_font_size 42
+  xpos 4332
+  ypos -362
+  bdwidth 623
+  bdheight 1374
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode5
+  tile_color 0xa205ff
+  label PICK05
+  note_font_size 42
+  xpos 5042
+  ypos -366
+  bdwidth 658
+  bdheight 1387
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode6
+  tile_color 0x38da83ff
+  label PICK06
+  note_font_size 42
+  xpos 5802
+  ypos -366
+  bdwidth 678
+  bdheight 1381
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode7
+  tile_color 0xd8b9fff
+  label PICK07
+  note_font_size 42
+  xpos 6586
+  ypos -372
+  bdwidth 642
+  bdheight 1385
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode8
+  tile_color 0x2954bbff
+  label PICK08
+  note_font_size 42
+  xpos 7337
+  ypos -367
+  bdwidth 659
+  bdheight 1376
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode9
+  tile_color 0x5b29bbff
+  label PICK09
+  note_font_size 42
+  xpos 8070
+  ypos -369
+  bdwidth 632
+  bdheight 1380
+ }
+ Input {
+  inputs 0
+  name coverage
+  xpos 3981
+  ypos 1723
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0.0540000014 0.0129786944 0 0}
+  name Constant_pick09
+  xpos 8592
+  ypos -251
+ }
+ Input {
+  inputs 0
+  name ID
+  xpos 2597
+  ypos -798
+  number 1
+ }
+set N38e39040 [stack 0]
+ Dot {
+  name Dot4
+  xpos 2631
+  ypos -501
+ }
+set N38e3b500 [stack 0]
+ Dot {
+  name Dot8
+  xpos 2631
+  ypos -409
+ }
+set N38e3dca0 [stack 0]
+ Dot {
+  name Dot10
+  xpos 2982
+  ypos -409
+ }
+set N38e40240 [stack 0]
+ Dot {
+  name Dot25
+  xpos 3764
+  ypos -409
+ }
+set N38e427e0 [stack 0]
+ Dot {
+  name Dot32
+  xpos 4474
+  ypos -409
+ }
+set N38e45790 [stack 0]
+ Dot {
+  name Dot39
+  xpos 5215
+  ypos -409
+ }
+set N38e478f0 [stack 0]
+ Dot {
+  name Dot46
+  xpos 6012
+  ypos -409
+ }
+set N38e4a180 [stack 0]
+ Dot {
+  name Dot53
+  xpos 6771
+  ypos -409
+ }
+set N38e4c720 [stack 0]
+ Dot {
+  name Dot60
+  xpos 7538
+  ypos -409
+ }
+set N38e53650 [stack 0]
+ Dot {
+  name Dot67
+  xpos 8274
+  ypos -409
+ }
+ Dot {
+  name Dot61
+  xpos 8274
+  ypos -279
+ }
+set N38e58190 [stack 0]
+ Dot {
+  name Dot62
+  xpos 8427
+  ypos -279
+ }
+ Difference {
+  inputs 2
+  name Difference_pick09
+  xpos 8393
+  ypos -234
+ }
+ Invert {
+  channels alpha
+  name Invert8
+  note_font Verdana
+  xpos 8393
+  ypos -180
+ }
+ FilterErode {
+  channels all
+  size 0
+  filter gaussian
+  name FilterErode2_pick09
+  xpos 8393
+  ypos -128
+ }
+ Dot {
+  name Dot63
+  xpos 8427
+  ypos -57
+ }
+set N2893f430 [stack 0]
+ Dot {
+  name Dot64
+  xpos 8629
+  ypos -57
+ }
+ Reformat {
+  type scale
+  scale 10
+  name ScaleUp_pick09
+  xpos 8595
+  ypos -39
+ }
+ FilterErode {
+  channels rgba
+  size 0
+  name FilterErodeMini_pick09
+  xpos 8595
+  ypos -4
+ }
+ Reformat {
+  type scale
+  scale {{1/parent.ScaleUp_pick09.scale}}
+  name ScaleDown_pick09
+  xpos 8595
+  ypos 31
+ }
+ Dot {
+  name Dot65
+  xpos 8629
+  ypos 57
+ }
+push $N2893f430
+ Merge2 {
+  inputs 2
+  operation copy
+  name Merge_pick09
+  xpos 8393
+  ypos 53
+ }
+ Blur {
+  channels rgba
+  name Blur_pick09
+  label "\[value size]"
+  xpos 8393
+  ypos 79
+ }
+ Grade {
+  channels rgba
+  gamma {{"1-sharpen_control_pick09.sharpen==0 ? 0.001 : 1- sharpen_control_pick09.sharpen"}}
+  white_clamp true
+  name Sharpen_pick09
+  xpos 8393
+  ypos 122
+ }
+ Grade {
+  channels rgba
+  blackpoint {{"abs(aliasing_control_pick09.aliasing)==1 ? 0.99 : abs(aliasing_control_pick09.aliasing)"}}
+  whitepoint {{"1-blackpoint == 1 ? 1 : blackpoint"}}
+  white_clamp true
+  name Aliasing_pick09
+  xpos 8393
+  ypos 166
+ }
+ Erode {
+  size 0
+  name Erode_Pos_pick09
+  xpos 8393
+  ypos 224
+ }
+ Erode {
+  size {{parent.Erode_Pos_pick09.size*-1}}
+  name Erode_Neg_pick09
+  xpos 8393
+  ypos 262
+ }
+ Dot {
+  name Dot66
+  xpos 8427
+  ypos 332
+ }
+ Dot {
+  name Dot136
+  xpos 8350
+  ypos 332
+ }
+push $N38e58190
+ Dot {
+  name Dot137
+  xpos 8274
+  ypos 263
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy8
+  xpos 8240
+  ypos 322
+ }
+ Premult {
+  name Premult_pick09
+  xpos 8240
+  ypos 374
+ }
+ Clamp {
+  channels alpha
+  name Clamp12
+  xpos 8240
+  ypos 419
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name ShuffleAlpha_pick09
+  xpos 8240
+  ypos 475
+ }
+ Dot {
+  name Dot138
+  xpos 8274
+  ypos 526
+ }
+ Dot {
+  name Dot139
+  xpos 8274
+  ypos 575
+ }
+set N28999da0 [stack 0]
+ Dot {
+  name Dot140
+  xpos 8162
+  ypos 575
+ }
+ Dot {
+  name Dot141
+  xpos 8162
+  ypos 688
+ }
+push $N28999da0
+ Shuffle {
+  red black
+  green black
+  blue black
+  alpha black
+  name active_pick09
+  xpos 8240
+  ypos 621
+ }
+ Switch {
+  inputs 2
+  which {{"\[python \{nuke.toNode('parent')\['active_pick09'].value()\}]"}}
+  name Switch_active_pick09
+  xpos 8240
+  ypos 684
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0.01042199694 0.03599999845 0.009899999015 0}
+  name Constant_pick08
+  xpos 7855
+  ypos -249
+ }
+push $N38e53650
+ Dot {
+  name Dot54
+  xpos 7538
+  ypos -277
+ }
+set N289afc30 [stack 0]
+ Dot {
+  name Dot55
+  xpos 7691
+  ypos -277
+ }
+ Difference {
+  inputs 2
+  name Difference_pick08
+  xpos 7657
+  ypos -232
+ }
+ Invert {
+  channels alpha
+  name Invert7
+  note_font Verdana
+  xpos 7657
+  ypos -178
+ }
+ FilterErode {
+  channels all
+  size 0
+  filter gaussian
+  name FilterErode2_pick08
+  xpos 7657
+  ypos -124
+ }
+ Dot {
+  name Dot56
+  xpos 7691
+  ypos -55
+ }
+set N1a6892d0 [stack 0]
+ Dot {
+  name Dot57
+  xpos 7893
+  ypos -55
+ }
+ Reformat {
+  type scale
+  scale 10
+  name ScaleUp_pick08
+  xpos 7859
+  ypos -37
+ }
+ FilterErode {
+  channels rgba
+  size 0
+  name FilterErodeMini_pick08
+  xpos 7859
+  ypos -5
+ }
+ Reformat {
+  type scale
+  scale {{1/parent.ScaleUp_pick08.scale}}
+  name ScaleDown_pick08
+  xpos 7859
+  ypos 33
+ }
+ Dot {
+  name Dot58
+  xpos 7893
+  ypos 59
+ }
+push $N1a6892d0
+ Merge2 {
+  inputs 2
+  operation copy
+  name Merge_pick08
+  xpos 7657
+  ypos 55
+ }
+ Blur {
+  channels rgba
+  name Blur_pick08
+  label "\[value size]"
+  xpos 7657
+  ypos 81
+ }
+ Grade {
+  channels rgba
+  gamma {{"1-sharpen_control_pick08.sharpen==0 ? 0.001 : 1- sharpen_control_pick08.sharpen"}}
+  white_clamp true
+  name Sharpen_pick08
+  xpos 7657
+  ypos 124
+ }
+ Grade {
+  channels rgba
+  blackpoint {{"abs(aliasing_control_pick08.aliasing)==1 ? 0.99 : abs(aliasing_control_pick08.aliasing)"}}
+  whitepoint {{"1-blackpoint == 1 ? 1 : blackpoint"}}
+  white_clamp true
+  name Aliasing_pick08
+  xpos 7657
+  ypos 164
+ }
+ Erode {
+  size 0
+  name Erode_Pos_pick08
+  xpos 7657
+  ypos 226
+ }
+ Erode {
+  size {{parent.Erode_Pos_pick08.size*-1}}
+  name Erode_Neg_pick08
+  xpos 7657
+  ypos 264
+ }
+ Dot {
+  name Dot59
+  xpos 7691
+  ypos 334
+ }
+ Dot {
+  name Dot130
+  xpos 7614
+  ypos 334
+ }
+push $N289afc30
+ Dot {
+  name Dot131
+  xpos 7538
+  ypos 265
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy7
+  xpos 7504
+  ypos 324
+ }
+ Premult {
+  name Premult_pick08
+  xpos 7504
+  ypos 378
+ }
+ Clamp {
+  channels alpha
+  name Clamp11
+  xpos 7504
+  ypos 421
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name ShuffleAlpha_pick08
+  xpos 7504
+  ypos 477
+ }
+ Dot {
+  name Dot132
+  xpos 7538
+  ypos 528
+ }
+ Dot {
+  name Dot133
+  xpos 7538
+  ypos 577
+ }
+set N1a6e3980 [stack 0]
+ Dot {
+  name Dot134
+  xpos 7426
+  ypos 577
+ }
+ Dot {
+  name Dot135
+  xpos 7426
+  ypos 690
+ }
+push $N1a6e3980
+ Shuffle {
+  red black
+  green black
+  blue black
+  alpha black
+  name active_pick08
+  xpos 7504
+  ypos 622
+ }
+ Switch {
+  inputs 2
+  which {{"\[python \{nuke.toNode('parent')\['active_pick08'].value()\}]"}}
+  name Switch_active_pick08
+  xpos 7504
+  ypos 686
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0.1079199389 0.01119999867 0.1599999964 0}
+  name Constant_pick07
+  xpos 7078
+  ypos -224
+ }
+push $N38e4c720
+ Dot {
+  name Dot47
+  xpos 6771
+  ypos -251
+ }
+set N1a6f98c0 [stack 0]
+ Dot {
+  name Dot48
+  xpos 6924
+  ypos -251
+ }
+ Difference {
+  inputs 2
+  name Difference_pick07
+  xpos 6890
+  ypos -207
+ }
+ Invert {
+  channels alpha
+  name Invert6
+  note_font Verdana
+  xpos 6890
+  ypos -152
+ }
+ FilterErode {
+  channels all
+  size 0
+  filter gaussian
+  name FilterErode2_pick07
+  xpos 6890
+  ypos -97
+ }
+ Dot {
+  name Dot49
+  xpos 6924
+  ypos -29
+ }
+set N2d610810 [stack 0]
+ Dot {
+  name Dot50
+  xpos 7126
+  ypos -29
+ }
+ Reformat {
+  type scale
+  scale 10
+  name ScaleUp_pick07
+  xpos 7092
+  ypos -11
+ }
+ FilterErode {
+  channels rgba
+  size 0
+  name FilterErodeMini_pick07
+  xpos 7092
+  ypos 22
+ }
+ Reformat {
+  type scale
+  scale {{1/parent.ScaleUp_pick07.scale}}
+  name ScaleDown_pick07
+  xpos 7092
+  ypos 59
+ }
+ Dot {
+  name Dot51
+  xpos 7126
+  ypos 85
+ }
+push $N2d610810
+ Merge2 {
+  inputs 2
+  operation copy
+  name Merge_pick07
+  xpos 6890
+  ypos 81
+ }
+ Blur {
+  channels rgba
+  name Blur_pick07
+  label "\[value size]"
+  xpos 6890
+  ypos 107
+ }
+ Grade {
+  channels rgba
+  gamma {{"1-sharpen_control_pick07.sharpen==0 ? 0.001 : 1- sharpen_control_pick07.sharpen"}}
+  white_clamp true
+  name Sharpen_pick07
+  xpos 6890
+  ypos 154
+ }
+ Grade {
+  channels rgba
+  blackpoint {{"abs(aliasing_control_pick07.aliasing)==1 ? 0.99 : abs(aliasing_control_pick07.aliasing)"}}
+  whitepoint {{"1-blackpoint == 1 ? 1 : blackpoint"}}
+  white_clamp true
+  name Aliasing_pick07
+  xpos 6890
+  ypos 198
+ }
+ Erode {
+  size 0
+  name Erode_Pos_pick07
+  xpos 6890
+  ypos 252
+ }
+ Erode {
+  size {{parent.Erode_Pos_pick07.size*-1}}
+  name Erode_Neg_pick07
+  xpos 6890
+  ypos 290
+ }
+ Dot {
+  name Dot52
+  xpos 6924
+  ypos 360
+ }
+ Dot {
+  name Dot124
+  xpos 6847
+  ypos 360
+ }
+push $N1a6f98c0
+ Dot {
+  name Dot125
+  xpos 6771
+  ypos 291
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy6
+  xpos 6737
+  ypos 350
+ }
+ Premult {
+  name Premult_pick07
+  xpos 6737
+  ypos 404
+ }
+ Clamp {
+  channels alpha
+  name Clamp10
+  xpos 6737
+  ypos 447
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name ShuffleAlpha_pick07
+  xpos 6737
+  ypos 503
+ }
+ Dot {
+  name Dot126
+  xpos 6771
+  ypos 554
+ }
+ Dot {
+  name Dot127
+  xpos 6771
+  ypos 603
+ }
+set N2d66b040 [stack 0]
+ Dot {
+  name Dot128
+  xpos 6659
+  ypos 603
+ }
+ Dot {
+  name Dot129
+  xpos 6659
+  ypos 716
+ }
+push $N2d66b040
+ Shuffle {
+  red black
+  green black
+  blue black
+  alpha black
+  name active_pick07
+  xpos 6737
+  ypos 650
+ }
+ Switch {
+  inputs 2
+  which {{"\[python \{nuke.toNode('parent')\['active_pick07'].value()\}]"}}
+  name Switch_active_pick07
+  xpos 6737
+  ypos 712
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0 1 1 0}
+  name Constant_pick06
+  xpos 6350
+  ypos -202
+ }
+push $N38e4a180
+ Dot {
+  name Dot40
+  xpos 6012
+  ypos -229
+ }
+set N2d680f80 [stack 0]
+ Dot {
+  name Dot41
+  xpos 6165
+  ypos -229
+ }
+ Difference {
+  inputs 2
+  name Difference_pick06
+  xpos 6131
+  ypos -185
+ }
+ Invert {
+  channels alpha
+  name Invert5
+  note_font Verdana
+  xpos 6131
+  ypos -130
+ }
+ FilterErode {
+  channels all
+  size 0
+  filter gaussian
+  name FilterErode2_pick06
+  xpos 6131
+  ypos -74
+ }
+ Dot {
+  name Dot42
+  xpos 6165
+  ypos -7
+ }
+set N2d693e50 [stack 0]
+ Dot {
+  name Dot43
+  xpos 6367
+  ypos -7
+ }
+ Reformat {
+  type scale
+  scale 10
+  name ScaleUp_pick06
+  xpos 6333
+  ypos 11
+ }
+ FilterErode {
+  channels rgba
+  size 0
+  name FilterErodeMini_pick06
+  xpos 6333
+  ypos 47
+ }
+ Reformat {
+  type scale
+  scale {{1/parent.ScaleUp_pick06.scale}}
+  name ScaleDown_pick06
+  xpos 6333
+  ypos 81
+ }
+ Dot {
+  name Dot44
+  xpos 6367
+  ypos 107
+ }
+push $N2d693e50
+ Merge2 {
+  inputs 2
+  operation copy
+  name Merge_pick06
+  xpos 6131
+  ypos 103
+ }
+ Blur {
+  channels rgba
+  name Blur_pick06
+  label "\[value size]"
+  xpos 6131
+  ypos 129
+ }
+ Grade {
+  channels rgba
+  gamma {{"1-sharpen_control_pick06.sharpen==0 ? 0.001 : 1- sharpen_control_pick06.sharpen"}}
+  white_clamp true
+  name Sharpen_pick06
+  xpos 6131
+  ypos 172
+ }
+ Grade {
+  channels rgba
+  blackpoint {{"abs(aliasing_control_pick06.aliasing)==1 ? 0.99 : abs(aliasing_control_pick06.aliasing)"}}
+  whitepoint {{"1-blackpoint == 1 ? 1 : blackpoint"}}
+  white_clamp true
+  name Aliasing_pick06
+  xpos 6131
+  ypos 222
+ }
+ Erode {
+  size 0
+  name Erode_Pos_pick06
+  xpos 6131
+  ypos 274
+ }
+ Erode {
+  size {{parent.Erode_Pos_pick06.size*-1}}
+  name Erode_Neg_pick06
+  xpos 6131
+  ypos 312
+ }
+ Dot {
+  name Dot45
+  xpos 6165
+  ypos 382
+ }
+ Dot {
+  name Dot118
+  xpos 6088
+  ypos 382
+ }
+push $N2d680f80
+ Dot {
+  name Dot119
+  xpos 6012
+  ypos 313
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy5
+  xpos 5978
+  ypos 372
+ }
+ Premult {
+  name Premult_pick06
+  xpos 5978
+  ypos 427
+ }
+ Clamp {
+  channels alpha
+  name Clamp9
+  xpos 5978
+  ypos 469
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name ShuffleAlpha_pick06
+  xpos 5978
+  ypos 528
+ }
+ Dot {
+  name Dot120
+  xpos 6012
+  ypos 576
+ }
+ Dot {
+  name Dot121
+  xpos 6012
+  ypos 625
+ }
+set N2d6ee680 [stack 0]
+ Dot {
+  name Dot122
+  xpos 5900
+  ypos 625
+ }
+ Dot {
+  name Dot123
+  xpos 5900
+  ypos 738
+ }
+push $N2d6ee680
+ Shuffle {
+  red black
+  green black
+  blue black
+  alpha black
+  name active_pick06
+  xpos 5978
+  ypos 673
+ }
+ Switch {
+  inputs 2
+  which {{"\[python \{nuke.toNode('parent')\['active_pick06'].value()\}]"}}
+  name Switch_active_pick06
+  xpos 5978
+  ypos 734
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {1 0 1 0}
+  name Constant_pick05
+  xpos 5599
+  ypos -242
+ }
+push $N38e478f0
+ Dot {
+  name Dot33
+  xpos 5215
+  ypos -269
+ }
+set N2d708640 [stack 0]
+ Dot {
+  name Dot34
+  xpos 5368
+  ypos -269
+ }
+ Difference {
+  inputs 2
+  name Difference_pick05
+  xpos 5334
+  ypos -225
+ }
+ Invert {
+  channels alpha
+  name Invert4
+  note_font Verdana
+  xpos 5334
+  ypos -170
+ }
+ FilterErode {
+  channels all
+  size 0
+  filter gaussian
+  name FilterErode2_pick05
+  xpos 5334
+  ypos -114
+ }
+ Dot {
+  name Dot35
+  xpos 5368
+  ypos -47
+ }
+set N2d71b510 [stack 0]
+ Dot {
+  name Dot36
+  xpos 5570
+  ypos -47
+ }
+ Reformat {
+  type scale
+  scale 10
+  name ScaleUp_pick05
+  xpos 5536
+  ypos -29
+ }
+ FilterErode {
+  channels rgba
+  size 0
+  name FilterErodeMini_pick05
+  xpos 5536
+  ypos 7
+ }
+ Reformat {
+  type scale
+  scale {{1/parent.ScaleUp_pick05.scale}}
+  name ScaleDown_pick05
+  xpos 5536
+  ypos 41
+ }
+ Dot {
+  name Dot37
+  xpos 5570
+  ypos 67
+ }
+push $N2d71b510
+ Merge2 {
+  inputs 2
+  operation copy
+  name Merge_pick05
+  xpos 5334
+  ypos 63
+ }
+ Blur {
+  channels rgba
+  name Blur_pick05
+  label "\[value size]"
+  xpos 5334
+  ypos 89
+ }
+ Grade {
+  channels rgba
+  gamma {{"1-sharpen_control_pick05.sharpen==0 ? 0.001 : 1- sharpen_control_pick05.sharpen"}}
+  white_clamp true
+  name Sharpen_pick05
+  xpos 5334
+  ypos 138
+ }
+ Grade {
+  channels rgba
+  blackpoint {{"abs(aliasing_control_pick05.aliasing)==1 ? 0.99 : abs(aliasing_control_pick05.aliasing)"}}
+  whitepoint {{"1-blackpoint == 1 ? 1 : blackpoint"}}
+  white_clamp true
+  name Aliasing_pick05
+  xpos 5334
+  ypos 187
+ }
+ Erode {
+  size 0
+  name Erode_Pos_pick05
+  xpos 5334
+  ypos 234
+ }
+ Erode {
+  size {{parent.Erode_Pos_pick05.size*-1}}
+  name Erode_Neg_pick05
+  xpos 5334
+  ypos 272
+ }
+ Dot {
+  name Dot38
+  xpos 5368
+  ypos 342
+ }
+ Dot {
+  name Dot112
+  xpos 5291
+  ypos 342
+ }
+push $N2d708640
+ Dot {
+  name Dot113
+  xpos 5215
+  ypos 273
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy4
+  xpos 5181
+  ypos 332
+ }
+ Premult {
+  name Premult_pick05
+  xpos 5181
+  ypos 387
+ }
+ Clamp {
+  channels alpha
+  name Clamp8
+  xpos 5181
+  ypos 429
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name ShuffleAlpha_pick05
+  xpos 5181
+  ypos 488
+ }
+ Dot {
+  name Dot114
+  xpos 5215
+  ypos 536
+ }
+ Dot {
+  name Dot115
+  xpos 5215
+  ypos 585
+ }
+set N2d775d40 [stack 0]
+ Dot {
+  name Dot116
+  xpos 5103
+  ypos 585
+ }
+ Dot {
+  name Dot117
+  xpos 5103
+  ypos 698
+ }
+push $N2d775d40
+ Shuffle {
+  red black
+  green black
+  blue black
+  alpha black
+  name active_pick05
+  xpos 5181
+  ypos 634
+ }
+ Switch {
+  inputs 2
+  which {{"\[python \{nuke.toNode('parent')\['active_pick05'].value()\}]"}}
+  name Switch_active_pick05
+  xpos 5181
+  ypos 694
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {1 1 0 0}
+  name Constant_pick04
+  xpos 4829
+  ypos -244
+ }
+push $N38e45790
+ Dot {
+  name Dot16
+  xpos 4474
+  ypos -271
+ }
+set N2d78bc80 [stack 0]
+ Dot {
+  name Dot17
+  xpos 4627
+  ypos -271
+ }
+ Difference {
+  inputs 2
+  name Difference_pick04
+  xpos 4593
+  ypos -227
+ }
+ Invert {
+  channels alpha
+  name Invert3
+  note_font Verdana
+  xpos 4593
+  ypos -172
+ }
+ FilterErode {
+  channels all
+  size 0
+  filter gaussian
+  name FilterErode2_pick04
+  xpos 4593
+  ypos -113
+ }
+ Dot {
+  name Dot18
+  xpos 4627
+  ypos -49
+ }
+set N2d79eb50 [stack 0]
+ Dot {
+  name Dot22
+  xpos 4829
+  ypos -49
+ }
+ Reformat {
+  type scale
+  scale 10
+  name ScaleUp_pick04
+  xpos 4795
+  ypos -31
+ }
+ FilterErode {
+  channels rgba
+  size 0
+  name FilterErodeMini_pick04
+  xpos 4795
+  ypos 4
+ }
+ Reformat {
+  type scale
+  scale {{1/parent.ScaleUp_pick04.scale}}
+  name ScaleDown_pick04
+  xpos 4795
+  ypos 39
+ }
+ Dot {
+  name Dot23
+  xpos 4829
+  ypos 65
+ }
+push $N2d79eb50
+ Merge2 {
+  inputs 2
+  operation copy
+  name Merge_pick04
+  xpos 4593
+  ypos 61
+ }
+ Blur {
+  channels rgba
+  name Blur_pick04
+  label "\[value size]"
+  xpos 4593
+  ypos 87
+ }
+ Grade {
+  channels rgba
+  gamma {{"1-sharpen_control_pick04.sharpen==0 ? 0.001 : 1- sharpen_control_pick04.sharpen"}}
+  white_clamp true
+  name Sharpen_pick04
+  xpos 4593
+  ypos 131
+ }
+ Grade {
+  channels rgba
+  blackpoint {{"abs(aliasing_control_pick04.aliasing)==1 ? 0.99 : abs(aliasing_control_pick04.aliasing)"}}
+  whitepoint {{"1-blackpoint == 1 ? 1 : blackpoint"}}
+  white_clamp true
+  name Aliasing_pick04
+  xpos 4593
+  ypos 183
+ }
+ Erode {
+  size 0
+  name Erode_Pos_pick04
+  xpos 4593
+  ypos 232
+ }
+ Erode {
+  size {{parent.Erode_Pos_pick04.size*-1}}
+  name Erode_Neg_pick04
+  xpos 4593
+  ypos 270
+ }
+ Dot {
+  name Dot24
+  xpos 4627
+  ypos 340
+ }
+ Dot {
+  name Dot26
+  xpos 4550
+  ypos 340
+ }
+push $N2d78bc80
+ Dot {
+  name Dot27
+  xpos 4474
+  ypos 271
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy3
+  xpos 4440
+  ypos 330
+ }
+ Premult {
+  name Premult_pick04
+  xpos 4440
+  ypos 384
+ }
+ Clamp {
+  channels alpha
+  name Clamp7
+  xpos 4440
+  ypos 427
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name ShuffleAlpha_pick04
+  xpos 4440
+  ypos 486
+ }
+ Dot {
+  name Dot28
+  xpos 4474
+  ypos 534
+ }
+ Dot {
+  name Dot29
+  xpos 4474
+  ypos 583
+ }
+set N2d7f9380 [stack 0]
+ Dot {
+  name Dot30
+  xpos 4362
+  ypos 583
+ }
+ Dot {
+  name Dot31
+  xpos 4362
+  ypos 696
+ }
+push $N2d7f9380
+ Shuffle {
+  red black
+  green black
+  blue black
+  alpha black
+  name active_pick04
+  xpos 4440
+  ypos 631
+ }
+ Switch {
+  inputs 2
+  which {{"\[python \{nuke.toNode('parent')\['active_pick04'].value()\}]"}}
+  name Switch_active_pick04
+  xpos 4440
+  ypos 692
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0.766138 0.127724 -0.233862 0}
+  name Constant_pick03
+  xpos 4073
+  ypos -293
+ }
+push $N38e427e0
+ Dot {
+  name Dot7
+  xpos 3764
+  ypos -320
+ }
+set N2d8132c0 [stack 0]
+ Dot {
+  name Dot19
+  xpos 3917
+  ypos -320
+ }
+ Difference {
+  inputs 2
+  name Difference_pick03
+  xpos 3883
+  ypos -276
+ }
+ Invert {
+  channels alpha
+  name Invert13
+  note_font Verdana
+  xpos 3883
+  ypos -221
+ }
+ FilterErode {
+  channels all
+  size 0
+  filter gaussian
+  name FilterErode2_pick03
+  xpos 3883
+  ypos -159
+ }
+ Dot {
+  name Dot20
+  xpos 3917
+  ypos -98
+ }
+set N289c2bf0 [stack 0]
+ Dot {
+  name Dot21
+  xpos 4119
+  ypos -98
+ }
+ Reformat {
+  type scale
+  scale 10
+  name ScaleUp_pick03
+  xpos 4085
+  ypos -80
+ }
+ FilterErode {
+  channels rgba
+  size 0
+  name FilterErodeMini_pick03
+  xpos 4085
+  ypos -44
+ }
+ Reformat {
+  type scale
+  scale {{1/parent.ScaleUp_pick03.scale}}
+  name ScaleDown_pick03
+  xpos 4085
+  ypos -10
+ }
+ Dot {
+  name Dot104
+  xpos 4119
+  ypos 16
+ }
+push $N289c2bf0
+ Merge2 {
+  inputs 2
+  operation copy
+  name Merge_pick03
+  xpos 3883
+  ypos 12
+ }
+ Blur {
+  channels rgba
+  name Blur_pick03
+  label "\[value size]"
+  xpos 3883
+  ypos 38
+ }
+ Grade {
+  channels rgba
+  gamma {{"1-sharpen_control_pick03.sharpen==0 ? 0.001 : 1- sharpen_control_pick03.sharpen"}}
+  white_clamp true
+  name Sharpen_pick03
+  xpos 3883
+  ypos 84
+ }
+ Grade {
+  channels rgba
+  blackpoint {{"abs(aliasing_control_pick03.aliasing)==1 ? 0.99 : abs(aliasing_control_pick03.aliasing)"}}
+  whitepoint {{"1-blackpoint == 1 ? 1 : blackpoint"}}
+  white_clamp true
+  name Aliasing_pick03
+  xpos 3883
+  ypos 123
+ }
+ Erode {
+  size 0
+  name Erode_Pos_pick03
+  xpos 3883
+  ypos 183
+ }
+ Erode {
+  size {{parent.Erode_Pos_pick03.size*-1}}
+  name Erode_Neg_pick03
+  xpos 3883
+  ypos 221
+ }
+ Dot {
+  name Dot105
+  xpos 3917
+  ypos 291
+ }
+ Dot {
+  name Dot106
+  xpos 3840
+  ypos 291
+ }
+push $N2d8132c0
+ Dot {
+  name Dot107
+  xpos 3764
+  ypos 222
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy13
+  xpos 3730
+  ypos 281
+ }
+ Premult {
+  name Premult_pick03
+  xpos 3730
+  ypos 336
+ }
+ Clamp {
+  channels alpha
+  name Clamp6
+  xpos 3730
+  ypos 378
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name ShuffleAlpha_pick03
+  xpos 3730
+  ypos 437
+ }
+ Dot {
+  name Dot108
+  xpos 3764
+  ypos 485
+ }
+ Dot {
+  name Dot109
+  xpos 3764
+  ypos 534
+ }
+set N2d9213c0 [stack 0]
+ Dot {
+  name Dot110
+  xpos 3652
+  ypos 534
+ }
+ Dot {
+  name Dot111
+  xpos 3652
+  ypos 646
+ }
+push $N2d9213c0
+ Shuffle {
+  red black
+  green black
+  blue black
+  alpha black
+  name active_pick03
+  xpos 3730
+  ypos 582
+ }
+ Switch {
+  inputs 2
+  which {{"\[python \{nuke.toNode('parent')\['active_pick03'].value()\}]"}}
+  name Switch_active_pick03
+  xpos 3730
+  ypos 642
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0 0 1 0}
+  name Constant_pick02
+  xpos 3273
+  ypos -248
+ }
+push $N38e40240
+ Dot {
+  name Dot5
+  xpos 2982
+  ypos -275
+ }
+set N2d937300 [stack 0]
+ Dot {
+  name Dot6
+  xpos 3135
+  ypos -275
+ }
+ Difference {
+  inputs 2
+  name Difference_pick02
+  xpos 3101
+  ypos -231
+ }
+ Invert {
+  channels alpha
+  name Invert1
+  note_font Verdana
+  xpos 3101
+  ypos -176
+ }
+ FilterErode {
+  channels all
+  size 0
+  filter gaussian
+  name FilterErode2_pick02
+  xpos 3101
+  ypos -112
+ }
+ Dot {
+  name Dot73
+  xpos 3135
+  ypos -53
+ }
+set N2d94a1d0 [stack 0]
+ Dot {
+  name Dot74
+  xpos 3337
+  ypos -53
+ }
+ Reformat {
+  type scale
+  scale 10
+  name ScaleUp_pick02
+  xpos 3303
+  ypos -35
+ }
+ FilterErode {
+  channels rgba
+  size 0
+  name FilterErodeMini_pick02
+  xpos 3303
+  ypos 2
+ }
+ Reformat {
+  type scale
+  scale {{1/parent.ScaleUp_pick02.scale}}
+  name ScaleDown_pick02
+  xpos 3303
+  ypos 35
+ }
+ Dot {
+  name Dot77
+  xpos 3337
+  ypos 61
+ }
+push $N2d94a1d0
+ Merge2 {
+  inputs 2
+  operation copy
+  name Merge_pick02
+  xpos 3101
+  ypos 57
+  disable true
+ }
+ Blur {
+  channels rgba
+  name Blur_pick02
+  label "\[value size]"
+  xpos 3101
+  ypos 83
+ }
+ Grade {
+  channels rgba
+  gamma {{"1-sharpen_control_pick02.sharpen==0 ? 0.001 : 1- sharpen_control_pick02.sharpen"}}
+  white_clamp true
+  name Sharpen_pick02
+  xpos 3101
+  ypos 131
+ }
+ Grade {
+  channels rgba
+  blackpoint {{"abs(aliasing_control_pick02.aliasing)==1 ? 0.99 : abs(aliasing_control_pick02.aliasing)"}}
+  whitepoint {{"1-blackpoint == 1 ? 1 : blackpoint"}}
+  white_clamp true
+  name Aliasing_pick02
+  xpos 3101
+  ypos 185
+ }
+ Erode {
+  size 0
+  name Erode_Pos_pick02
+  xpos 3101
+  ypos 228
+ }
+ Erode {
+  size {{parent.Erode_Pos_pick02.size*-1}}
+  name Erode_Neg_pick02
+  xpos 3101
+  ypos 266
+ }
+ Dot {
+  name Dot79
+  xpos 3135
+  ypos 336
+ }
+ Dot {
+  name Dot98
+  xpos 3058
+  ypos 336
+ }
+push $N2d937300
+ Dot {
+  name Dot99
+  xpos 2982
+  ypos 267
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy12
+  xpos 2948
+  ypos 326
+ }
+ Premult {
+  name Premult_pick02
+  xpos 2948
+  ypos 381
+ }
+ Clamp {
+  channels alpha
+  name Clamp5
+  xpos 2948
+  ypos 423
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name ShuffleAlpha_pick02
+  xpos 2948
+  ypos 483
+ }
+ Dot {
+  name Dot100
+  xpos 2982
+  ypos 530
+ }
+ Dot {
+  name Dot101
+  xpos 2982
+  ypos 579
+ }
+set N2d9a4a00 [stack 0]
+ Dot {
+  name Dot102
+  xpos 2870
+  ypos 579
+ }
+ Dot {
+  name Dot103
+  xpos 2870
+  ypos 691
+ }
+push $N2d9a4a00
+ Shuffle {
+  red black
+  green black
+  blue black
+  alpha black
+  name active_pick02
+  xpos 2948
+  ypos 629
+ }
+ Switch {
+  inputs 2
+  which {{"\[python \{nuke.toNode('parent')\['active_pick02'].value()\}]"}}
+  name Switch_active_pick02
+  xpos 2948
+  ypos 687
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0 1 0 0}
+  name Constant_pick01
+  xpos 2420
+  ypos -247
+ }
+push $N38e3dca0
+ Dot {
+  name Dot9
+  xpos 2117
+  ypos -409
+ }
+set N2d9ba940 [stack 0]
+ Dot {
+  name Dot96
+  xpos 2117
+  ypos -281
+ }
+set N2d9bce00 [stack 0]
+ Dot {
+  name Dot97
+  xpos 2263
+  ypos -281
+ }
+ Difference {
+  inputs 2
+  name Difference_pick01
+  xpos 2229
+  ypos -230
+ }
+ Invert {
+  channels alpha
+  name Invert2
+  note_font Verdana
+  xpos 2229
+  ypos -168
+ }
+ FilterErode {
+  channels all
+  size 0
+  filter gaussian
+  name FilterErode2_pick01
+  xpos 2229
+  ypos -52
+ }
+ Dot {
+  name Dot1
+  xpos 2263
+  ypos 9
+ }
+set N2d9cfdb0 [stack 0]
+ Dot {
+  name Dot2
+  xpos 2465
+  ypos 9
+ }
+ Reformat {
+  type scale
+  scale 10
+  name ScaleUp_pick01
+  xpos 2431
+  ypos 27
+ }
+ FilterErode {
+  channels rgba
+  size 0
+  name FilterErodeMini_pick01
+  xpos 2431
+  ypos 65
+ }
+ Reformat {
+  type scale
+  scale {{1/parent.ScaleUp_pick01.scale}}
+  name ScaleDown_pick01
+  xpos 2431
+  ypos 97
+ }
+ Dot {
+  name Dot3
+  xpos 2465
+  ypos 123
+ }
+push $N2d9cfdb0
+ Merge2 {
+  inputs 2
+  operation copy
+  name Merge_pick01
+  xpos 2229
+  ypos 119
+  disable true
+ }
+ Blur {
+  channels rgba
+  name Blur_pick01
+  label "\[value size]"
+  xpos 2232
+  ypos 145
+ }
+ Grade {
+  channels rgba
+  gamma {{"1-sharpen_control_pick01.sharpen==0 ? 0.001 : 1- sharpen_control_pick01.sharpen"}}
+  white_clamp true
+  name Sharpen_pick01
+  xpos 2232
+  ypos 190
+ }
+ Grade {
+  channels rgba
+  blackpoint {{"abs(aliasing_control_pick01.aliasing)==1 ? 0.99 : abs(aliasing_control_pick01.aliasing)"}}
+  whitepoint {{"1-blackpoint == 1 ? 1 : blackpoint"}}
+  white_clamp true
+  name Aliasing_pick01
+  xpos 2232
+  ypos 236
+ }
+ Erode {
+  size 0
+  name Erode_Pos_pick01
+  xpos 2232
+  ypos 290
+ }
+ Erode {
+  size {{parent.Erode_Pos_pick01.size*-1}}
+  name Erode_Neg_pick01
+  xpos 2232
+  ypos 328
+ }
+ Dot {
+  name Dot12
+  xpos 2266
+  ypos 398
+ }
+ Dot {
+  name Dot13
+  xpos 2190
+  ypos 398
+ }
+push $N2d9bce00
+ Dot {
+  name Dot14
+  xpos 2114
+  ypos 329
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy11
+  xpos 2080
+  ypos 388
+ }
+ Premult {
+  name Premult_pick01
+  xpos 2080
+  ypos 445
+ }
+ Clamp {
+  channels alpha
+  name Clamp4
+  xpos 2080
+  ypos 486
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name ShuffleAlpha_pick01
+  xpos 2080
+  ypos 545
+ }
+ Dot {
+  name Dot15
+  xpos 2114
+  ypos 592
+ }
+ Dot {
+  name Dot84
+  xpos 2114
+  ypos 641
+ }
+set N2da2e550 [stack 0]
+ Dot {
+  name Dot87
+  xpos 2002
+  ypos 641
+ }
+ Dot {
+  name Dot95
+  xpos 2002
+  ypos 753
+ }
+push $N2da2e550
+ Shuffle {
+  red black
+  green black
+  blue black
+  alpha black
+  name active_pick01
+  xpos 2080
+  ypos 692
+ }
+ Switch {
+  inputs 2
+  which {{"\[python \{nuke.toNode('parent')\['active_pick01'].value()\}]"}}
+  name Switch_active_pick01
+  xpos 2080
+  ypos 749
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {1 0 0 0}
+  name Constant_pick00
+  xpos 1567
+  ypos -225
+ }
+push $N2d9ba940
+ Dot {
+  name Dot94
+  xpos 1261
+  ypos -409
+ }
+ Dot {
+  name Dot81
+  xpos 1261
+  ypos -286
+ }
+set N2da46950 [stack 0]
+ Dot {
+  name Dot82
+  xpos 1410
+  ypos -286
+ }
+ Difference {
+  inputs 2
+  gain {{parent.range_picker}}
+  name Difference_pick00
+  xpos 1376
+  ypos -208
+ }
+ Invert {
+  channels alpha
+  name Invert12
+  note_font Verdana
+  xpos 1376
+  ypos -146
+ }
+ FilterErode {
+  channels all
+  size {{parent.erode_size2}}
+  filter {{parent.filter_type}}
+  name FilterErode2_pick00
+  xpos 1376
+  ypos -34
+ }
+ Dot {
+  name Dot83
+  xpos 1410
+  ypos 31
+ }
+set N2da59bf0 [stack 0]
+ Dot {
+  name Dot85
+  xpos 1612
+  ypos 31
+ }
+ Reformat {
+  type scale
+  scale {{"parent.exp>0 ? parent.exp * 2 * 5 : 5"}}
+  name ScaleUp_pick00
+  xpos 1578
+  ypos 49
+ }
+ FilterErode {
+  channels rgba
+  size {{parent.mini_erode}}
+  name FilterErodeMini_pick00
+  xpos 1578
+  ypos 84
+ }
+ Reformat {
+  type scale
+  scale {{1/parent.ScaleUp_pick00.scale}}
+  name ScaleDown_pick00
+  xpos 1578
+  ypos 119
+ }
+ Dot {
+  name Dot86
+  xpos 1612
+  ypos 145
+ }
+push $N2da59bf0
+ Merge2 {
+  inputs 2
+  operation copy
+  name Merge_pick00
+  xpos 1376
+  ypos 141
+  disable {{!parent.mini_erode}}
+ }
+ Blur {
+  channels rgba
+  size {{parent.blur_size}}
+  name Blur_pick00
+  label "\[value size]"
+  xpos 1376
+  ypos 167
+ }
+ Grade {
+  channels rgba
+  gamma {{"1-sharpen_control_pick00.sharpen==0 ? 0.001 : 1- sharpen_control_pick00.sharpen"}}
+  white_clamp true
+  name Sharpen_pick00
+  xpos 1376
+  ypos 213
+ }
+ Grade {
+  channels rgba
+  blackpoint {{"abs(aliasing_control_pick00.aliasing)==1 ? 0.99 : abs(aliasing_control_pick00.aliasing)"}}
+  whitepoint {{"1-blackpoint == 1 ? 1 : blackpoint"}}
+  white_clamp true
+  name Aliasing_pick00
+  xpos 1376
+  ypos 251
+ }
+ Erode {
+  size {{parent.clean_edge}}
+  name Erode_Pos_pick00
+  xpos 1376
+  ypos 312
+ }
+ Erode {
+  size {{parent.Erode_Pos_pick00.size*-1}}
+  name Erode_Neg_pick00
+  xpos 1376
+  ypos 350
+ }
+ Dot {
+  name Dot80
+  xpos 1410
+  ypos 420
+ }
+push $N2da46950
+ Dot {
+  name Dot88
+  xpos 1261
+  ypos 351
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy2
+  xpos 1227
+  ypos 410
+ }
+ Premult {
+  name Premult_pick00
+  xpos 1227
+  ypos 462
+  disable {{parent.unpremult_out}}
+ }
+ Clamp {
+  channels alpha
+  name Clamp3
+  xpos 1227
+  ypos 507
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name ShuffleAlpha_pick00
+  xpos 1227
+  ypos 567
+  disable {{parent.rgba}}
+ }
+ Dot {
+  name Dot90
+  xpos 1261
+  ypos 614
+ }
+ Dot {
+  name Dot91
+  xpos 1261
+  ypos 663
+ }
+set N2dab2980 [stack 0]
+ Dot {
+  name Dot92
+  xpos 1149
+  ypos 663
+ }
+ Dot {
+  name Dot93
+  xpos 1149
+  ypos 775
+ }
+push $N2dab2980
+ Shuffle {
+  red black
+  green black
+  blue black
+  alpha black
+  name active_pick00
+  xpos 1227
+  ypos 715
+ }
+ Switch {
+  inputs 2
+  which {{"\[python \{nuke.toNode('parent')\['active_pick00'].value()\}]"}}
+  name Switch_active_pick00
+  xpos 1227
+  ypos 771
+ }
+push $N38e3b500
+ Dot {
+  name Dot11
+  xpos 775
+  ypos -501
+ }
+ Grade {
+  channels rgba
+  white 0
+  name Grade10
+  xpos 741
+  ypos 547
+ }
+ Dot {
+  name Dot68
+  xpos 775
+  ypos 949
+ }
+ Merge2 {
+  inputs 2
+  mix {{parent.mix_1}}
+  name Mix_pick00
+  xpos 1227
+  ypos 946
+ }
+ Merge2 {
+  inputs 2
+  name Mix_pick01
+  xpos 2080
+  ypos 946
+ }
+ Merge2 {
+  inputs 2
+  name Mix_pick02
+  xpos 2948
+  ypos 946
+ }
+ Merge2 {
+  inputs 2
+  name Mix_pick03
+  xpos 3730
+  ypos 946
+ }
+ Merge2 {
+  inputs 2
+  name Mix_pick04
+  xpos 4440
+  ypos 946
+ }
+ Merge2 {
+  inputs 2
+  name Mix_pick05
+  xpos 5181
+  ypos 946
+ }
+ Merge2 {
+  inputs 2
+  name Mix_pick06
+  xpos 5978
+  ypos 946
+ }
+ Merge2 {
+  inputs 2
+  name Mix_pick07
+  xpos 6737
+  ypos 946
+ }
+ Merge2 {
+  inputs 2
+  name Mix_pick08
+  xpos 7504
+  ypos 946
+ }
+ Merge2 {
+  inputs 2
+  name Mix_pick09
+  xpos 8240
+  ypos 946
+ }
+ Clamp {
+  name Clamp1
+  xpos 8240
+  ypos 1075
+ }
+ Dot {
+  name Dot71
+  xpos 8274
+  ypos 1211
+ }
+set N2db17390 [stack 0]
+ Dot {
+  name Dot70
+  xpos 4323
+  ypos 1211
+ }
+ Grade {
+  channels rgba
+  white 0
+  name gain0
+  label rgba
+  xpos 4289
+  ypos 1341
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy10
+  xpos 4289
+  ypos 1717
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle11
+  xpos 4289
+  ypos 1805
+ }
+ Invert {
+  name Invert10
+  xpos 4289
+  ypos 1906
+  disable {{"! parent.invert"}}
+ }
+ Grade {
+  channels rgba
+  white_clamp true
+  name Grade11
+  xpos 4289
+  ypos 2010
+ }
+ Dot {
+  name Dot69
+  xpos 4323
+  ypos 2079
+ }
+set N2db38e80 [stack 0]
+ Dot {
+  name Dot72
+  xpos 4073
+  ypos 2079
+ }
+ Dot {
+  name Dot75
+  xpos 4073
+  ypos 3361
+ }
+push $N38e39040
+ PostageStamp {
+  name RGB
+  xpos 4574
+  ypos 3217
+  hide_input true
+ }
+ Input {
+  inputs 0
+  name mask
+  xpos 4742
+  ypos 2785
+  number 2
+ }
+ Dot {
+  name Dot89
+  xpos 4776
+  ypos 2830
+ }
+set N2db45f60 [stack 0]
+push $N2db45f60
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy9
+  xpos 4742
+  ypos 2861
+ }
+ Dot {
+  name Dot76
+  xpos 4776
+  ypos 2932
+ }
+ Invert {
+  channels rgba
+  name Invert11
+  xpos 4559
+  ypos 2928
+  disable {{"! parent.invert_mask"}}
+ }
+push $N2db38e80
+push $N2db17390
+ Dot {
+  name Dot78
+  xpos 8274
+  ypos 2279
+ }
+ Merge2 {
+  inputs 2
+  name Merge13
+  xpos 4289
+  ypos 2275
+ }
+ Unpremult {
+  name Unpremult1
+  xpos 4289
+  ypos 2415
+ }
+ Blur {
+  channels alpha
+  name Blur1
+  xpos 4289
+  ypos 2458
+  disable {{parent.disable_final}}
+ }
+ FilterErode {
+  channels alpha
+  size 0
+  name FilterErode1
+  xpos 4289
+  ypos 2532
+  disable {{parent.disable_final}}
+ }
+ Grade {
+  channels alpha
+  name Grade12
+  xpos 4289
+  ypos 2612
+  disable {{parent.disable_final}}
+ }
+ Premult {
+  name Premult2
+  xpos 4289
+  ypos 2672
+ }
+ Merge2 {
+  inputs 2
+  operation mask
+  invert_mask true
+  name Merge12
+  xpos 4289
+  ypos 2928
+  disable {{"! parent.enable_mask" x1 1}}
+ }
+ Unpremult {
+  name Unpremult2
+  xpos 4289
+  ypos 3156
+ }
+ Copy {
+  inputs 2
+  from0 rgba.red
+  to0 rgba.red
+  from1 rgba.green
+  to1 rgba.green
+  from2 rgba.blue
+  to2 rgba.blue
+  name Copy1
+  xpos 4289
+  ypos 3199
+  disable {{!parent.unpremult}}
+ }
+ Premult {
+  name Premult1
+  xpos 4289
+  ypos 3287
+  disable {{parent.unpremult}}
+ }
+ Switch {
+  inputs 2
+  which {{parent.display}}
+  name Switch_coverage
+  xpos 4289
+  ypos 3357
+ }
+ Clamp {
+  name Clamp2
+  xpos 4289
+  ypos 3503
+ }
+ Output {
+  name Output2
+  xpos 4289
+  ypos 3595
+ }
+ NoOp {
+  inputs 0
+  name sharpen_control_pick09
+  xpos 8552
+  ypos 121
+  addUserKnob {20 User}
+  addUserKnob {7 sharpen}
+ }
+ NoOp {
+  inputs 0
+  name sharpen_control_pick08
+  xpos 7808
+  ypos 121
+  addUserKnob {20 User}
+  addUserKnob {7 sharpen}
+ }
+ NoOp {
+  inputs 0
+  name aliasing_control_pick08
+  xpos 7808
+  ypos 171
+  addUserKnob {20 User}
+  addUserKnob {7 aliasing}
+ }
+ NoOp {
+  inputs 0
+  name sharpen_control_pick07
+  xpos 7031
+  ypos 147
+  addUserKnob {20 User}
+  addUserKnob {7 sharpen}
+ }
+ NoOp {
+  inputs 0
+  name aliasing_control_pick07
+  xpos 7031
+  ypos 197
+  addUserKnob {20 User}
+  addUserKnob {7 aliasing}
+ }
+ NoOp {
+  inputs 0
+  name aliasing_control_pick06
+  xpos 6269
+  ypos 220
+  addUserKnob {20 User}
+  addUserKnob {7 aliasing}
+ }
+ NoOp {
+  inputs 0
+  name sharpen_control_pick05
+  xpos 5476
+  ypos 135
+  addUserKnob {20 User}
+  addUserKnob {7 sharpen}
+ }
+ NoOp {
+  inputs 0
+  name aliasing_control_pick05
+  xpos 5476
+  ypos 185
+  addUserKnob {20 User}
+  addUserKnob {7 aliasing}
+ }
+ NoOp {
+  inputs 0
+  name sharpen_control_pick03
+  xpos 4020
+  ypos 80
+  addUserKnob {20 User}
+  addUserKnob {7 sharpen}
+ }
+ NoOp {
+  inputs 0
+  name aliasing_control_pick03
+  xpos 4026
+  ypos 126
+  addUserKnob {20 User}
+  addUserKnob {7 aliasing}
+ }
+ NoOp {
+  inputs 0
+  name sharpen_control_pick02
+  xpos 3252
+  ypos 130
+  addUserKnob {20 User}
+  addUserKnob {7 sharpen}
+ }
+ NoOp {
+  inputs 0
+  name aliasing_control_pick02
+  xpos 3247
+  ypos 183
+  addUserKnob {20 User}
+  addUserKnob {7 aliasing}
+ }
+ NoOp {
+  inputs 0
+  name sharpen_control_pick01
+  xpos 2393
+  ypos 179
+  addUserKnob {20 User}
+  addUserKnob {7 sharpen}
+ }
+ NoOp {
+  inputs 0
+  name aliasing_control_pick09
+  xpos 8553
+  ypos 171
+  addUserKnob {20 User}
+  addUserKnob {7 aliasing}
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote3
+  label "do not disable this expression >"
+  xpos 1208
+  ypos 362
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote1
+  label "< do not disable this expression"
+  xpos 1682
+  ypos 122
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote4
+  label "< do not disable this expression"
+  xpos 1329
+  ypos 771
+ }
+ NoOp {
+  inputs 0
+  name sharpen_control_pick06
+  xpos 6269
+  ypos 165
+  addUserKnob {20 User}
+  addUserKnob {7 sharpen}
+ }
+ NoOp {
+  inputs 0
+  name aliasing_control_pick01
+  xpos 2399
+  ypos 241
+  addUserKnob {20 User}
+  addUserKnob {7 aliasing}
+ }
+ NoOp {
+  inputs 0
+  name sharpen_control_pick04
+  xpos 4753
+  ypos 126
+  addUserKnob {20 User}
+  addUserKnob {7 sharpen}
+ }
+ NoOp {
+  inputs 0
+  name aliasing_control_pick04
+  xpos 4753
+  ypos 188
+  addUserKnob {20 User}
+  addUserKnob {7 aliasing}
+ }
+ NoOp {
+  inputs 0
+  name aliasing_control_pick00
+  xpos 1537
+  ypos 249
+  addUserKnob {20 User}
+  addUserKnob {7 aliasing}
+  aliasing {{parent.aliasing}}
+ }
+ NoOp {
+  inputs 0
+  name sharpen_control_pick00
+  xpos 1615
+  ypos 210
+  addUserKnob {20 User}
+  addUserKnob {7 sharpen}
+  sharpen {{parent.sharpen}}
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote2
+  label "do not disable this expressions >"
+  xpos 1209
+  ypos 231
+ }
+end_group

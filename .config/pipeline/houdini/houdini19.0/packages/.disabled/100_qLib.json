@@ -1,0 +1,17 @@
+{
+    "recommends": "houdini_version >= '17.5.321'",
+
+    "env": [
+        {
+            "QLIB": "$PIPELINE_ROOT/.config/pipeline/houdini/plugins/GitHub/qLib",
+        },
+        {
+            "QOTL": "$QLIB/otls",
+        },
+        {
+            "HOUDINI_OTLSCAN_PATH": "$QOTL/base;$QOTL/future;$QOTL/experimental;$HOUDINI_OTLSCAN_PATH",
+        },
+    ],
+
+    "path": "$QLIB",
+}
