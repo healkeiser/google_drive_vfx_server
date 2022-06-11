@@ -79,7 +79,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 - Define a new environment variable for User called *SUBSTANCE_PAINTER_PLUGINS_PATH*. Give this new variable the value of the folder containing the *python* folder. This variable needs to be assigned before Substance Painter is started
 > Variable should be `SUBSTANCE_PAINTER_PLUGINS_PATH` `Z:/My Drive/.config/pipeline/substance_painter/python`
 
-- Open Substance Painter, then open `Modify` > `Settings`. In the new window, go to the `Library` section. In name, type `pipeline_assets` and add the following path: `Z:/My Drive/.config/pipeline/substance_painter/assets`. Click the `+` and restart Substance Painter. Return in `Modify` > `Settings` > `Library` and select the freshly created Library as the default one
+- Open Substance Painter, then open `Modify` > `Settings`. In the new window, go to the `Library` section. In name, type `pipeline_assets` and add the following path: `Z:/My Drive/.config/pipeline/substance_painter/assets`. Click the `+` and restart Substance Painter. Return in `Modify` -> `Settings` -> `Library` and select the freshly created Library as the default one
 
 [![google-Drive-VFXServer-substance-01.jpg](https://i.postimg.cc/SRW36Xjt/google-Drive-VFXServer-substance-01.jpg)](https://postimg.cc/5Q2s12Bw)
 
