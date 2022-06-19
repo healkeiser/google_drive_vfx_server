@@ -140,4 +140,4 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 
 Valentin Beaumont - [LinkedIn](https://uk.linkedin.com/in/valentin-beaumont) - [Behance](https://www.behance.net/el1ven) - valentin.onze@gmail.com
 
-Project Link: [GoogleDriveServer](https://github.com/healkeiser/googleDriveServer-pipeline)
+Project Link: [Google Drive VFX Server](https://github.com/healkeiser/googleDriveServer-pipeline)
