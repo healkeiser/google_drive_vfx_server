@@ -2,7 +2,7 @@
   <a href="https://www.python.org">
   <img src="https://img.shields.io/badge/-Python-FFD43B?style=for-the-badge&logo=python" alt="Python"/></a> 
   <a href="https://www.qt.io/qt-for-python">
-  <img src="https://img.shields.io/badge/-PyQt-227332?style=for-the-badge&logo=bash" alt="PyQt"/></a> 
+  <img src="https://img.shields.io/badge/-Batch-313131?style=for-the-badge&logo=powershell" alt="Batchfile"/></a> 
 </p>
 
 <div id="top"></div>
