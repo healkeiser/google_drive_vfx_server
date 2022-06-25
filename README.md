@@ -47,14 +47,18 @@
 
 <!-- ABOUT -->
 ## About
-Quick tutorial to setup a Google Drive Server for multiple machines access, and VFX Pipeline on Windows and macOS.
-> It is technically possible to achieve the same results on Linux, but you will need to use a third-party software to emulate Google Drive File Stream, such as [Rclone](https://rclone.org/) or [Insync](https://www.insynchq.com/)
+Quick tutorial to setup a Google Drive Server for multiple machines access, and VFX Pipeline on Windows, macOS and Linux.
+> If you're using Linux, you will need to use a third-party software to emulate Google Drive File Stream, such as [Rclone](https://rclone.org/) or [Insync](https://www.insynchq.com/)
 
 
 
 
 <!-- SETUP SERVER -->
 ## Setup Server
+
+> I'll be using Windows for explanatory purposes, but the steps are the same on macOS and Linux
+
+> In order to make your life easier when defining environment variables in macOS, I highly recommend using this great tool:  [EnvPane](https://github.com/hschmidt/EnvPane)
 - Install [Google Drive File Stream](https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe) and assign the virtual disk the letter `Z:`
 > It's important to assign a **similar letter** on every machine at every Google Drive File Stream fresh install, otherwise directories will be broken
 
