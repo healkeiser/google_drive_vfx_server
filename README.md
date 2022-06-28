@@ -48,7 +48,7 @@
 <!-- ABOUT -->
 ## About
 Quick tutorial to setup a Google Drive Server for multiple machines access, and VFX Pipeline on Windows, macOS and Linux.
-> If you're using Linux, you will need to use a third-party software to emulate Google Drive File Stream, such as [Rclone](https://rclone.org/) or [Insync](https://www.insynchq.com/)
+> If you're using Linux, you will need to use a third-party software to emulate Google Drive File Stream, such as [Rclone](https://rclone.org/) or [Insync](https://www.insynchq.com/), unless you're running on Gnome: the last Nautilus version has a default Online Accounts option. In this case, your `$PIPELINE_ROOT` will be something like `google-drive://yourmail@gmail.com/My Drive`
 
 
 
