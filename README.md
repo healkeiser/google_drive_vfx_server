@@ -153,7 +153,7 @@ Quick tutorial to setup a Google Drive Server for multiple machines access, and 
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [Google Drive VFX Server](https://github.com/healkeiser/googleDriveServer-pipeline)
+Project Link: [Google Drive VFX Server](https://github.com/healkeiser/google_drive_vfx_server)
 
 <p align='left'>
   <a href="https://www.linkedin.com/in/valentin-beaumont">
