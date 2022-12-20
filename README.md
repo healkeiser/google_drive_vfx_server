@@ -8,6 +8,9 @@
   <img src="https://img.shields.io/badge/-Linux-E95420?style=for-the-badge&logo=linux" alt="Compatible with Linux"/></a> 
 </p>
 
+> **Warning**<br>
+> This repository is deprecated, you should take a look at [Cloud VFX Server](https://github.com/healkeiser/cloud_vfx_server)
+
 <div id="top"></div>
 <!-- PROJECT LOGO -->
 <br />
